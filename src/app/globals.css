@@ -2,26 +2,177 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #041b13;
+  color: #eaf3ec;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+::selection {
+  background: #ced46a;
+  color: #041b13;
+}
+
+:focus-visible {
+  outline: 1px solid #ced46a;
+  outline-offset: 3px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #041b13;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #07553b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ced46a;
+}
+
+@layer components {
+  .btn-glow {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.95em 1.8em;
+    min-width: 150px;
+    min-height: 46px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0.4em;
+    background-size: 280% auto;
+    background-position: left top;
+    transition: background-position 0.8s ease, box-shadow 0.5s ease, transform 0.4s ease;
+  }
+
+  .btn-glow:hover {
+    background-position: right top;
+  }
+
+  .btn-glow:active {
+    transform: translateY(1px);
+  }
+
+  .btn-glow:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
+
+  .btn-olive {
+    color: #041b13;
+    background-image: linear-gradient(325deg, #8a9438 0%, #ced46a 55%, #8a9438 90%);
+    box-shadow:
+      0 0 22px rgba(206, 212, 106, 0.42),
+      0 5px 5px -1px rgba(122, 132, 48, 0.3),
+      inset 4px 4px 8px rgba(240, 244, 190, 0.5),
+      inset -4px -4px 8px rgba(102, 112, 40, 0.35);
+  }
+
+  .btn-forest {
+    color: #eaf3ec;
+    background-image: linear-gradient(325deg, #063d2b 0%, #0e7a55 55%, #063d2b 90%);
+    box-shadow:
+      0 0 22px rgba(16, 138, 97, 0.4),
+      inset 4px 4px 8px rgba(94, 194, 154, 0.28),
+      inset -4px -4px 8px rgba(2, 34, 23, 0.5);
+  }
+
+  .btn-plum {
+    color: #ffffff;
+    background-image: linear-gradient(325deg, #4e3a85 0%, #8a6bc4 55%, #4e3a85 90%);
+    box-shadow:
+      0 0 22px rgba(101, 78, 163, 0.45),
+      inset 4px 4px 8px rgba(197, 176, 235, 0.4),
+      inset -4px -4px 8px rgba(46, 26, 71, 0.45);
+  }
+
+  .btn-blush {
+    color: #1e1230;
+    background-image: linear-gradient(325deg, #d78bb3 0%, #f3cbdf 55%, #d78bb3 90%);
+    box-shadow:
+      0 0 22px rgba(234, 175, 203, 0.55),
+      inset 4px 4px 8px rgba(255, 240, 247, 0.6),
+      inset -4px -4px 8px rgba(178, 108, 146, 0.35);
+  }
+
+  .btn-ghost {
+    color: #eaf3ec;
+    background-image: linear-gradient(325deg, transparent 0%, rgba(206, 212, 106, 0.16) 55%, transparent 90%);
+    box-shadow: inset 0 0 0 1px rgba(234, 243, 236, 0.28);
+  }
+
+  .btn-ghost:hover {
+    color: #ced46a;
+    box-shadow:
+      inset 0 0 0 1px rgba(206, 212, 106, 0.7),
+      0 0 20px rgba(206, 212, 106, 0.28);
+  }
+
+  .marquee-wrap {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 2rem;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee-slide linear infinite;
+  }
+
+  .marquee-wrap:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+@keyframes marquee-slide {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track,
+  .btn-glow {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
