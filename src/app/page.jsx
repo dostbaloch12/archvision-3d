@@ -7,6 +7,7 @@ import About from '@/components/About'
 import StackedServices from '@/components/StackedServices'
 import Process from '@/components/Process'
 import ProjectShowcase from '@/components/ProjectShowcase'
+import SEOServiceLinks from '@/components/SEOServiceLinks'
 import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
 import Contact from '@/components/Contact'
@@ -32,6 +33,7 @@ export default function HomePage() {
         <StackedServices />
         <Process />
         <ProjectShowcase />
+        <SEOServiceLinks />
         <Testimonials />
         <FAQ />
         <Contact />
