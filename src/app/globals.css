@@ -3,13 +3,16 @@
 @tailwind utilities;
 
 :root {
+  --black: #080808;
+  --surface: #111111;
+  --surface-2: #171717;
+  --border: #2a2a2a;
   --cream: #f4efe6;
   --cream-soft: #e8ddcc;
-  --cream-muted: #c9bca8;
-  --black: #080808;
-  --black-soft: #111111;
-  --black-border: #262626;
-  --gold-muted: #b59a67;
+  --muted: #c9bca8;
+  --muted-dark: #8d806e;
+  --gold: #b59a67;
+  --gold-soft: #d4bd8d;
 }
 
 html {
@@ -32,7 +35,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--cream);
+  outline: 2px solid var(--gold);
   outline-offset: 4px;
 }
 
@@ -55,7 +58,7 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: #080808;
+  background: var(--black);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -63,7 +66,7 @@ select {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #f4efe6;
+  background: var(--gold);
 }
 
 @layer components {
@@ -117,7 +120,7 @@ select {
 
   .btn-glow:hover {
     background-position: right top;
-    filter: saturate(1.04);
+    filter: saturate(1.05);
   }
 
   .btn-glow:active {
@@ -132,20 +135,20 @@ select {
   .btn-olive,
   .btn-blush {
     color: #080808;
-    background-image: linear-gradient(325deg, #c9bca8 0%, #f4efe6 55%, #c9bca8 90%);
+    background-image: linear-gradient(325deg, #b59a67 0%, #f4efe6 55%, #b59a67 90%);
     box-shadow:
-      0 0 18px rgba(244, 239, 230, 0.24),
-      0 5px 5px -1px rgba(0, 0, 0, 0.22),
-      inset 4px 4px 8px rgba(255, 255, 255, 0.42),
-      inset -4px -4px 8px rgba(165, 150, 128, 0.24);
+      0 0 18px rgba(181, 154, 103, 0.28),
+      0 5px 5px -1px rgba(0, 0, 0, 0.32),
+      inset 4px 4px 8px rgba(255, 255, 255, 0.38),
+      inset -4px -4px 8px rgba(141, 128, 110, 0.24);
   }
 
   .btn-forest,
   .btn-plum {
     color: #f4efe6;
-    background-image: linear-gradient(325deg, #080808 0%, #2a2a2a 55%, #080808 90%);
+    background-image: linear-gradient(325deg, #080808 0%, #2b2b2b 55%, #080808 90%);
     box-shadow:
-      0 0 18px rgba(0, 0, 0, 0.42),
+      0 0 16px rgba(0, 0, 0, 0.4),
       inset 4px 4px 8px rgba(255, 255, 255, 0.08),
       inset -4px -4px 8px rgba(0, 0, 0, 0.55);
   }
@@ -155,18 +158,18 @@ select {
     background-image: linear-gradient(
       325deg,
       transparent 0%,
-      rgba(244, 239, 230, 0.12) 55%,
+      rgba(181, 154, 103, 0.14) 55%,
       transparent 90%
     );
-    box-shadow: inset 0 0 0 1px rgba(244, 239, 230, 0.28);
+    box-shadow: inset 0 0 0 1px rgba(244, 239, 230, 0.26);
   }
 
   .btn-ghost:hover {
     color: #080808;
-    background-image: linear-gradient(325deg, #c9bca8 0%, #f4efe6 55%, #c9bca8 90%);
+    background-image: linear-gradient(325deg, #b59a67 0%, #f4efe6 55%, #b59a67 90%);
     box-shadow:
-      inset 0 0 0 1px rgba(244, 239, 230, 0.8),
-      0 0 18px rgba(244, 239, 230, 0.2);
+      inset 0 0 0 1px rgba(244, 239, 230, 0.75),
+      0 0 18px rgba(181, 154, 103, 0.24);
   }
 
   .marquee-wrap {
@@ -193,6 +196,36 @@ select {
     display: flex;
     align-items: center;
     gap: 2rem;
+  }
+}
+
+@layer utilities {
+  .bg-dark {
+    background-color: #080808;
+  }
+
+  .bg-surface {
+    background-color: #111111;
+  }
+
+  .bg-surface-2 {
+    background-color: #171717;
+  }
+
+  .text-cream {
+    color: #f4efe6;
+  }
+
+  .text-muted-cream {
+    color: #c9bca8;
+  }
+
+  .text-gold {
+    color: #b59a67;
+  }
+
+  .border-dark {
+    border-color: #2a2a2a;
   }
 }
 
