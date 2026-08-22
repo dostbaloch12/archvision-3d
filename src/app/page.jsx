@@ -25,7 +25,7 @@ export default function HomePage() {
         <Hero />
 
         <div
-          className="h-16 w-full bg-gradient-to-b from-[#080808] to-[#111111]"
+          className="h-16 w-full bg-gradient-to-b from-[#F4F3F0] to-[#171717]"
           aria-hidden="true"
         />
 

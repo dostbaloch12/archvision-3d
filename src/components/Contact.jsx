@@ -124,24 +124,24 @@ export default function Contact() {
   }
 
   const inputClass =
-    'mt-3 h-12 w-full border border-[#C9BCA8] bg-[#F4EFE6] px-4 text-[#080808] transition-colors duration-500 ease-out placeholder:text-[#8D806E] focus:border-[#B59A67] focus:bg-white focus:outline-none'
+    'mt-3 h-12 w-full border border-[#77736B] bg-[#171717] px-4 text-[#F4F3F0] transition-colors duration-500 ease-out placeholder:text-[#77736B] focus:border-[#B5AEA3] focus:bg-white focus:outline-none'
 
   return (
     <section
       id="contact"
-      className="scroll-mt-24 bg-[#F4EFE6] py-24 text-[#080808] md:py-32"
+      className="scroll-mt-24 bg-[#171717] py-24 text-[#F4F3F0] md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#B59A67]">Contact the Studio</p>
-            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#080808] md:text-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">Contact the Studio</p>
+            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#F4F3F0] md:text-5xl">
               Speak directly with the people
-              <span className="text-[#8D806E]"> shaping the work.</span>
+              <span className="text-[#77736B]"> shaping the work.</span>
             </h2>
           </div>
 
-          <p className="max-w-sm text-base text-[#111111]/75 md:text-lg">
+          <p className="max-w-sm text-base text-[#171717]/75 md:text-lg">
             Choose the right contact or send a project brief. No account needed.
           </p>
         </div>
@@ -154,33 +154,33 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.55, delay: index * 0.06, ease: EASE }}
-              className="group overflow-hidden border border-[#C9BCA8] bg-[#E8DDCC] transition-colors duration-500 ease-out hover:border-[#B59A67]"
+              className="group overflow-hidden border border-[#77736B] bg-[#FBFAF7] transition-colors duration-500 ease-out hover:border-[#B5AEA3]"
             >
-              <div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-gradient-to-br from-[#080808] via-[#171717] to-[#8D806E]">
-                <div className="absolute left-5 top-5 border border-[#F4EFE6]/30 bg-[#F4EFE6]/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-[#F4EFE6]">
+              <div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-gradient-to-br from-[#F4F3F0] via-[#171717] to-[#77736B]">
+                <div className="absolute left-5 top-5 border border-[#171717]/30 bg-[#171717]/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-[#171717]">
                   {member.label}
                 </div>
 
-                <div className="flex h-28 w-28 items-center justify-center border border-[#F4EFE6]/30 bg-[#F4EFE6]/10 font-serif text-4xl font-light tracking-tight text-[#F4EFE6]">
+                <div className="flex h-28 w-28 items-center justify-center border border-[#171717]/30 bg-[#171717]/10 font-serif text-4xl font-light tracking-tight text-[#171717]">
                   {member.initials}
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#080808]/95 to-transparent p-5">
-                  <h3 className="font-serif text-2xl font-light tracking-tight text-[#F4EFE6]">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#F4F3F0]/95 to-transparent p-5">
+                  <h3 className="font-serif text-2xl font-light tracking-tight text-[#171717]">
                     {member.name}
                   </h3>
-                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#C9BCA8]">
+                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#77736B]">
                     {member.role}
                   </p>
                 </div>
               </div>
 
               <div className="p-5">
-                <p className="text-sm leading-relaxed text-[#111111]/75">{member.bio}</p>
+                <p className="text-sm leading-relaxed text-[#171717]/75">{member.bio}</p>
 
                 <a
                   href={`mailto:${member.email}`}
-                  className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[#8D806E] transition-colors duration-500 hover:text-[#080808]"
+                  className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[#77736B] transition-colors duration-500 hover:text-[#F4F3F0]"
                 >
                   <MailIcon />
                   Email
@@ -192,55 +192,55 @@ export default function Contact() {
 
         <div className="mt-20 grid gap-14 md:grid-cols-12">
           <div className="md:col-span-5">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#B59A67]">Project Brief</p>
-            <h3 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#080808] md:text-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">Project Brief</p>
+            <h3 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#F4F3F0] md:text-5xl">
               Send your site, ambition and timeline.
             </h3>
-            <p className="mt-6 max-w-md text-base text-[#111111]/75 md:text-lg">
+            <p className="mt-6 max-w-md text-base text-[#171717]/75 md:text-lg">
               The studio reviews every enquiry. If the project is a good fit, we reply within two
               working days with next steps.
             </p>
 
-            <div className="mt-10 space-y-5 border-t border-[#C9BCA8] pt-8">
+            <div className="mt-10 space-y-5 border-t border-[#77736B] pt-8">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#B59A67]">Studio Email</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">Studio Email</p>
                 <a
                   href="mailto:utopiandesignstuido7@gmail.com"
-                  className="mt-2 block text-[#080808] transition-colors duration-500 hover:text-[#8D806E]"
+                  className="mt-2 block text-[#F4F3F0] transition-colors duration-500 hover:text-[#77736B]"
                 >
                   utopiandesignstuido7@gmail.com
                 </a>
               </div>
 
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#B59A67]">Telephone</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">Telephone</p>
                 <a
                   href="tel:+923013918872"
-                  className="mt-2 block text-[#080808] transition-colors duration-500 hover:text-[#8D806E]"
+                  className="mt-2 block text-[#F4F3F0] transition-colors duration-500 hover:text-[#77736B]"
                 >
                   +92 301 3918872
                 </a>
               </div>
 
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#B59A67]">Studio</p>
-                <p className="mt-2 text-[#080808]">7CC, DHA Phase 4 · Lahore</p>
-                <p className="text-sm text-[#111111]/65">Visits by appointment only</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">Studio</p>
+                <p className="mt-2 text-[#F4F3F0]">7CC, DHA Phase 4 · Lahore</p>
+                <p className="text-sm text-[#171717]/65">Visits by appointment only</p>
               </div>
             </div>
           </div>
 
-          <div className="border border-[#C9BCA8] bg-[#E8DDCC] p-6 md:col-span-7 md:p-10">
+          <div className="border border-[#77736B] bg-[#FBFAF7] p-6 md:col-span-7 md:p-10">
             {status === 'success' ? (
               <div className="flex min-h-[480px] flex-col justify-center">
-                <span className="inline-flex h-12 w-12 items-center justify-center border border-[#B59A67] text-[#080808]">
+                <span className="inline-flex h-12 w-12 items-center justify-center border border-[#B5AEA3] text-[#F4F3F0]">
                   <CheckIcon />
                 </span>
-                <p className="mt-8 text-xs uppercase tracking-[0.2em] text-[#B59A67]">Received</p>
-                <h3 className="mt-4 font-serif text-3xl font-light tracking-tight text-[#080808]">
+                <p className="mt-8 text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">Received</p>
+                <h3 className="mt-4 font-serif text-3xl font-light tracking-tight text-[#F4F3F0]">
                   Your brief is with the studio.
                 </h3>
-                <p className="mt-4 max-w-md text-base text-[#111111]/75 md:text-lg">
+                <p className="mt-4 max-w-md text-base text-[#171717]/75 md:text-lg">
                   Thank you. We will write back within two working days.
                 </p>
                 <div className="mt-10">
@@ -262,7 +262,7 @@ export default function Contact() {
                     <div key={name}>
                       <label
                         htmlFor={name}
-                        className="text-xs uppercase tracking-[0.2em] text-[#8D806E]"
+                        className="text-xs uppercase tracking-[0.2em] text-[#77736B]"
                       >
                         {label}
                       </label>
@@ -281,7 +281,7 @@ export default function Contact() {
                   ))}
 
                   <div>
-                    <label htmlFor="type" className="text-xs uppercase tracking-[0.2em] text-[#8D806E]">
+                    <label htmlFor="type" className="text-xs uppercase tracking-[0.2em] text-[#77736B]">
                       Project type
                     </label>
                     <select id="type" name="type" value={form.type} onChange={onChange} className={inputClass}>
@@ -294,7 +294,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="budget" className="text-xs uppercase tracking-[0.2em] text-[#8D806E]">
+                    <label htmlFor="budget" className="text-xs uppercase tracking-[0.2em] text-[#77736B]">
                       Budget
                     </label>
                     <select id="budget" name="budget" value={form.budget} onChange={onChange} className={inputClass}>
@@ -307,7 +307,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="timeline" className="text-xs uppercase tracking-[0.2em] text-[#8D806E]">
+                    <label htmlFor="timeline" className="text-xs uppercase tracking-[0.2em] text-[#77736B]">
                       Timeline
                     </label>
                     <select id="timeline" name="timeline" value={form.timeline} onChange={onChange} className={inputClass}>
@@ -321,7 +321,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="text-xs uppercase tracking-[0.2em] text-[#8D806E]">
+                  <label htmlFor="message" className="text-xs uppercase tracking-[0.2em] text-[#77736B]">
                     Brief
                   </label>
                   <textarea
@@ -331,7 +331,7 @@ export default function Contact() {
                     value={form.message}
                     onChange={onChange}
                     required
-                    className="mt-3 w-full border border-[#C9BCA8] bg-[#F4EFE6] px-4 py-3 text-[#080808] transition-colors duration-500 ease-out placeholder:text-[#8D806E] focus:border-[#B59A67] focus:bg-white focus:outline-none"
+                    className="mt-3 w-full border border-[#77736B] bg-[#171717] px-4 py-3 text-[#F4F3F0] transition-colors duration-500 ease-out placeholder:text-[#77736B] focus:border-[#B5AEA3] focus:bg-white focus:outline-none"
                     placeholder="Project type, site, scope, design goals and timeline."
                   />
                 </div>
@@ -339,7 +339,7 @@ export default function Contact() {
                 <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
                 {error ? (
-                  <p className="text-sm text-[#111111]" role="alert" aria-live="polite">
+                  <p className="text-sm text-[#171717]" role="alert" aria-live="polite">
                     {error}
                   </p>
                 ) : null}

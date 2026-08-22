@@ -45,7 +45,7 @@ export default function PerspectiveGrid({
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#080808]/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#F4F3F0]/40" />
     </div>
   )
 }

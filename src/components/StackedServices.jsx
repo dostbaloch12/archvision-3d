@@ -48,18 +48,18 @@ export default function StackedServices() {
   return (
     <section
       id="services"
-      className="relative scroll-mt-24 bg-[#080808] py-24 md:py-32"
+      className="relative scroll-mt-24 bg-[#F4F3F0] py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#B59A67]">Services</p>
-            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#F4EFE6] md:text-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">Services</p>
+            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#171717] md:text-5xl">
               From concept to completion.
             </h2>
           </div>
 
-          <p className="max-w-md text-base leading-relaxed text-[#C9BCA8] md:text-lg">
+          <p className="max-w-md text-base leading-relaxed text-[#77736B] md:text-lg">
             We deliver integrated architectural, interior, planning, development, and turnkey
             solutions across residential, commercial, hospitality, institutional, and mixed-use
             projects.
@@ -74,28 +74,28 @@ export default function StackedServices() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.18 }}
               transition={{ duration: 0.55, delay: index * 0.04, ease: EASE }}
-              className="group border border-[#2A2A2A] bg-[#111111] p-7 transition-colors duration-500 ease-out hover:border-[#B59A67]"
+              className="group border border-[#D9D6CF] bg-[#171717] p-7 transition-colors duration-500 ease-out hover:border-[#B5AEA3]"
             >
               <div className="flex items-center justify-between gap-4">
-                <span className="text-xs uppercase tracking-[0.2em] text-[#B59A67]">
+                <span className="text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">
                   {service.number}
                 </span>
-                <span className="h-px flex-1 bg-[#2A2A2A]" />
+                <span className="h-px flex-1 bg-[#D9D6CF]" />
               </div>
 
-              <h3 className="mt-8 font-serif text-3xl font-light tracking-tight text-[#F4EFE6]">
+              <h3 className="mt-8 font-serif text-3xl font-light tracking-tight text-[#171717]">
                 {service.title}
               </h3>
 
-              <p className="mt-5 text-base leading-relaxed text-[#C9BCA8]">{service.copy}</p>
+              <p className="mt-5 text-base leading-relaxed text-[#77736B]">{service.copy}</p>
 
               <ul className="mt-8 space-y-3">
                 {service.points.map((point) => (
                   <li
                     key={point}
-                    className="flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-[#8D806E]"
+                    className="flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-[#77736B]"
                   >
-                    <span className="h-1 w-1 bg-[#B59A67]" aria-hidden="true" />
+                    <span className="h-1 w-1 bg-[#B5AEA3]" aria-hidden="true" />
                     {point}
                   </li>
                 ))}

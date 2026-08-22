@@ -32,7 +32,7 @@ export default function About() {
   return (
     <section
       id="studio"
-      className="scroll-mt-24 bg-gradient-to-b from-[#080808] via-[#111111] to-[#080808] py-24 md:py-32"
+      className="scroll-mt-24 bg-gradient-to-b from-[#F4F3F0] via-[#171717] to-[#F4F3F0] py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid gap-14 md:grid-cols-12">
@@ -43,10 +43,10 @@ export default function About() {
             transition={{ duration: 0.75, ease: EASE }}
             className="md:col-span-5"
           >
-            <p className="text-xs uppercase tracking-[0.2em] text-[#B59A67]">Studio</p>
-            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#F4EFE6] md:text-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">Studio</p>
+            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#171717] md:text-5xl">
               Designing spaces.
-              <span className="text-[#C9BCA8]"> Defining experiences.</span>
+              <span className="text-[#77736B]"> Defining experiences.</span>
             </h2>
           </motion.div>
 
@@ -57,7 +57,7 @@ export default function About() {
             transition={{ duration: 0.75, delay: 0.1, ease: EASE }}
             className="md:col-span-7"
           >
-            <p className="text-base leading-relaxed text-[#C9BCA8] md:text-lg">
+            <p className="text-base leading-relaxed text-[#77736B] md:text-lg">
               Utopian Design Studio is a contemporary architectural firm and interior design studio
               creating functional, refined, and timeless spaces. We combine creative vision,
               thoughtful planning, and technical expertise to transform ideas into distinctive
@@ -68,7 +68,7 @@ export default function About() {
               {STUDIO_POINTS.map((point) => (
                 <div
                   key={point}
-                  className="border border-[#2A2A2A] bg-[#171717] px-4 py-3 text-xs uppercase tracking-[0.16em] text-[#C9BCA8]"
+                  className="border border-[#D9D6CF] bg-[#171717] px-4 py-3 text-xs uppercase tracking-[0.16em] text-[#77736B]"
                 >
                   {point}
                 </div>
@@ -77,18 +77,18 @@ export default function About() {
           </motion.div>
         </div>
 
-        <div id="about" className="mt-24 scroll-mt-28 border-t border-[#2A2A2A] pt-16">
+        <div id="about" className="mt-24 scroll-mt-28 border-t border-[#D9D6CF] pt-16">
           <div className="grid gap-12 md:grid-cols-12">
             <div className="md:col-span-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#B59A67]">About</p>
-              <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#F4EFE6] md:text-5xl">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">About</p>
+              <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#171717] md:text-5xl">
                 Thoughtful design.
-                <span className="text-[#C9BCA8]"> Meaningful spaces. Lasting value.</span>
+                <span className="text-[#77736B]"> Meaningful spaces. Lasting value.</span>
               </h2>
             </div>
 
             <div className="space-y-6 md:col-span-8">
-              <p className="text-base leading-relaxed text-[#C9BCA8] md:text-lg">
+              <p className="text-base leading-relaxed text-[#77736B] md:text-lg">
                 Utopian Design Studio is an architectural firm and design practice focused on
                 creating thoughtful, functional, and timeless spaces. Our work spans architecture,
                 interiors, planning, development, and turnkey solutions, with a commitment to design
@@ -103,19 +103,19 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{ duration: 0.6, delay: index * 0.08, ease: EASE }}
-                    className="border border-[#2A2A2A] bg-[#111111] p-6"
+                    className="border border-[#D9D6CF] bg-[#171717] p-6"
                   >
-                    <p className="text-xs uppercase tracking-[0.2em] text-[#B59A67]">
+                    <p className="text-xs uppercase tracking-[0.2em] text-[#B5AEA3]">
                       From Our Leadership
                     </p>
-                    <blockquote className="mt-5 text-base leading-relaxed text-[#C9BCA8]">
+                    <blockquote className="mt-5 text-base leading-relaxed text-[#77736B]">
                       “{leader.quote}”
                     </blockquote>
                     <figcaption className="mt-6">
-                      <p className="font-serif text-2xl font-light tracking-tight text-[#F4EFE6]">
+                      <p className="font-serif text-2xl font-light tracking-tight text-[#171717]">
                         {leader.name}
                       </p>
-                      <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#8D806E]">
+                      <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#77736B]">
                         {leader.role}
                       </p>
                     </figcaption>

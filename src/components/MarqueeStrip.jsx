@@ -14,7 +14,7 @@ const SERVICES = [
 export default function MarqueeStrip() {
   return (
     <section
-      className="overflow-hidden border-y border-[#2A2A2A] bg-[#080808] py-6"
+      className="overflow-hidden border-y border-[#D9D6CF] bg-[#F4F3F0] py-6"
       aria-label="Services offered"
     >
       <Marquee
@@ -22,7 +22,7 @@ export default function MarqueeStrip() {
         speed={38}
         direction="left"
         separator="✦"
-        className="font-serif text-2xl font-light tracking-tight text-[#F4EFE6] md:text-3xl"
+        className="font-serif text-2xl font-light tracking-tight text-[#171717] md:text-3xl"
       />
     </section>
   )
