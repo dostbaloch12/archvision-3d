@@ -3,16 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --black: #080808;
-  --surface: #111111;
-  --surface-2: #171717;
-  --border: #2a2a2a;
-  --cream: #f4efe6;
-  --cream-soft: #e8ddcc;
-  --muted: #c9bca8;
-  --muted-dark: #8d806e;
-  --gold: #b59a67;
-  --gold-soft: #d4bd8d;
+  --bg: #f4f3f0;
+  --paper: #fbfaf7;
+  --ink: #171717;
+  --muted: #77736b;
+  --body: #5f5b55;
+  --line: #d9d6cf;
+  --line-strong: #bdb9b1;
+  --dark: #151514;
+  --dark-soft: #1b1b19;
+  --accent: #b5aea3;
+  --cream: #f6f4ef;
 }
 
 html {
@@ -24,18 +25,18 @@ html {
 }
 
 body {
-  background-color: var(--black);
-  color: var(--cream);
+  background: var(--bg);
+  color: var(--ink);
   overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--cream);
-  color: var(--black);
+  background: var(--ink);
+  color: var(--bg);
 }
 
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--ink);
   outline-offset: 4px;
 }
 
@@ -58,15 +59,15 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--black);
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3a3a3a;
+  background: var(--accent);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
+  background: var(--ink);
 }
 
 @layer components {
@@ -105,10 +106,10 @@ select {
     min-height: 46px;
     font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     border: none;
-    border-radius: 0.45em;
+    border-radius: 0;
     background-size: 280% auto;
     background-position: left top;
     transition:
@@ -120,7 +121,7 @@ select {
 
   .btn-glow:hover {
     background-position: right top;
-    filter: saturate(1.05);
+    filter: saturate(1.02);
   }
 
   .btn-glow:active {
@@ -134,42 +135,39 @@ select {
 
   .btn-olive,
   .btn-blush {
-    color: #080808;
-    background-image: linear-gradient(325deg, #b59a67 0%, #f4efe6 55%, #b59a67 90%);
+    color: #f6f4ef;
+    background-image: linear-gradient(325deg, #151514 0%, #2a2926 55%, #151514 90%);
     box-shadow:
-      0 0 18px rgba(181, 154, 103, 0.28),
-      0 5px 5px -1px rgba(0, 0, 0, 0.32),
-      inset 4px 4px 8px rgba(255, 255, 255, 0.38),
-      inset -4px -4px 8px rgba(141, 128, 110, 0.24);
+      0 5px 12px -6px rgba(0, 0, 0, 0.35),
+      inset 3px 3px 8px rgba(255, 255, 255, 0.06),
+      inset -3px -3px 8px rgba(0, 0, 0, 0.35);
   }
 
   .btn-forest,
   .btn-plum {
-    color: #f4efe6;
-    background-image: linear-gradient(325deg, #080808 0%, #2b2b2b 55%, #080808 90%);
+    color: #151514;
+    background-image: linear-gradient(325deg, #b5aea3 0%, #f6f4ef 55%, #b5aea3 90%);
     box-shadow:
-      0 0 16px rgba(0, 0, 0, 0.4),
-      inset 4px 4px 8px rgba(255, 255, 255, 0.08),
-      inset -4px -4px 8px rgba(0, 0, 0, 0.55);
+      0 5px 12px -6px rgba(0, 0, 0, 0.25),
+      inset 3px 3px 8px rgba(255, 255, 255, 0.55),
+      inset -3px -3px 8px rgba(181, 174, 163, 0.35);
   }
 
   .btn-ghost {
-    color: #f4efe6;
+    color: #171717;
     background-image: linear-gradient(
       325deg,
       transparent 0%,
-      rgba(181, 154, 103, 0.14) 55%,
+      rgba(181, 174, 163, 0.18) 55%,
       transparent 90%
     );
-    box-shadow: inset 0 0 0 1px rgba(244, 239, 230, 0.26);
+    box-shadow: inset 0 0 0 1px rgba(170, 166, 158, 0.9);
   }
 
   .btn-ghost:hover {
-    color: #080808;
-    background-image: linear-gradient(325deg, #b59a67 0%, #f4efe6 55%, #b59a67 90%);
-    box-shadow:
-      inset 0 0 0 1px rgba(244, 239, 230, 0.75),
-      0 0 18px rgba(181, 154, 103, 0.24);
+    color: #f6f4ef;
+    background-image: linear-gradient(325deg, #151514 0%, #2a2926 55%, #151514 90%);
+    box-shadow: inset 0 0 0 1px rgba(21, 21, 20, 1);
   }
 
   .marquee-wrap {
@@ -200,32 +198,32 @@ select {
 }
 
 @layer utilities {
-  .bg-dark {
-    background-color: #080808;
+  .bg-editorial {
+    background-color: #f4f3f0;
   }
 
-  .bg-surface {
-    background-color: #111111;
+  .bg-paper {
+    background-color: #fbfaf7;
   }
 
-  .bg-surface-2 {
-    background-color: #171717;
+  .bg-editorial-dark {
+    background-color: #151514;
   }
 
-  .text-cream {
-    color: #f4efe6;
+  .text-ink {
+    color: #171717;
   }
 
-  .text-muted-cream {
-    color: #c9bca8;
+  .text-editorial-muted {
+    color: #77736b;
   }
 
-  .text-gold {
-    color: #b59a67;
+  .text-editorial-body {
+    color: #5f5b55;
   }
 
-  .border-dark {
-    border-color: #2a2a2a;
+  .border-editorial {
+    border-color: #d9d6cf;
   }
 }
 
