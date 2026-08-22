@@ -1,7 +1,4 @@
-// Simple in-memory rate limiter (per server instance).
-// For production scale, upgrade to Upstash Redis rate limiting.
-
-const WINDOW_MS = 60_000 // 1 minute
+const WINDOW_MS = 60_000
 const MAX_REQUESTS = 3
 
 const store = new Map()

@@ -14,7 +14,7 @@ const SERVICES = [
 export default function MarqueeStrip() {
   return (
     <section
-      className="overflow-hidden border-y border-white/15 bg-gradient-to-b from-[#654EA3] to-[#5E489B] py-6"
+      className="overflow-hidden border-y border-white/15 bg-gradient-to-b from-[#111111] to-[#141414] py-6"
       aria-label="Services offered"
     >
       <Marquee

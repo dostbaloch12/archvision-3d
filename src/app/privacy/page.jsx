@@ -34,11 +34,11 @@ const SECTIONS = [
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#041B13] to-[#0A3D2B] py-24 md:py-32">
+    <main className="min-h-screen bg-gradient-to-b from-[#080808] to-[#262626] py-24 md:py-32">
       <div className="mx-auto max-w-3xl px-6 md:px-12">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#8FAA9B] transition-colors duration-500 hover:text-[#CED46A]"
+          className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#8D806E] transition-colors duration-500 hover:text-[#F4EFE6]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -58,31 +58,31 @@ export default function PrivacyPage() {
           Back to site
         </Link>
 
-        <p className="mt-12 text-xs uppercase tracking-[0.2em] text-[#CED46A]">Legal</p>
+        <p className="mt-12 text-xs uppercase tracking-[0.2em] text-[#F4EFE6]">Legal</p>
 
-        <h1 className="mt-4 font-serif text-4xl font-light tracking-tight text-[#EAF3EC] md:text-5xl">
+        <h1 className="mt-4 font-serif text-4xl font-light tracking-tight text-[#F4EFE6] md:text-5xl">
           Privacy Policy
         </h1>
 
-        <p className="mt-4 text-sm text-[#8FAA9B]">Last updated: January 2025</p>
+        <p className="mt-4 text-sm text-[#8D806E]">Last updated: January 2025</p>
 
         <div className="mt-14 space-y-10">
           {SECTIONS.map((section) => (
             <section key={section.heading}>
-              <h2 className="text-xl font-light tracking-tight text-[#EAF3EC]">
+              <h2 className="text-xl font-light tracking-tight text-[#F4EFE6]">
                 {section.heading}
               </h2>
-              <p className="mt-3 text-base text-[#B9CCC0] md:text-lg">{section.body}</p>
+              <p className="mt-3 text-base text-[#C9BCA8] md:text-lg">{section.body}</p>
             </section>
           ))}
 
-          <section className="border-t border-[#0A3D2B] pt-10">
-            <h2 className="text-xl font-light tracking-tight text-[#EAF3EC]">Contact</h2>
-            <p className="mt-3 text-base text-[#B9CCC0] md:text-lg">
+          <section className="border-t border-[#262626] pt-10">
+            <h2 className="text-xl font-light tracking-tight text-[#F4EFE6]">Contact</h2>
+            <p className="mt-3 text-base text-[#C9BCA8] md:text-lg">
               For privacy requests, write to{' '}
               <a
                 href="mailto:studio@archvision3d.com"
-                className="text-[#CED46A] transition-colors duration-500 hover:text-[#DDE08F]"
+                className="text-[#F4EFE6] transition-colors duration-500 hover:text-[#FFF8EC]"
               >
                 studio@archvision3d.com
               </a>

@@ -5,26 +5,17 @@ import { AnimatePresence, motion } from 'framer-motion'
 import AnimatedButton from './ui/AnimatedButton'
 
 const NAV_LINKS = [
-  { href: '#about', label: 'Studio' },
+  { href: '#studio', label: 'Studio' },
   { href: '#services', label: 'Services' },
-  { href: '#process', label: 'Process' },
   { href: '#projects', label: 'Projects' },
+  { href: '#process', label: 'Process' },
+  { href: '#about', label: 'About' },
   { href: '#contact', label: 'Contact' },
 ]
 
 function MenuIcon() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
       <path d="M4 6h16" />
       <path d="M4 12h16" />
       <path d="M4 18h16" />
@@ -34,17 +25,7 @@ function MenuIcon() {
 
 function CloseIcon() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
       <path d="M18 6 6 18" />
       <path d="m6 6 12 12" />
     </svg>
@@ -68,6 +49,7 @@ export default function Navbar() {
     } else {
       document.documentElement.classList.remove('overflow-hidden')
     }
+
     return () => document.documentElement.classList.remove('overflow-hidden')
   }, [open])
 
@@ -77,7 +59,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-3 focus:z-[60] focus:bg-[#CED46A] focus:px-4 focus:py-2 focus:text-[#041B13]"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-3 focus:z-[60] focus:bg-[#F4EFE6] focus:px-4 focus:py-2 focus:text-[#080808]"
       >
         Skip to content
       </a>
@@ -85,28 +67,28 @@ export default function Navbar() {
       <nav
         aria-label="Primary"
         className={`border-b transition-colors duration-500 ease-out ${
-          scrolled || open ? 'border-[#0A3D2B] bg-[#041B13]/95' : 'border-transparent bg-transparent'
+          scrolled || open ? 'border-[#262626] bg-[#080808]/95' : 'border-transparent bg-transparent'
         }`}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-12">
-          <a href="#top" className="group flex items-baseline gap-2" aria-label="ArchVision 3D home">
-            <span className="font-serif text-xl font-light tracking-[0.28em] text-[#EAF3EC] md:text-2xl">
-              ARCHVISION
+          <a href="#top" className="group flex flex-col leading-none" aria-label="Utopian Design Studio home">
+            <span className="font-serif text-xl font-light tracking-[0.22em] text-[#F4EFE6] md:text-2xl">
+              UTOPIAN
             </span>
-            <span className="text-[10px] uppercase tracking-[0.28em] text-[#CED46A] transition-transform duration-500 ease-out group-hover:-translate-y-0.5">
-              3D
+            <span className="mt-1 text-[9px] uppercase tracking-[0.3em] text-[#C9BCA8]">
+              Design Studio
             </span>
           </a>
 
-          <ul className="hidden items-center gap-10 lg:flex">
+          <ul className="hidden items-center gap-8 lg:flex">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="group relative block text-xs uppercase tracking-[0.2em] text-[#8FAA9B] transition-colors duration-500 ease-out hover:text-[#EAF3EC]"
+                  className="group relative block text-xs uppercase tracking-[0.2em] text-[#8D806E] transition-colors duration-500 ease-out hover:text-[#F4EFE6]"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-[#CED46A] transition-all duration-500 ease-out group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-[#F4EFE6] transition-all duration-500 ease-out group-hover:w-full" />
                 </a>
               </li>
             ))}
@@ -124,7 +106,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center border border-[#0A3D2B] text-[#EAF3EC] transition-colors duration-500 hover:border-[#CED46A] hover:text-[#CED46A] lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center border border-[#262626] text-[#F4EFE6] transition-colors duration-500 hover:border-[#F4EFE6] lg:hidden"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -143,7 +125,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 top-20 z-40 bg-[#041B13] lg:hidden"
+            className="fixed inset-0 top-20 z-40 bg-[#080808] lg:hidden"
           >
             <div className="flex h-full flex-col justify-between px-6 py-12">
               <ul className="flex flex-col gap-6">
@@ -157,9 +139,9 @@ export default function Navbar() {
                     <a
                       href={link.href}
                       onClick={close}
-                      className="group flex items-center gap-4 font-serif text-4xl font-light tracking-tight text-[#EAF3EC]"
+                      className="group flex items-center gap-4 font-serif text-4xl font-light tracking-tight text-[#F4EFE6]"
                     >
-                      <span className="h-px w-0 bg-[#CED46A] transition-all duration-500 ease-out group-hover:w-8" />
+                      <span className="h-px w-0 bg-[#F4EFE6] transition-all duration-500 ease-out group-hover:w-8" />
                       {link.label}
                     </a>
                   </motion.li>

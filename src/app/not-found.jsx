@@ -2,14 +2,14 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center bg-[#041B13] px-6 text-center">
-      <p className="text-xs uppercase tracking-[0.2em] text-[#CED46A]">Error 404</p>
+    <section className="flex min-h-screen flex-col items-center justify-center bg-[#080808] px-6 text-center">
+      <p className="text-xs uppercase tracking-[0.2em] text-[#F4EFE6]">Error 404</p>
 
-      <h1 className="mt-6 font-serif text-6xl font-light tracking-tight text-[#EAF3EC] md:text-8xl">
+      <h1 className="mt-6 font-serif text-6xl font-light tracking-tight text-[#F4EFE6] md:text-8xl">
         Lost in space.
       </h1>
 
-      <p className="mt-6 max-w-md text-base text-[#8FAA9B] md:text-lg">
+      <p className="mt-6 max-w-md text-base text-[#8D806E] md:text-lg">
         The page you are looking for does not exist, or has been moved.
       </p>
 

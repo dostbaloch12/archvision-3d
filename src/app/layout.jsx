@@ -1,4 +1,5 @@
 import { Cormorant_Garamond, Outfit } from 'next/font/google'
+import { siteConfig } from '@/lib/siteconfig'
 import './globals.css'
 
 const outfit = Outfit({
@@ -14,48 +15,91 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 })
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://archvision3d.com'
+const SITE_URL = siteConfig.url
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'ArchVision 3D — Architecture Atelier',
-    template: '%s — ArchVision 3D',
+    default: 'Utopian Design Studio — Architecture & Interior Design Lahore',
+    template: '%s — Utopian Design Studio',
   },
   description:
-    'Luxury architecture atelier crafting cinematic buildings. Explore interactive 3D models, residential and commercial work, and begin a private commission.',
+    'Utopian Design Studio is a Lahore-based architecture and interior design studio creating thoughtful residential, commercial, hospitality and turnkey projects.',
   keywords: [
-    'architecture studio',
-    '3D architecture',
-    'luxury residential architect',
-    'interactive building models',
+    'architecture studio Lahore',
+    'interior design Lahore',
+    'architect in Lahore',
+    'residential architect Pakistan',
+    'commercial architecture Pakistan',
+    'turnkey construction Lahore',
+    '3D architecture visualization Pakistan',
+    'Utopian Design Studio',
   ],
-  authors: [{ name: 'ArchVision 3D' }],
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
-    title: 'ArchVision 3D — Architecture Atelier',
-    description: 'Design you can walk through. Interactive 3D architecture.',
+    title: 'Utopian Design Studio — Architecture & Interior Design Lahore',
+    description:
+      'Thoughtful architecture, interiors, planning, development and turnkey execution across residential, commercial and hospitality projects.',
     url: SITE_URL,
-    siteName: 'ArchVision 3D',
+    siteName: siteConfig.name,
     type: 'website',
     locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Utopian Design Studio — Architecture & Interior Design Lahore',
+    description:
+      'Architecture and interior design studio in Lahore creating functional, refined and timeless spaces.',
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
+}
+
+export const viewport = {
+  themeColor: '#080808',
+  colorScheme: 'dark',
+  width: 'device-width',
+  initialScale: 1,
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'ArchVision 3D',
+  '@type': 'ArchitecturalService',
+  name: siteConfig.name,
   url: SITE_URL,
-  description: 'Luxury architecture atelier crafting cinematic buildings.',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    email: 'studio@archvision3d.com',
-    contactType: 'Customer Service',
+  description: siteConfig.description,
+  areaServed: ['Lahore', 'Pakistan'],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '7CC, DHA Phase 4',
+    addressLocality: 'Lahore',
+    addressCountry: 'PK',
   },
+  telephone: siteConfig.contact.phone,
+  email: siteConfig.contact.email,
+  serviceType: [
+    'Architecture',
+    'Planning',
+    'Interior Design',
+    'Renovation',
+    'Development',
+    'Turnkey Execution',
+  ],
+  sameAs: [siteConfig.social.instagram, siteConfig.social.linkedin],
 }
 
 export default function RootLayout({ children }) {
@@ -67,7 +111,9 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#041B13] font-sans text-[#EAF3EC] antialiased">{children}</body>
+      <body className="bg-[#080808] font-sans text-[#F4EFE6] antialiased">
+        {children}
+      </body>
     </html>
   )
 }

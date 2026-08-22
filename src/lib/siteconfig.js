@@ -1,33 +1,30 @@
 export const siteConfig = {
-  name: 'ArchVision 3D',
-  tagline: 'Architecture Atelier',
+  name: 'Utopian Design Studio',
+  shortName: 'Utopian',
+  tagline: 'Architecture & Design Studio',
+  location: 'Lahore, Pakistan',
   description:
-    'Luxury architecture atelier crafting cinematic buildings with interactive 3D models.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://archvision3d.com',
+    'Utopian Design Studio creates thoughtful architecture across residential, commercial, and hospitality projects—rooted in context, purpose, and detail.',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://archvision-3d-ten.vercel.app',
 
   contact: {
-    email: 'studio@archvision3d.com',
-    phone: '+1 310 555 0190',
-    phoneHref: 'tel:+13105550190',
-    hours: 'Monday — Friday, 09:00 — 18:00',
+    email: 'utopiandesignstuido7@gmail.com',
+    phone: '+92 301 3918872',
+    phoneHref: 'tel:+923013918872',
+    hours: 'Monday — Saturday, 10:00 — 18:00',
     hoursNote: 'Visits by appointment only',
   },
 
   offices: [
     {
-      city: 'Los Angeles',
-      line: '420 Santa Monica Boulevard, Suite 12',
-      region: 'California, USA',
-    },
-    {
-      city: 'Dubai',
-      line: 'Gate Avenue, DIFC',
-      region: 'United Arab Emirates',
+      city: 'Lahore',
+      line: '7CC, DHA Phase 4',
+      region: 'Lahore, Pakistan',
     },
   ],
 
   social: {
-    instagram: 'https://www.instagram.com/archvision3d',
-    linkedin: 'https://www.linkedin.com/company/archvision3d',
+    instagram: 'https://www.instagram.com',
+    linkedin: 'https://www.linkedin.com',
   },
 }

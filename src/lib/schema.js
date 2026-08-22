@@ -8,6 +8,10 @@ export const contactSchema = z.object({
   budget: z.string().trim().max(80).optional().or(z.literal('')),
   timeline: z.string().trim().max(80).optional().or(z.literal('')),
   location: z.string().trim().min(2, 'Location required').max(120),
-  area: z.string().trim().max(40).optional().or(z.literal('')),
+  area: z.string().trim().max(60).optional().or(z.literal('')),
   message: z.string().trim().min(10, 'Please write a short brief').max(2000),
+})
+
+export const journalSchema = z.object({
+  email: z.string().trim().email('Enter a valid email').max(120),
 })

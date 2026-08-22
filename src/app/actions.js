@@ -1,25 +1,86 @@
 'use server'
 
 import { headers } from 'next/headers'
-import { Resend } from 'resend'
-import { contactSchema } from '@/lib/schema'
+import { contactSchema, journalSchema } from '@/lib/schema'
 import { supabase } from '@/lib/supabaseClient'
 import { checkRateLimit } from '@/lib/rateLimit'
 
-export async function submitContact(formData) {
-  // Rate limiting by IP
+function getIp() {
   const headersList = headers()
-  const ip = headersList.get('x-forwarded-for') || 'unknown'
-  const { allowed } = checkRateLimit(ip)
+  return headersList.get('x-forwarded-for') || headersList.get('x-real-ip') || 'unknown'
+}
+
+function formatInquiryMessage(data) {
+  return `
+New Utopian Design Studio inquiry
+
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone || '—'}
+Project Type: ${data.type || '—'}
+Budget: ${data.budget || '—'}
+Timeline: ${data.timeline || '—'}
+Location: ${data.location || '—'}
+Approx. Area: ${data.area || '—'}
+
+Brief:
+${data.message}
+`
+}
+
+async function sendWeb3FormsEmail(data) {
+  if (!process.env.WEB3FORMS_ACCESS_KEY) {
+    return { success: true }
+  }
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        access_key: process.env.WEB3FORMS_ACCESS_KEY,
+        subject: `New Utopian Design Studio Inquiry — ${data.name}`,
+        from_name: 'Utopian Design Studio Website',
+        name: data.name,
+        email: data.email,
+        phone: data.phone || '',
+        project_type: data.type || '',
+        budget: data.budget || '',
+        timeline: data.timeline || '',
+        location: data.location || '',
+        area: data.area || '',
+        message: formatInquiryMessage(data),
+      }),
+    })
+
+    const result = await response.json()
+
+    if (!response.ok || !result.success) {
+      console.error('Web3Forms error:', result)
+      return { success: false }
+    }
+
+    return { success: true }
+  } catch (error) {
+    console.error('Web3Forms request failed:', error)
+    return { success: false }
+  }
+}
+
+export async function submitContact(formData) {
+  const ip = getIp()
+  const { allowed } = checkRateLimit(`contact-${ip}`)
 
   if (!allowed) {
     return { success: false, error: 'Too many requests. Please try again in a minute.' }
   }
 
-  // Honeypot check (bot protection) — add a hidden field named "website" in your form
   const honeypot = formData.get('website')
   if (honeypot) {
-    return { success: true } // silently drop bot submissions
+    return { success: true }
   }
 
   const raw = {
@@ -35,6 +96,7 @@ export async function submitContact(formData) {
   }
 
   const parsed = contactSchema.safeParse(raw)
+
   if (!parsed.success) {
     return {
       success: false,
@@ -57,35 +119,52 @@ export async function submitContact(formData) {
   })
 
   if (dbError) {
-    console.error('Supabase error:', dbError)
-    return { success: false, error: 'Could not save your message. Try again.' }
+    console.error('Supabase contact error:', dbError.message)
+    return { success: false, error: 'Could not save your message. Please try again.' }
   }
 
-  try {
-    if (process.env.RESEND_API_KEY && process.env.CONTACT_TO_EMAIL) {
-      const resend = new Resend(process.env.RESEND_API_KEY)
-      await resend.emails.send({
-        from: 'ArchVision <onboarding@resend.dev>',
-        to: process.env.CONTACT_TO_EMAIL,
-        reply_to: data.email,
-        subject: `New inquiry — ${data.name}`,
-        html: `
-          <h2>New ArchVision inquiry</h2>
-          <p><strong>Name:</strong> ${data.name}</p>
-          <p><strong>Email:</strong> ${data.email}</p>
-          <p><strong>Phone:</strong> ${data.phone || '—'}</p>
-          <p><strong>Type:</strong> ${data.type || '—'}</p>
-          <p><strong>Budget:</strong> ${data.budget || '—'}</p>
-          <p><strong>Timeline:</strong> ${data.timeline || '—'}</p>
-          <p><strong>Location:</strong> ${data.location || '—'}</p>
-          <p><strong>Area:</strong> ${data.area || '—'}</p>
-          <p><strong>Message:</strong></p>
-          <p>${data.message}</p>
-        `,
-      })
+  const emailResult = await sendWeb3FormsEmail(data)
+
+  if (!emailResult.success) {
+    return {
+      success: true,
+      warning: 'Message saved, but email notification could not be sent.',
     }
-  } catch (err) {
-    console.error('Email error:', err)
+  }
+
+  return { success: true }
+}
+
+export async function subscribeJournal(formData) {
+  const ip = getIp()
+  const { allowed } = checkRateLimit(`journal-${ip}`)
+
+  if (!allowed) {
+    return { success: false, error: 'Too many requests. Please wait a minute.' }
+  }
+
+  const parsed = journalSchema.safeParse({
+    email: formData.get('email') || '',
+  })
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      error: parsed.error.errors[0]?.message || 'Invalid email',
+    }
+  }
+
+  const { error: dbError } = await supabase
+    .from('journal_subscribers')
+    .insert({ email: parsed.data.email })
+
+  if (dbError) {
+    if (dbError.code === '23505') {
+      return { success: true }
+    }
+
+    console.error('Supabase journal error:', dbError.message)
+    return { success: false, error: 'Could not subscribe. Please try again.' }
   }
 
   return { success: true }

@@ -15,7 +15,7 @@ const SERVICES = [
     image:
       'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1400&q=80',
     alt: 'Contemporary residence with warm interior light at dusk',
-    bg: '#4E3A85',
+    bg: '#111111',
   },
   {
     number: '02',
@@ -26,7 +26,7 @@ const SERVICES = [
     image:
       'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1400&q=80',
     alt: 'Minimal white commercial facade with strong shadow lines',
-    bg: '#5E489B',
+    bg: '#141414',
   },
   {
     number: '03',
@@ -37,7 +37,7 @@ const SERVICES = [
     image:
       'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80',
     alt: 'Warm minimal interior with oak joinery and soft daylight',
-    bg: '#6B52A6',
+    bg: '#171717',
   },
   {
     number: '04',
@@ -48,7 +48,7 @@ const SERVICES = [
     image:
       'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=80',
     alt: 'Architectural model of a modern house under directional light',
-    bg: '#7C5FB0',
+    bg: '#111111',
   },
 ]
 
@@ -70,7 +70,7 @@ function ServiceCard({ service, index, total, progress }) {
         <div className="flex flex-1 flex-col justify-between p-8 md:p-14">
           <div>
             <div className="flex items-baseline gap-4">
-              <span className="text-xs uppercase tracking-[0.2em] text-[#EAAFCB]">
+              <span className="text-xs uppercase tracking-[0.2em] text-[#E8DDCC]">
                 {service.number}
               </span>
               <span className="h-px flex-1 bg-white/20" aria-hidden="true" />
@@ -91,7 +91,7 @@ function ServiceCard({ service, index, total, progress }) {
                   key={point}
                   className="flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-white/60"
                 >
-                  <span className="h-1 w-1 bg-[#EAAFCB]" aria-hidden="true" />
+                  <span className="h-1 w-1 bg-[#E8DDCC]" aria-hidden="true" />
                   {point}
                 </li>
               ))}
@@ -126,10 +126,10 @@ export default function StackedServices() {
     <section
       id="services"
       ref={containerRef}
-      className="relative bg-gradient-to-b from-[#5E489B] to-[#7C5FB0]"
+      className="relative bg-gradient-to-b from-[#141414] to-[#111111]"
     >
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-24 md:px-12 md:pt-32">
-        <p className="text-xs uppercase tracking-[0.2em] text-[#EAAFCB]">Capabilities</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-[#E8DDCC]">Capabilities</p>
         <h2 className="mt-4 max-w-3xl font-serif text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
           A precise field of work.
         </h2>

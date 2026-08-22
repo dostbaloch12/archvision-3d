@@ -5,7 +5,7 @@ export default function manifest() {
     description: 'Luxury architecture atelier with interactive 3D building models.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#041B13',
-    theme_color: '#654EA3',
+    background_color: '#080808',
+    theme_color: '#111111',
   }
 }

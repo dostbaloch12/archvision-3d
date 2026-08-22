@@ -263,15 +263,15 @@ export default function ProjectShowcase() {
   return (
     <section
       id="projects"
-      className="scroll-mt-24 bg-gradient-to-b from-[#8A69B8] to-[#9370BC] py-24 md:py-32"
+      className="scroll-mt-24 bg-gradient-to-b from-[#171717] to-[#111111] py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#F0C4D8]">Selected Work</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#C9BCA8]">Selected Work</p>
             <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
               Buildings that hold
-              <span className="text-[#F6DCE8]"> their silence.</span>
+              <span className="text-[#F4EFE6]"> their silence.</span>
             </h2>
           </div>
           <p className="max-w-sm text-base text-white/75 md:text-lg">
@@ -291,7 +291,7 @@ export default function ProjectShowcase() {
                 aria-pressed={isActive}
                 className={`border px-4 py-2 text-xs uppercase tracking-[0.2em] transition-colors duration-500 ease-out ${
                   isActive
-                    ? 'border-[#F0C4D8] bg-[#F0C4D8] text-[#1E1230]'
+                    ? 'border-[#C9BCA8] bg-[#C9BCA8] text-[#080808]'
                     : 'border-white/25 text-white/70 hover:border-white/60 hover:text-white'
                 }`}
               >
@@ -314,7 +314,7 @@ export default function ProjectShowcase() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.55, delay: index * 0.04, ease: EASE }}
-                className={`${project.span} group relative overflow-hidden border border-white/20 bg-white/5 transition-colors duration-500 ease-out hover:border-[#F0C4D8]`}
+                className={`${project.span} group relative overflow-hidden border border-white/20 bg-white/5 transition-colors duration-500 ease-out hover:border-[#C9BCA8]`}
               >
                 <button
                   type="button"
@@ -330,14 +330,14 @@ export default function ProjectShowcase() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 66vw"
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A47] via-[#2E1A47]/30 to-transparent opacity-85 transition-opacity duration-500 group-hover:opacity-95" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/30 to-transparent opacity-85 transition-opacity duration-500 group-hover:opacity-95" />
 
                     <span className="absolute right-6 top-6 inline-flex h-10 w-10 items-center justify-center border border-white/30 text-white opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 group-focus-visible:opacity-100">
                       <ExpandIcon />
                     </span>
 
                     <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                      <p className="text-xs uppercase tracking-[0.2em] text-[#F0C4D8]">
+                      <p className="text-xs uppercase tracking-[0.2em] text-[#C9BCA8]">
                         {project.category} — {project.year}
                       </p>
                       <h3 className="mt-2 font-serif text-2xl font-light tracking-tight text-white md:text-3xl">
@@ -371,20 +371,20 @@ export default function ProjectShowcase() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="fixed inset-0 z-[70] flex flex-col bg-[#1E1230]"
+            className="fixed inset-0 z-[70] flex flex-col bg-[#080808]"
             role="dialog"
             aria-modal="true"
             aria-label={`${active.title} project detail`}
           >
             <div className="flex items-center justify-between border-b border-white/15 px-6 py-5 md:px-12">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#F0C4D8]">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#C9BCA8]">
                 {String(openIndex + 1).padStart(2, '0')} / {String(visible.length).padStart(2, '0')}
               </p>
               <button
                 type="button"
                 onClick={close}
                 aria-label="Close project view"
-                className="inline-flex h-10 w-10 items-center justify-center border border-white/25 text-white transition-colors duration-500 ease-out hover:border-[#F0C4D8] hover:text-[#F0C4D8]"
+                className="inline-flex h-10 w-10 items-center justify-center border border-white/25 text-white transition-colors duration-500 ease-out hover:border-[#C9BCA8] hover:text-[#C9BCA8]"
               >
                 <CloseIcon />
               </button>
@@ -413,8 +413,8 @@ export default function ProjectShowcase() {
                 </AnimatePresence>
               </div>
 
-              <aside className="w-full shrink-0 border-t border-white/15 bg-[#1E1230] p-6 md:p-10 lg:w-[420px] lg:border-l lg:border-t-0">
-                <p className="text-xs uppercase tracking-[0.2em] text-[#F0C4D8]">
+              <aside className="w-full shrink-0 border-t border-white/15 bg-[#080808] p-6 md:p-10 lg:w-[420px] lg:border-l lg:border-t-0">
+                <p className="text-xs uppercase tracking-[0.2em] text-[#C9BCA8]">
                   {active.category} — {active.status}
                 </p>
                 <h3 className="mt-4 font-serif text-3xl font-light tracking-tight text-white md:text-4xl">
@@ -446,7 +446,7 @@ export default function ProjectShowcase() {
                     type="button"
                     onClick={prev}
                     aria-label="Previous project"
-                    className="inline-flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors duration-500 ease-out hover:border-[#F0C4D8] hover:text-[#F0C4D8]"
+                    className="inline-flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors duration-500 ease-out hover:border-[#C9BCA8] hover:text-[#C9BCA8]"
                   >
                     <LeftIcon />
                   </button>
@@ -454,7 +454,7 @@ export default function ProjectShowcase() {
                     type="button"
                     onClick={next}
                     aria-label="Next project"
-                    className="inline-flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors duration-500 ease-out hover:border-[#F0C4D8] hover:text-[#F0C4D8]"
+                    className="inline-flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors duration-500 ease-out hover:border-[#C9BCA8] hover:text-[#C9BCA8]"
                   >
                     <RightIcon />
                   </button>

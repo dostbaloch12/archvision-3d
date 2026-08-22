@@ -56,26 +56,26 @@ export default function ArchitectureCanvas({
       camera={{ position: cameraPosition, fov: 32, near: 0.1, far: 60 }}
       className="h-full w-full touch-none"
       onCreated={({ gl }) => {
-        gl.setClearColor('#041B13', 1)
+        gl.setClearColor('#080808', 1)
       }}
     >
-      <color attach="background" args={['#041B13']} />
-      <fog attach="fog" args={['#041B13', 16, 34]} />
+      <color attach="background" args={['#080808']} />
+      <fog attach="fog" args={['#080808', 16, 34]} />
 
-      <ambientLight intensity={1.25} color="#EAF3EC" />
-      <hemisphereLight intensity={1.1} color="#E4F0DC" groundColor="#07553B" />
+      <ambientLight intensity={1.25} color="#F4EFE6" />
+      <hemisphereLight intensity={1.1} color="#E4F0DC" groundColor="#111111" />
 
       <directionalLight position={[8, 12, 6]} intensity={2.6} color="#FBFFF0" />
       <directionalLight position={[-8, 6, -6]} intensity={1.2} color="#CFE6D8" />
       <directionalLight position={[0, 4, 10]} intensity={0.85} color="#FFFFFF" />
-      <directionalLight position={[-3, 7, -9]} intensity={1.2} color="#CED46A" />
+      <directionalLight position={[-3, 7, -9]} intensity={1.2} color="#F4EFE6" />
 
       <spotLight
         position={[3, 9, 4]}
         angle={0.55}
         penumbra={0.9}
         intensity={1.6}
-        color="#DDE08F"
+        color="#FFF8EC"
         distance={24}
       />
 
@@ -91,10 +91,10 @@ export default function ArchitectureCanvas({
         args={[18, 18]}
         cellSize={0.6}
         cellThickness={0.35}
-        cellColor="#0A3D2B"
+        cellColor="#262626"
         sectionSize={3}
         sectionThickness={0.8}
-        sectionColor="#CED46A"
+        sectionColor="#F4EFE6"
         fadeDistance={20}
         fadeStrength={1.2}
         infiniteGrid

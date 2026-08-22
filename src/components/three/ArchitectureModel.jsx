@@ -2,10 +2,10 @@
 
 const CONCRETE = '#F1F4EA'
 const CONCRETE_ALT = '#DFE5D2'
-const CHARCOAL = '#0A3D2B'
+const CHARCOAL = '#262626'
 const STONE = '#9FB3A4'
 const METAL = '#6E8A7B'
-const HEDGE = '#07553B'
+const HEDGE = '#111111'
 const WATER = '#108A61'
 
 const WINDOW_GLOWS = [
@@ -47,7 +47,7 @@ function Glow({ position, args }) {
       <boxGeometry args={args} />
       <meshStandardMaterial
         color="#F3F6D8"
-        emissive="#CED46A"
+        emissive="#F4EFE6"
         emissiveIntensity={0.7}
         roughness={0.3}
       />
@@ -66,8 +66,8 @@ export default function ArchitectureModel() {
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.04, 0]}>
         <ringGeometry args={[5.55, 5.68, 72]} />
         <meshStandardMaterial
-          color="#CED46A"
-          emissive="#CED46A"
+          color="#F4EFE6"
+          emissive="#F4EFE6"
           emissiveIntensity={0.5}
           toneMapped={false}
         />

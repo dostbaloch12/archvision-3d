@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { submitContact } from '@/app/actions'
 import AnimatedSubmit from './ui/AnimatedSubmit'
@@ -9,43 +8,35 @@ import AnimatedButton from './ui/AnimatedButton'
 
 const TEAM = [
   {
-    name: 'Elena Voss',
+    name: 'Zubair Ahmed',
     role: 'Chief Executive Officer',
     label: 'CEO',
-    email: 'elena@archvision3d.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
-    alt: 'Portrait of Elena Voss, CEO of ArchVision 3D',
+    email: 'utopiandesignstuido7@gmail.com',
+    initials: 'ZA',
     bio: 'Leads client strategy, studio direction and high-value residential commissions.',
   },
   {
-    name: 'Marcus Hale',
+    name: 'Rasheed Ahmad',
     role: 'Design Director',
     label: 'Director',
-    email: 'marcus@archvision3d.com',
-    image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
-    alt: 'Portrait of Marcus Hale, Design Director of ArchVision 3D',
-    bio: 'Oversees concept design, architectural language and project quality control.',
+    email: 'rasheedahmad@gmail.com',
+    initials: 'RA',
+    bio: 'Leads concept design, architectural language and project quality control.',
   },
   {
-    name: 'Priya Nandan',
+    name: 'Zeeshan Haider',
     role: 'Senior 3D Visualizer',
     label: '3D Team',
-    email: 'priya@archvision3d.com',
-    image:
-      'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=80',
-    alt: 'Portrait of Priya Nandan, Senior 3D Visualizer',
+    email: 'utopiandesignstuido7@gmail.com',
+    initials: 'ZH',
     bio: 'Builds interactive models, daylight studies and cinematic presentation visuals.',
   },
   {
-    name: 'Daniel Reyes',
+    name: 'Ahmad Latif',
     role: 'Project Architect',
     label: 'Projects',
-    email: 'daniel@archvision3d.com',
-    image:
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80',
-    alt: 'Portrait of Daniel Reyes, Project Architect',
+    email: 'utopiandesignstuido7@gmail.com',
+    initials: 'AL',
     bio: 'Coordinates technical drawings, consultant information and delivery documentation.',
   },
 ]
@@ -53,7 +44,12 @@ const TEAM = [
 const PROJECT_TYPES = [
   'Residential Architecture',
   'Commercial & Civic',
+  'Hospitality',
   'Interior Architecture',
+  'Planning',
+  'Renovation',
+  'Development',
+  'Turnkey Execution',
   '3D Vision & Massing',
 ]
 
@@ -76,18 +72,7 @@ const EASE = [0.22, 1, 0.36, 1]
 
 function MailIcon() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <rect width="20" height="16" x="2" y="4" rx="2" />
       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
     </svg>
@@ -96,18 +81,7 @@ function MailIcon() {
 
 function CheckIcon() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M20 6 9 17l-5-5" />
     </svg>
   )
@@ -150,24 +124,24 @@ export default function Contact() {
   }
 
   const inputClass =
-    'mt-3 h-12 w-full border border-[#1E1230]/20 bg-white/70 px-4 text-[#1E1230] transition-colors duration-500 ease-out placeholder:text-[#2E1A47]/40 focus:border-[#4E3A85] focus:bg-white focus:outline-none'
+    'mt-3 h-12 w-full border border-[#080808]/20 bg-white/70 px-4 text-[#080808] transition-colors duration-500 ease-out placeholder:text-[#111111]/40 focus:border-[#111111] focus:bg-white focus:outline-none'
 
   return (
     <section
       id="contact"
-      className="scroll-mt-24 bg-gradient-to-b from-[#D2A2C8] to-[#EAAFCB] py-24 md:py-32"
+      className="scroll-mt-24 bg-gradient-to-b from-[#F4EFE6] to-[#E8DDCC] py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]">Contact the Studio</p>
-            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#1E1230] md:text-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#262626]">Contact the Studio</p>
+            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#080808] md:text-5xl">
               Speak directly with the people
-              <span className="text-[#4E3A85]"> shaping the work.</span>
+              <span className="text-[#111111]"> shaping the work.</span>
             </h2>
           </div>
 
-          <p className="max-w-sm text-base text-[#2E1A47]/75 md:text-lg">
+          <p className="max-w-sm text-base text-[#111111]/75 md:text-lg">
             Choose the right contact or send a project brief. No account needed.
           </p>
         </div>
@@ -175,43 +149,38 @@ export default function Contact() {
         <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {TEAM.map((member, index) => (
             <motion.article
-              key={member.email}
+              key={`${member.name}-${member.email}`}
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.55, delay: index * 0.06, ease: EASE }}
-              className="group overflow-hidden border border-[#1E1230]/15 bg-white/35 transition-colors duration-500 ease-out hover:border-[#4E3A85]/50"
+              className="group overflow-hidden border border-[#080808]/15 bg-white/35 transition-colors duration-500 ease-out hover:border-[#111111]/50"
             >
-              <div className="relative aspect-[4/5] overflow-hidden">
-                <Image
-                  src={member.image}
-                  alt={member.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1E1230]/80 via-transparent to-transparent" />
-
+              <div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-gradient-to-br from-[#080808] via-[#111111] to-[#E8DDCC]">
                 <div className="absolute left-5 top-5 border border-white/30 bg-white/15 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-white">
                   {member.label}
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 p-5">
+                <div className="flex h-28 w-28 items-center justify-center border border-white/30 bg-white/10 font-serif text-4xl font-light tracking-tight text-white">
+                  {member.initials}
+                </div>
+
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#080808]/90 to-transparent p-5">
                   <h3 className="font-serif text-2xl font-light tracking-tight text-white">
                     {member.name}
                   </h3>
-                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#F6DCE8]">
+                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#F4EFE6]">
                     {member.role}
                   </p>
                 </div>
               </div>
 
               <div className="p-5">
-                <p className="text-sm text-[#2E1A47]/75">{member.bio}</p>
+                <p className="text-sm leading-relaxed text-[#111111]/75">{member.bio}</p>
 
                 <a
                   href={`mailto:${member.email}`}
-                  className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[#3D2B6B] transition-colors duration-500 hover:text-[#1E1230]"
+                  className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[#262626] transition-colors duration-500 hover:text-[#080808]"
                 >
                   <MailIcon />
                   Email
@@ -222,68 +191,56 @@ export default function Contact() {
         </div>
 
         <div className="mt-20 grid gap-14 md:grid-cols-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: EASE }}
-            className="md:col-span-5"
-          >
-            <p className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]">Project Brief</p>
-            <h3 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#1E1230] md:text-5xl">
+          <div className="md:col-span-5">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#262626]">Project Brief</p>
+            <h3 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#080808] md:text-5xl">
               Send your site, ambition and timeline.
             </h3>
-            <p className="mt-6 max-w-md text-base text-[#2E1A47]/75 md:text-lg">
+            <p className="mt-6 max-w-md text-base text-[#111111]/75 md:text-lg">
               The studio reviews every enquiry. If the project is a good fit, we reply within two
               working days with next steps.
             </p>
 
-            <div className="mt-10 space-y-5 border-t border-[#1E1230]/20 pt-8">
+            <div className="mt-10 space-y-5 border-t border-[#080808]/20 pt-8">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]">Studio Email</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#262626]">Studio Email</p>
                 <a
-                  href="mailto:studio@archvision3d.com"
-                  className="mt-2 block text-[#1E1230] transition-colors duration-500 hover:text-[#4E3A85]"
+                  href="mailto:utopiandesignstuido7@gmail.com"
+                  className="mt-2 block text-[#080808] transition-colors duration-500 hover:text-[#111111]"
                 >
-                  studio@archvision3d.com
+                  utopiandesignstuido7@gmail.com
                 </a>
               </div>
 
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]">Telephone</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#262626]">Telephone</p>
                 <a
-                  href="tel:+13105550190"
-                  className="mt-2 block text-[#1E1230] transition-colors duration-500 hover:text-[#4E3A85]"
+                  href="tel:+923013918872"
+                  className="mt-2 block text-[#080808] transition-colors duration-500 hover:text-[#111111]"
                 >
-                  +1 310 555 0190
+                  +92 301 3918872
                 </a>
               </div>
 
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]">Studios</p>
-                <p className="mt-2 text-[#1E1230]">Los Angeles · Dubai</p>
-                <p className="text-sm text-[#2E1A47]/70">Visits by appointment only</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#262626]">Studio</p>
+                <p className="mt-2 text-[#080808]">7CC, DHA Phase 4 · Lahore</p>
+                <p className="text-sm text-[#111111]/70">Visits by appointment only</p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-            className="border border-[#1E1230]/15 bg-white/40 p-6 md:col-span-7 md:p-10"
-          >
+          <div className="border border-[#080808]/15 bg-white/40 p-6 md:col-span-7 md:p-10">
             {status === 'success' ? (
               <div className="flex min-h-[480px] flex-col justify-center">
-                <span className="inline-flex h-12 w-12 items-center justify-center border border-[#4E3A85] text-[#4E3A85]">
+                <span className="inline-flex h-12 w-12 items-center justify-center border border-[#111111] text-[#111111]">
                   <CheckIcon />
                 </span>
-                <p className="mt-8 text-xs uppercase tracking-[0.2em] text-[#3D2B6B]">Received</p>
-                <h3 className="mt-4 font-serif text-3xl font-light tracking-tight text-[#1E1230]">
+                <p className="mt-8 text-xs uppercase tracking-[0.2em] text-[#262626]">Received</p>
+                <h3 className="mt-4 font-serif text-3xl font-light tracking-tight text-[#080808]">
                   Your brief is with the studio.
                 </h3>
-                <p className="mt-4 max-w-md text-base text-[#2E1A47]/75 md:text-lg">
+                <p className="mt-4 max-w-md text-base text-[#111111]/75 md:text-lg">
                   Thank you. We will write back within two working days.
                 </p>
                 <div className="mt-10">
@@ -296,97 +253,38 @@ export default function Contact() {
               <form onSubmit={onSubmit} noValidate className="space-y-6">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]"
-                    >
+                    <label htmlFor="name" className="text-xs uppercase tracking-[0.2em] text-[#262626]">
                       Name
                     </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      autoComplete="name"
-                      value={form.name}
-                      onChange={onChange}
-                      required
-                      className={inputClass}
-                      placeholder="Your name"
-                    />
+                    <input id="name" name="name" type="text" autoComplete="name" value={form.name} onChange={onChange} required className={inputClass} placeholder="Your name" />
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]"
-                    >
+                    <label htmlFor="email" className="text-xs uppercase tracking-[0.2em] text-[#262626]">
                       Email
                     </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      value={form.email}
-                      onChange={onChange}
-                      required
-                      className={inputClass}
-                      placeholder="you@company.com"
-                    />
+                    <input id="email" name="email" type="email" autoComplete="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@company.com" />
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="phone"
-                      className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]"
-                    >
+                    <label htmlFor="phone" className="text-xs uppercase tracking-[0.2em] text-[#262626]">
                       Phone
                     </label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      autoComplete="tel"
-                      value={form.phone}
-                      onChange={onChange}
-                      className={inputClass}
-                      placeholder="+1 000 000 0000"
-                    />
+                    <input id="phone" name="phone" type="tel" autoComplete="tel" value={form.phone} onChange={onChange} className={inputClass} placeholder="+92 300 0000000" />
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="location"
-                      className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]"
-                    >
+                    <label htmlFor="location" className="text-xs uppercase tracking-[0.2em] text-[#262626]">
                       Site location
                     </label>
-                    <input
-                      id="location"
-                      name="location"
-                      type="text"
-                      value={form.location}
-                      onChange={onChange}
-                      required
-                      className={inputClass}
-                      placeholder="City, country"
-                    />
+                    <input id="location" name="location" type="text" value={form.location} onChange={onChange} required className={inputClass} placeholder="City, area" />
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="type"
-                      className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]"
-                    >
+                    <label htmlFor="type" className="text-xs uppercase tracking-[0.2em] text-[#262626]">
                       Project type
                     </label>
-                    <select
-                      id="type"
-                      name="type"
-                      value={form.type}
-                      onChange={onChange}
-                      className={inputClass}
-                    >
+                    <select id="type" name="type" value={form.type} onChange={onChange} className={inputClass}>
                       {PROJECT_TYPES.map((type) => (
                         <option key={type} value={type}>
                           {type}
@@ -396,19 +294,10 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="budget"
-                      className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]"
-                    >
+                    <label htmlFor="budget" className="text-xs uppercase tracking-[0.2em] text-[#262626]">
                       Budget
                     </label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      value={form.budget}
-                      onChange={onChange}
-                      className={inputClass}
-                    >
+                    <select id="budget" name="budget" value={form.budget} onChange={onChange} className={inputClass}>
                       {BUDGETS.map((budget) => (
                         <option key={budget} value={budget}>
                           {budget}
@@ -418,19 +307,10 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="timeline"
-                      className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]"
-                    >
+                    <label htmlFor="timeline" className="text-xs uppercase tracking-[0.2em] text-[#262626]">
                       Timeline
                     </label>
-                    <select
-                      id="timeline"
-                      name="timeline"
-                      value={form.timeline}
-                      onChange={onChange}
-                      className={inputClass}
-                    >
+                    <select id="timeline" name="timeline" value={form.timeline} onChange={onChange} className={inputClass}>
                       {TIMELINES.map((timeline) => (
                         <option key={timeline} value={timeline}>
                           {timeline}
@@ -440,29 +320,15 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="area"
-                      className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]"
-                    >
+                    <label htmlFor="area" className="text-xs uppercase tracking-[0.2em] text-[#262626]">
                       Approx. area
                     </label>
-                    <input
-                      id="area"
-                      name="area"
-                      type="text"
-                      value={form.area}
-                      onChange={onChange}
-                      className={inputClass}
-                      placeholder="e.g. 850 m²"
-                    />
+                    <input id="area" name="area" type="text" value={form.area} onChange={onChange} className={inputClass} placeholder="e.g. 10 marla / 1 kanal" />
                   </div>
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]"
-                  >
+                  <label htmlFor="message" className="text-xs uppercase tracking-[0.2em] text-[#262626]">
                     Brief
                   </label>
                   <textarea
@@ -472,36 +338,25 @@ export default function Contact() {
                     value={form.message}
                     onChange={onChange}
                     required
-                    className="mt-3 w-full border border-[#1E1230]/20 bg-white/70 px-4 py-3 text-[#1E1230] transition-colors duration-500 ease-out placeholder:text-[#2E1A47]/40 focus:border-[#4E3A85] focus:bg-white focus:outline-none"
-                    placeholder="Programme, ambitions, constraints — whatever is already known."
+                    className="mt-3 w-full border border-[#080808]/20 bg-white/70 px-4 py-3 text-[#080808] transition-colors duration-500 ease-out placeholder:text-[#111111]/40 focus:border-[#111111] focus:bg-white focus:outline-none"
+                    placeholder="Project type, site, scope, design goals and timeline."
                   />
                 </div>
 
-                <input
-                  type="text"
-                  name="website"
-                  className="hidden"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                />
+                <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
                 {error ? (
-                  <p className="text-sm text-[#2E1A47]" role="alert" aria-live="polite">
+                  <p className="text-sm text-[#111111]" role="alert" aria-live="polite">
                     {error}
                   </p>
                 ) : null}
 
-                <AnimatedSubmit
-                  loading={status === 'submitting'}
-                  loadingText="Sending brief"
-                  variant="plum"
-                >
+                <AnimatedSubmit loading={status === 'submitting'} loadingText="Sending brief" variant="plum">
                   Send the brief
                 </AnimatedSubmit>
               </form>
             )}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

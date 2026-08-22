@@ -1,26 +1,26 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
+import { subscribeJournal } from '@/app/actions'
 import AnimatedButton from './ui/AnimatedButton'
 
 const INDEX = [
-  { href: '#about', label: 'Studio' },
-  { href: '#services', label: 'Services' },
-  { href: '#process', label: 'Process' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#studio', label: 'Studio' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/#process', label: 'Process' },
+  { href: '/#about', label: 'About' },
+  { href: '/#contact', label: 'Contact' },
 ]
 
 const DISCIPLINES = [
-  'Residential Architecture',
-  'Commercial & Civic',
-  'Interior Architecture',
-  '3D Vision & Massing',
-]
-
-const OFFICES = [
-  { city: 'Los Angeles', region: 'California, USA' },
-  { city: 'Dubai', region: 'DIFC, UAE' },
+  'Architecture',
+  'Planning',
+  'Interior Design',
+  'Renovation',
+  'Development',
+  'Turnkey Execution',
 ]
 
 const LEGAL = [
@@ -28,82 +28,9 @@ const LEGAL = [
   { href: '/terms', label: 'Terms' },
 ]
 
-function InstagramIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="15"
-      height="15"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-    </svg>
-  )
-}
-
-function LinkedinIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="15"
-      height="15"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect width="4" height="12" x="2" y="9" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  )
-}
-
-function MailSmallIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="15"
-      height="15"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <rect width="20" height="16" x="2" y="4" rx="2" />
-      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-    </svg>
-  )
-}
-
 function ArrowUpRightSmall() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="15"
-      height="15"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M7 7h10v10" />
       <path d="M7 17 17 7" />
     </svg>
@@ -112,39 +39,24 @@ function ArrowUpRightSmall() {
 
 function ArrowUpSmall() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="13"
-      height="13"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="m5 12 7-7 7 7" />
       <path d="M12 19V5" />
     </svg>
   )
 }
 
+function SpinnerSmall() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" className="animate-spin">
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+  )
+}
+
 function CheckSmall() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="text-[#4E3A85]"
-    >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-[#111111]">
       <path d="M20 6 9 17l-5-5" />
     </svg>
   )
@@ -156,8 +68,9 @@ export default function Footer() {
   const [error, setError] = useState('')
   const year = new Date().getFullYear()
 
-  const onSubscribe = (event) => {
+  const onSubscribe = async (event) => {
     event.preventDefault()
+    setError('')
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setError('Please enter a valid email address.')
@@ -165,133 +78,109 @@ export default function Footer() {
       return
     }
 
-    setError('')
-    setState('success')
-    setEmail('')
+    setState('loading')
+
+    const fd = new FormData()
+    fd.append('email', email)
+
+    try {
+      const result = await subscribeJournal(fd)
+
+      if (result && result.success) {
+        setState('success')
+        setEmail('')
+      } else {
+        setState('error')
+        setError((result && result.error) || 'Could not subscribe. Try again.')
+      }
+    } catch (err) {
+      setState('error')
+      setError('Network error. Please try again.')
+    }
   }
 
   const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
-    <footer className="bg-gradient-to-b from-[#EAAFCB] to-[#F6DCE8]">
+    <footer className="bg-gradient-to-b from-[#E8DDCC] to-[#F4EFE6]">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="flex flex-col gap-8 border-b border-[#1E1230]/20 py-16 md:flex-row md:items-end md:justify-between md:py-20">
-          <h2 className="max-w-2xl font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#1E1230] md:text-5xl">
+        <div className="flex flex-col gap-8 border-b border-[#080808]/20 py-16 md:flex-row md:items-end md:justify-between md:py-20">
+          <h2 className="max-w-2xl font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#080808] md:text-5xl">
             Have a site,
-            <span className="text-[#4E3A85]"> a budget, or only an instinct?</span>
+            <span className="text-[#111111]"> a budget, or only an instinct?</span>
           </h2>
-          <AnimatedButton href="#contact" variant="plum" className="shrink-0">
+          <AnimatedButton href="/#contact" variant="plum" className="shrink-0">
             Start a project
           </AnimatedButton>
         </div>
 
         <div className="grid gap-12 py-16 md:grid-cols-12 md:py-20">
           <div className="md:col-span-4">
-            <a
-              href="#top"
-              className="inline-flex items-baseline gap-2"
-              aria-label="ArchVision 3D home"
-            >
-              <span className="font-serif text-2xl font-light tracking-[0.28em] text-[#1E1230]">
-                ARCHVISION
+            <Link href="/" className="inline-flex flex-col leading-none" aria-label="Utopian Design Studio home">
+              <span className="font-serif text-2xl font-light tracking-[0.22em] text-[#080808]">
+                UTOPIAN
               </span>
-              <span className="text-[10px] uppercase tracking-[0.28em] text-[#4E3A85]">3D</span>
-            </a>
-            <p className="mt-6 max-w-sm text-base text-[#2E1A47]/75">
-              An independent architecture atelier. We design buildings as living compositions — then
-              place them in your hands as interactive models.
+              <span className="mt-2 text-[10px] uppercase tracking-[0.24em] text-[#111111]">
+                Design Studio
+              </span>
+            </Link>
+            <p className="mt-6 max-w-sm text-base leading-relaxed text-[#111111]/75">
+              We design buildings and interiors as meaningful, functional spaces — from first
+              concept to final execution.
             </p>
 
-            <ul className="mt-8 flex items-center gap-3">
-              <li>
-                <a
-                  href="https://www.instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="inline-flex h-10 w-10 items-center justify-center border border-[#1E1230]/25 text-[#2E1A47] transition-colors duration-500 ease-out hover:border-[#4E3A85] hover:bg-[#4E3A85] hover:text-white"
-                >
-                  <InstagramIcon />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="inline-flex h-10 w-10 items-center justify-center border border-[#1E1230]/25 text-[#2E1A47] transition-colors duration-500 ease-out hover:border-[#4E3A85] hover:bg-[#4E3A85] hover:text-white"
-                >
-                  <LinkedinIcon />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:studio@archvision3d.com"
-                  aria-label="Email the studio"
-                  className="inline-flex h-10 w-10 items-center justify-center border border-[#1E1230]/25 text-[#2E1A47] transition-colors duration-500 ease-out hover:border-[#4E3A85] hover:bg-[#4E3A85] hover:text-white"
-                >
-                  <MailSmallIcon />
-                </a>
-              </li>
-            </ul>
+            <div className="mt-8 space-y-2 text-sm text-[#111111]/75">
+              <a href="mailto:utopiandesignstuido7@gmail.com" className="block hover:text-[#080808]">
+                utopiandesignstuido7@gmail.com
+              </a>
+              <a href="tel:+923013918872" className="block hover:text-[#080808]">
+                +92 301 3918872
+              </a>
+              <p>7CC, DHA Phase 4 · Lahore</p>
+            </div>
           </div>
 
           <div className="md:col-span-2">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]">Index</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#262626]">Index</p>
             <ul className="mt-5 space-y-3">
               {INDEX.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="text-[#2E1A47]/75 transition-colors duration-500 ease-out hover:text-[#1E1230]"
-                  >
+                  <Link href={item.href} className="text-[#111111]/75 transition-colors duration-500 ease-out hover:text-[#080808]">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="md:col-span-3">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]">Disciplines</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#262626]">Services</p>
             <ul className="mt-5 space-y-3">
               {DISCIPLINES.map((discipline) => (
                 <li key={discipline}>
-                  <a
-                    href="#services"
-                    className="text-[#2E1A47]/75 transition-colors duration-500 ease-out hover:text-[#1E1230]"
-                  >
+                  <Link href="/#services" className="text-[#111111]/75 transition-colors duration-500 ease-out hover:text-[#080808]">
                     {discipline}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="md:col-span-3">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]">Studios</p>
-            <ul className="mt-5 space-y-4">
-              {OFFICES.map((office) => (
-                <li key={office.city}>
-                  <p className="text-[#1E1230]">{office.city}</p>
-                  <p className="text-sm text-[#2E1A47]/70">{office.region}</p>
-                </li>
-              ))}
-            </ul>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#262626]">Journal</p>
+            <p className="mt-5 text-sm text-[#111111]/70">
+              Occasional notes on design, materials and project thinking.
+            </p>
 
-            <form onSubmit={onSubscribe} noValidate className="mt-8">
-              <label htmlFor="journal" className="text-xs uppercase tracking-[0.2em] text-[#3D2B6B]">
-                Journal
-              </label>
+            <form onSubmit={onSubscribe} noValidate className="mt-6">
               {state === 'success' ? (
-                <p className="mt-3 inline-flex items-center gap-2 text-sm text-[#1E1230]">
+                <p className="mt-3 inline-flex items-center gap-2 text-sm text-[#080808]">
                   <CheckSmall />
                   Subscribed — thank you.
                 </p>
               ) : (
                 <>
-                  <div className="mt-3 flex border border-[#1E1230]/25 bg-white/50 focus-within:border-[#4E3A85]">
+                  <div className="flex border border-[#080808]/25 bg-white/50 focus-within:border-[#111111]">
                     <input
                       id="journal"
                       name="journal"
@@ -304,23 +193,25 @@ export default function Footer() {
                         setState('idle')
                       }}
                       aria-invalid={state === 'error'}
-                      className="h-11 w-full bg-transparent px-3 text-sm text-[#1E1230] placeholder:text-[#2E1A47]/40 focus:outline-none"
-                      placeholder="you@studio.com"
+                      className="h-11 w-full bg-transparent px-3 text-sm text-[#080808] placeholder:text-[#111111]/40 focus:outline-none"
+                      placeholder="you@email.com"
                     />
                     <button
                       type="submit"
+                      disabled={state === 'loading'}
                       aria-label="Subscribe to the journal"
-                      className="inline-flex h-11 w-11 shrink-0 items-center justify-center border-l border-[#1E1230]/25 text-[#3D2B6B] transition-colors duration-500 ease-out hover:bg-[#4E3A85] hover:text-white"
+                      className="inline-flex h-11 w-11 shrink-0 items-center justify-center border-l border-[#080808]/25 text-[#262626] transition-colors duration-500 ease-out hover:bg-[#111111] hover:text-white disabled:cursor-wait"
                     >
-                      <ArrowUpRightSmall />
+                      {state === 'loading' ? <SpinnerSmall /> : <ArrowUpRightSmall />}
                     </button>
                   </div>
+
                   {error ? (
-                    <p className="mt-2 text-xs text-[#2E1A47]" role="alert">
+                    <p className="mt-2 text-xs text-[#111111]" role="alert">
                       {error}
                     </p>
                   ) : (
-                    <p className="mt-2 text-xs text-[#2E1A47]/55">
+                    <p className="mt-2 text-xs text-[#111111]/55">
                       Four letters a year. Nothing else.
                     </p>
                   )}
@@ -331,21 +222,18 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-[#1E1230]/20">
+      <div className="border-t border-[#080808]/20">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-6 md:flex-row md:items-center md:justify-between md:px-12">
-          <p className="text-xs uppercase tracking-[0.16em] text-[#2E1A47]/70">
-            © {year} ArchVision 3D. All rights reserved.
+          <p className="text-xs uppercase tracking-[0.16em] text-[#111111]/70">
+            © {year} Utopian Design Studio. All rights reserved.
           </p>
 
           <ul className="flex flex-wrap items-center gap-6">
             {LEGAL.map((item) => (
               <li key={item.label}>
-                <a
-                  href={item.href}
-                  className="text-xs uppercase tracking-[0.16em] text-[#2E1A47]/70 transition-colors duration-500 ease-out hover:text-[#1E1230]"
-                >
+                <Link href={item.href} className="text-xs uppercase tracking-[0.16em] text-[#111111]/70 transition-colors duration-500 ease-out hover:text-[#080808]">
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -354,7 +242,7 @@ export default function Footer() {
             type="button"
             onClick={toTop}
             aria-label="Back to top"
-            className="inline-flex items-center gap-2 self-start text-xs uppercase tracking-[0.16em] text-[#2E1A47]/70 transition-colors duration-500 ease-out hover:text-[#1E1230] md:self-auto"
+            className="inline-flex items-center gap-2 self-start text-xs uppercase tracking-[0.16em] text-[#111111]/70 transition-colors duration-500 ease-out hover:text-[#080808] md:self-auto"
           >
             Back to top
             <ArrowUpSmall />
