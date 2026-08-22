@@ -2,7 +2,6 @@ import Preloader from '@/components/Preloader'
 import ScrollProgress from '@/components/ScrollProgress'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import Contact from '@/components/Contact'
 import MarqueeStrip from '@/components/MarqueeStrip'
 import About from '@/components/About'
 import StackedServices from '@/components/StackedServices'
@@ -11,6 +10,7 @@ import ProjectShowcase from '@/components/ProjectShowcase'
 import SEOServiceLinks from '@/components/SEOServiceLinks'
 import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
+import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
 export default function HomePage() {
@@ -22,10 +22,9 @@ export default function HomePage() {
 
       <main id="main">
         <Hero />
-        <Contact />
 
         <div
-          className="h-16 w-full bg-gradient-to-b from-[#EAAFCB] to-[#654EA3]"
+          className="h-16 w-full bg-gradient-to-b from-[#041B13] to-[#654EA3]"
           aria-hidden="true"
         />
 
@@ -37,6 +36,7 @@ export default function HomePage() {
         <SEOServiceLinks />
         <Testimonials />
         <FAQ />
+        <Contact />
       </main>
 
       <Footer />
