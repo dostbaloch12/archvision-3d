@@ -42,7 +42,7 @@ export default function Process() {
   return (
     <section
       id="process"
-      className="scroll-mt-24 bg-gradient-to-b from-[#111111] to-[#171717] py-24 md:py-32"
+      className="scroll-mt-24 bg-gradient-to-b from-[#44433f] to-[#44433f] py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
@@ -52,7 +52,7 @@ export default function Process() {
 
               <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
                 How a project
-                <span className="text-[#C9BCA8]"> takes shape.</span>
+                <span className="text-[#77736b]"> takes shape.</span>
               </h2>
 
               <p className="mt-6 max-w-sm text-base leading-relaxed text-white/70 md:text-lg">

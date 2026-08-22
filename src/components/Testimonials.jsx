@@ -39,7 +39,7 @@ function QuoteMark() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
-      className="mx-auto text-[#F4EFE6]"
+      className="mx-auto text-[#44433f]"
     >
       <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1" />
       <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1" />
@@ -94,11 +94,11 @@ export default function Testimonials() {
 
   return (
     <section
-      className="bg-gradient-to-b from-[#111111] to-[#F4EFE6] py-24 md:py-32"
+      className="bg-gradient-to-b from-[#44433f] to-[#44433f] py-24 md:py-32"
       aria-label="Client testimonials"
     >
       <div className="mx-auto max-w-4xl px-6 text-center md:px-12">
-        <p className="text-xs uppercase tracking-[0.2em] text-[#111111]">Client Words</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-[#44433f]">Client Words</p>
         <h2 className="mt-4 font-serif text-4xl font-light tracking-tight text-white md:text-5xl">
           What clients remember.
         </h2>
@@ -117,7 +117,7 @@ export default function Testimonials() {
               <p className="mt-8 font-serif text-2xl font-light leading-relaxed tracking-tight text-white md:text-3xl">
                 “{active.quote}”
               </p>
-              <p className="mt-8 text-xs uppercase tracking-[0.2em] text-[#111111]">{active.name}</p>
+              <p className="mt-8 text-xs uppercase tracking-[0.2em] text-[#44433f]">{active.name}</p>
               <p className="mt-1 text-sm text-white/80">{active.role}</p>
             </motion.div>
           </AnimatePresence>
@@ -128,7 +128,7 @@ export default function Testimonials() {
             type="button"
             onClick={prev}
             aria-label="Previous testimonial"
-            className="inline-flex h-11 w-11 items-center justify-center border border-white/40 text-white transition-colors duration-500 ease-out hover:border-[#111111] hover:bg-[#111111] hover:text-[#F4EFE6]"
+            className="inline-flex h-11 w-11 items-center justify-center border border-white/40 text-white transition-colors duration-500 ease-out hover:border-[#44433f] hover:bg-[#44433f] hover:text-[#44433f]"
           >
             <ChevronLeftIcon />
           </button>
@@ -141,7 +141,7 @@ export default function Testimonials() {
                 onClick={() => setIndex(i)}
                 aria-label={`Go to testimonial ${i + 1}`}
                 className={`h-1.5 w-1.5 rounded-full transition-colors duration-500 ${
-                  i === index ? 'bg-[#111111]' : 'bg-white/45'
+                  i === index ? 'bg-[#44433f]' : 'bg-white/45'
                 }`}
               />
             ))}
@@ -151,7 +151,7 @@ export default function Testimonials() {
             type="button"
             onClick={next}
             aria-label="Next testimonial"
-            className="inline-flex h-11 w-11 items-center justify-center border border-white/40 text-white transition-colors duration-500 ease-out hover:border-[#111111] hover:bg-[#111111] hover:text-[#F4EFE6]"
+            className="inline-flex h-11 w-11 items-center justify-center border border-white/40 text-white transition-colors duration-500 ease-out hover:border-[#44433f] hover:bg-[#44433f] hover:text-[#44433f]"
           >
             <ChevronRightIcon />
           </button>

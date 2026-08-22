@@ -48,7 +48,7 @@ export default function StackedServices() {
   return (
     <section
       id="services"
-      className="relative scroll-mt-24 bg-gradient-to-b from-[#141414] to-[#111111] py-24 md:py-32"
+      className="relative scroll-mt-24 bg-gradient-to-b from-[#141414] to-[#44433f] py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">

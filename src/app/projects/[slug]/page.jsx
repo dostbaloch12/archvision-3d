@@ -101,7 +101,7 @@ export default function ProjectPage({ params }) {
   ]
 
   return (
-    <main className="bg-[#080808] text-[#F4EFE6]">
+    <main className="bg-[#44433f] text-[#44433f]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -116,31 +116,31 @@ export default function ProjectPage({ params }) {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#080808] via-[#080808]/75 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#080808] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#44433f] via-[#44433f]/75 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#44433f] to-transparent" />
 
         <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-7xl flex-col justify-end px-6 pb-20 pt-28 md:px-12">
           <Link
             href="/#projects"
-            className="mb-10 inline-flex w-fit items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#8D806E] transition-colors duration-500 hover:text-[#F4EFE6]"
+            className="mb-10 inline-flex w-fit items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#77736b] transition-colors duration-500 hover:text-[#44433f]"
           >
             ← Back to projects
           </Link>
 
-          <p className="text-xs uppercase tracking-[0.2em] text-[#F4EFE6]">
+          <p className="text-xs uppercase tracking-[0.2em] text-[#44433f]">
             {project.category} — {project.year}
           </p>
           <h1 className="mt-5 max-w-4xl font-serif text-5xl font-light leading-[0.95] tracking-tight text-white md:text-7xl">
             {project.title}
           </h1>
-          <p className="mt-6 text-base text-[#C9BCA8] md:text-lg">{project.location}</p>
-          <p className="mt-8 max-w-2xl text-base text-[#C9BCA8] md:text-lg">
+          <p className="mt-6 text-base text-[#77736b] md:text-lg">{project.location}</p>
+          <p className="mt-8 max-w-2xl text-base text-[#77736b] md:text-lg">
             {project.description}
           </p>
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-[#080808] to-[#111111] py-20 md:py-28">
+      <section className="bg-gradient-to-b from-[#44433f] to-[#44433f] py-20 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3 md:px-12">
           <article className="border border-white/15 bg-white/5 p-7">
             <p className="text-xs uppercase tracking-[0.2em] text-[#E8DDCC]">Challenge</p>

@@ -32,7 +32,7 @@ export default function About() {
   return (
     <section
       id="studio"
-      className="scroll-mt-24 bg-gradient-to-b from-[#111111] to-[#141414] py-24 md:py-32"
+      className="scroll-mt-24 bg-gradient-to-b from-[#44433f] to-[#141414] py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid gap-14 md:grid-cols-12">
@@ -46,7 +46,7 @@ export default function About() {
             <p className="text-xs uppercase tracking-[0.2em] text-[#E8DDCC]">Studio</p>
             <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
               Designing spaces.
-              <span className="text-[#C9BCA8]"> Defining experiences.</span>
+              <span className="text-[#77736b]"> Defining experiences.</span>
             </h2>
           </motion.div>
 
@@ -83,7 +83,7 @@ export default function About() {
               <p className="text-xs uppercase tracking-[0.2em] text-[#E8DDCC]">About</p>
               <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
                 Thoughtful design.
-                <span className="text-[#C9BCA8]"> Meaningful spaces. Lasting value.</span>
+                <span className="text-[#77736b]"> Meaningful spaces. Lasting value.</span>
               </h2>
             </div>
 

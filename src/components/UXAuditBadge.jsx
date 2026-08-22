@@ -7,7 +7,7 @@ const ITEMS = [
 
 export default function UXAuditBadge() {
   return (
-    <section className="border-y border-white/15 bg-gradient-to-b from-[#111111] to-[#141414] py-5">
+    <section className="border-y border-white/15 bg-gradient-to-b from-[#44433f] to-[#141414] py-5">
       <div className="premium-container">
         <ul className="grid gap-3 text-center md:grid-cols-4">
           {ITEMS.map((item) => (

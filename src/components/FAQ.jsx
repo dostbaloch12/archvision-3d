@@ -45,7 +45,7 @@ function PlusIcon({ open }) {
       strokeWidth="2"
       strokeLinecap="round"
       aria-hidden="true"
-      className={`shrink-0 text-[#262626] transition-transform duration-500 ease-out ${
+      className={`shrink-0 text-[#c8c4bc] transition-transform duration-500 ease-out ${
         open ? 'rotate-45' : 'rotate-0'
       }`}
     >
@@ -60,22 +60,22 @@ export default function FAQ() {
 
   return (
     <section
-      className="bg-gradient-to-b from-[#F4EFE6] to-[#F4EFE6] py-24 md:py-32"
+      className="bg-gradient-to-b from-[#44433f] to-[#44433f] py-24 md:py-32"
       aria-label="Frequently asked questions"
     >
       <div className="mx-auto max-w-4xl px-6 md:px-12">
         <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-[#262626]">Questions</p>
-          <h2 className="mt-4 font-serif text-4xl font-light tracking-tight text-[#080808] md:text-5xl">
+          <p className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">Questions</p>
+          <h2 className="mt-4 font-serif text-4xl font-light tracking-tight text-[#44433f] md:text-5xl">
             Before you write to us.
           </h2>
         </div>
 
-        <div className="mt-16 border-t border-[#080808]/20">
+        <div className="mt-16 border-t border-[#44433f]/20">
           {FAQS.map((faq, index) => {
             const isOpen = index === openIndex
             return (
-              <div key={faq.question} className="border-b border-[#080808]/20">
+              <div key={faq.question} className="border-b border-[#44433f]/20">
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
@@ -83,7 +83,7 @@ export default function FAQ() {
                   aria-controls={`faq-panel-${index}`}
                   className="flex w-full items-center justify-between gap-6 py-7 text-left"
                 >
-                  <span className="text-lg font-light tracking-tight text-[#080808] md:text-xl">
+                  <span className="text-lg font-light tracking-tight text-[#44433f] md:text-xl">
                     {faq.question}
                   </span>
                   <PlusIcon open={isOpen} />
@@ -99,7 +99,7 @@ export default function FAQ() {
                       transition={{ duration: 0.4, ease: EASE }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-7 text-base text-[#111111]/80 md:text-lg">{faq.answer}</p>
+                      <p className="pb-7 text-base text-[#44433f]/80 md:text-lg">{faq.answer}</p>
                     </motion.div>
                   ) : null}
                 </AnimatePresence>

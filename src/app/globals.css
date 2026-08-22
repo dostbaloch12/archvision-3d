@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --bg: #f6f4ef;
-  --paper: #f6f4ef;
+  --bg: #44433f;
+  --paper: #fbfaf7;
   --ink: #44433f;
   --muted: #77736b;
   --line: #c8c4bc;
   --line-strong: #c7c3bb;
   --dark: #44433f;
-  --cream: #f6f4ef;
+  --cream: #44433f;
 }
 
 html {
@@ -130,9 +130,10 @@ select {
     opacity: 0.7;
   }
 
+  /* Primary dark editorial button */
   .btn-olive,
   .btn-blush {
-    color: #f6f4ef;
+    color: #44433f;
     background-image: linear-gradient(325deg, #44433f 0%, #77736b 55%, #44433f 90%);
     box-shadow:
       0 5px 12px -6px rgba(68, 67, 63, 0.4),
@@ -140,10 +141,11 @@ select {
       inset -3px -3px 8px rgba(68, 67, 63, 0.35);
   }
 
+  /* Light editorial button */
   .btn-forest,
   .btn-plum {
     color: #44433f;
-    background-image: linear-gradient(325deg, #c7c3bb 0%, #f6f4ef 55%, #c8c4bc 90%);
+    background-image: linear-gradient(325deg, #c7c3bb 0%, #44433f 55%, #c8c4bc 90%);
     box-shadow:
       0 5px 12px -6px rgba(68, 67, 63, 0.25),
       inset 3px 3px 8px rgba(255, 255, 255, 0.55),
@@ -162,7 +164,7 @@ select {
   }
 
   .btn-ghost:hover {
-    color: #f6f4ef;
+    color: #44433f;
     background-image: linear-gradient(325deg, #44433f 0%, #77736b 55%, #44433f 90%);
     box-shadow: inset 0 0 0 1px rgba(68, 67, 63, 1);
   }
@@ -196,11 +198,11 @@ select {
 
 @layer utilities {
   .bg-editorial {
-    background-color: #f6f4ef;
+    background-color: #44433f;
   }
 
   .bg-paper {
-    background-color: #f6f4ef;
+    background-color: #fbfaf7;
   }
 
   .bg-editorial-dark {
