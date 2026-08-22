@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { subscribeJournal } from '@/app/actions'
 import AnimatedButton from './ui/AnimatedButton'
+import LogoMark from './LogoMark'
 
 const INDEX = [
   { href: '/#studio', label: 'Studio' },
@@ -102,38 +103,40 @@ export default function Footer() {
   const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
-    <footer className="bg-gradient-to-b from-[#E8DDCC] to-[#44433f]">
+    <footer className="bg-[#f6f4ef] text-[#44433f]">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="flex flex-col gap-8 border-b border-[#44433f]/20 py-16 md:flex-row md:items-end md:justify-between md:py-20">
+        <div className="flex flex-col gap-8 border-b border-[#c8c4bc] py-16 md:flex-row md:items-end md:justify-between md:py-20">
           <h2 className="max-w-2xl font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#44433f] md:text-5xl">
             Have a site,
-            <span className="text-[#44433f]"> a budget, or only an instinct?</span>
+            <span className="text-[#77736b]"> a budget, or only an instinct?</span>
           </h2>
-          <AnimatedButton href="/#contact" variant="plum" className="shrink-0">
+          <AnimatedButton href="/#contact" variant="olive" className="shrink-0">
             Start a project
           </AnimatedButton>
         </div>
 
         <div className="grid gap-12 py-16 md:grid-cols-12 md:py-20">
           <div className="md:col-span-4">
-            <Link href="/" className="inline-flex flex-col leading-none" aria-label="Utopian Design Studio home">
-              <span className="font-serif text-2xl font-light tracking-[0.22em] text-[#44433f]">
-                UTOPIAN
-              </span>
-              <span className="mt-2 text-[10px] uppercase tracking-[0.24em] text-[#44433f]">
-                Design Studio
-              </span>
+            <Link href="/" aria-label="Utopian Design Studio home">
+              <LogoMark className="h-16 w-52" sizes="208px" />
             </Link>
-            <p className="mt-6 max-w-sm text-base leading-relaxed text-[#44433f]/75">
+
+            <p className="mt-6 max-w-sm text-base leading-relaxed text-[#77736b]">
               We design buildings and interiors as meaningful, functional spaces — from first
               concept to final execution.
             </p>
 
-            <div className="mt-8 space-y-2 text-sm text-[#44433f]/75">
-              <a href="mailto:utopiandesignstuido7@gmail.com" className="block hover:text-[#44433f]">
+            <div className="mt-8 space-y-2 text-sm text-[#77736b]">
+              <a
+                href="mailto:utopiandesignstuido7@gmail.com"
+                className="block transition-colors duration-500 hover:text-[#44433f]"
+              >
                 utopiandesignstuido7@gmail.com
               </a>
-              <a href="tel:+923013918872" className="block hover:text-[#44433f]">
+              <a
+                href="tel:+923013918872"
+                className="block transition-colors duration-500 hover:text-[#44433f]"
+              >
                 +92 301 3918872
               </a>
               <p>7CC, DHA Phase 4 · Lahore</p>
@@ -141,11 +144,14 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">Index</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#44433f]">Index</p>
             <ul className="mt-5 space-y-3">
               {INDEX.map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-[#44433f]/75 transition-colors duration-500 ease-out hover:text-[#44433f]">
+                  <Link
+                    href={item.href}
+                    className="text-[#77736b] transition-colors duration-500 ease-out hover:text-[#44433f]"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -154,11 +160,14 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">Services</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#44433f]">Services</p>
             <ul className="mt-5 space-y-3">
               {DISCIPLINES.map((discipline) => (
                 <li key={discipline}>
-                  <Link href="/#services" className="text-[#44433f]/75 transition-colors duration-500 ease-out hover:text-[#44433f]">
+                  <Link
+                    href="/#services"
+                    className="text-[#77736b] transition-colors duration-500 ease-out hover:text-[#44433f]"
+                  >
                     {discipline}
                   </Link>
                 </li>
@@ -167,8 +176,8 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">Journal</p>
-            <p className="mt-5 text-sm text-[#44433f]/70">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#44433f]">Journal</p>
+            <p className="mt-5 text-sm text-[#77736b]">
               Occasional notes on design, materials and project thinking.
             </p>
 
@@ -180,7 +189,7 @@ export default function Footer() {
                 </p>
               ) : (
                 <>
-                  <div className="flex border border-[#44433f]/25 bg-white/50 focus-within:border-[#44433f]">
+                  <div className="flex border border-[#c8c4bc] bg-[#fbfaf7] focus-within:border-[#44433f]">
                     <input
                       id="journal"
                       name="journal"
@@ -193,14 +202,14 @@ export default function Footer() {
                         setState('idle')
                       }}
                       aria-invalid={state === 'error'}
-                      className="h-11 w-full bg-transparent px-3 text-sm text-[#44433f] placeholder:text-[#44433f]/40 focus:outline-none"
+                      className="h-11 w-full bg-transparent px-3 text-sm text-[#44433f] placeholder:text-[#77736b] focus:outline-none"
                       placeholder="you@email.com"
                     />
                     <button
                       type="submit"
                       disabled={state === 'loading'}
                       aria-label="Subscribe to the journal"
-                      className="inline-flex h-11 w-11 shrink-0 items-center justify-center border-l border-[#44433f]/25 text-[#c8c4bc] transition-colors duration-500 ease-out hover:bg-[#44433f] hover:text-white disabled:cursor-wait"
+                      className="inline-flex h-11 w-11 shrink-0 items-center justify-center border-l border-[#c8c4bc] text-[#44433f] transition-colors duration-500 ease-out hover:bg-[#44433f] hover:text-[#f6f4ef] disabled:cursor-wait"
                     >
                       {state === 'loading' ? <SpinnerSmall /> : <ArrowUpRightSmall />}
                     </button>
@@ -211,7 +220,7 @@ export default function Footer() {
                       {error}
                     </p>
                   ) : (
-                    <p className="mt-2 text-xs text-[#44433f]/55">
+                    <p className="mt-2 text-xs text-[#77736b]">
                       Four letters a year. Nothing else.
                     </p>
                   )}
@@ -222,16 +231,19 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-[#44433f]/20">
+      <div className="border-t border-[#c8c4bc]">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-6 md:flex-row md:items-center md:justify-between md:px-12">
-          <p className="text-xs uppercase tracking-[0.16em] text-[#44433f]/70">
+          <p className="text-xs uppercase tracking-[0.16em] text-[#77736b]">
             © {year} Utopian Design Studio. All rights reserved.
           </p>
 
           <ul className="flex flex-wrap items-center gap-6">
             {LEGAL.map((item) => (
               <li key={item.label}>
-                <Link href={item.href} className="text-xs uppercase tracking-[0.16em] text-[#44433f]/70 transition-colors duration-500 ease-out hover:text-[#44433f]">
+                <Link
+                  href={item.href}
+                  className="text-xs uppercase tracking-[0.16em] text-[#77736b] transition-colors duration-500 ease-out hover:text-[#44433f]"
+                >
                   {item.label}
                 </Link>
               </li>
@@ -242,7 +254,7 @@ export default function Footer() {
             type="button"
             onClick={toTop}
             aria-label="Back to top"
-            className="inline-flex items-center gap-2 self-start text-xs uppercase tracking-[0.16em] text-[#44433f]/70 transition-colors duration-500 ease-out hover:text-[#44433f] md:self-auto"
+            className="inline-flex items-center gap-2 self-start text-xs uppercase tracking-[0.16em] text-[#77736b] transition-colors duration-500 ease-out hover:text-[#44433f] md:self-auto"
           >
             Back to top
             <ArrowUpSmall />

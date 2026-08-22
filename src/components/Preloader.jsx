@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import LogoMark from './LogoMark'
 
 const DURATION = 3000
 const EASE = [0.22, 1, 0.36, 1]
@@ -54,7 +55,7 @@ export default function Preloader() {
           key="preloader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.7, ease: EASE } }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#44433f]"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#f6f4ef]"
           role="status"
           aria-live="polite"
           aria-label="Loading Utopian Design Studio"
@@ -65,15 +66,9 @@ export default function Preloader() {
             transition={{ duration: 0.8, ease: EASE }}
             className="flex flex-col items-center text-center"
           >
-            <span className="font-serif text-3xl font-light tracking-[0.24em] text-[#44433f] md:text-5xl">
-              UTOPIAN
-            </span>
+            <LogoMark className="h-24 w-72 md:h-28 md:w-96" priority sizes="384px" />
 
-            <span className="mt-3 text-[10px] uppercase tracking-[0.34em] text-[#77736b] md:text-xs">
-              Design Studio
-            </span>
-
-            <p className="mt-5 text-xs uppercase tracking-[0.24em] text-[#77736b]">
+            <p className="mt-6 text-xs uppercase tracking-[0.24em] text-[#77736b]">
               Architecture & Design — Lahore
             </p>
           </motion.div>
@@ -81,7 +76,7 @@ export default function Preloader() {
           <div className="mt-14 w-56 md:w-72">
             <div className="h-px w-full bg-[#c8c4bc]">
               <div
-                className="h-px bg-gradient-to-r from-[#77736b] via-[#44433f] to-[#77736b]"
+                className="h-px bg-gradient-to-r from-[#c8c4bc] via-[#44433f] to-[#77736b]"
                 style={{ width: `${progress}%` }}
               />
             </div>

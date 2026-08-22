@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import AnimatedButton from './ui/AnimatedButton'
+import LogoMark from './LogoMark'
 
 const NAV_LINKS = [
   { href: '#studio', label: 'Studio' },
@@ -15,7 +16,16 @@ const NAV_LINKS = [
 
 function MenuIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
       <path d="M4 6h16" />
       <path d="M4 12h16" />
       <path d="M4 18h16" />
@@ -25,7 +35,16 @@ function MenuIcon() {
 
 function CloseIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
       <path d="M18 6 6 18" />
       <path d="m6 6 12 12" />
     </svg>
@@ -40,6 +59,7 @@ export default function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 32)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
+
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -59,7 +79,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-3 focus:z-[60] focus:bg-[#44433f] focus:px-4 focus:py-2 focus:text-[#44433f]"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-3 focus:z-[60] focus:bg-[#44433f] focus:px-4 focus:py-2 focus:text-[#f6f4ef]"
       >
         Skip to content
       </a>
@@ -68,18 +88,13 @@ export default function Navbar() {
         aria-label="Primary"
         className={`border-b transition-colors duration-500 ease-out ${
           scrolled || open
-            ? 'border-[#c8c4bc] bg-[#44433f]/92'
+            ? 'border-[#c8c4bc] bg-[#f6f4ef]/95'
             : 'border-transparent bg-transparent'
         }`}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-12">
-          <a href="#top" className="group flex flex-col leading-none" aria-label="Utopian Design Studio home">
-            <span className="font-serif text-xl font-light tracking-[0.22em] text-[#44433f] md:text-2xl">
-              UTOPIAN
-            </span>
-            <span className="mt-1 text-[9px] uppercase tracking-[0.3em] text-[#77736b]">
-              Design Studio
-            </span>
+          <a href="#top" aria-label="Utopian Design Studio home">
+            <LogoMark className="h-12 w-40 md:h-14 md:w-48" priority sizes="192px" />
           </a>
 
           <ul className="hidden items-center gap-8 lg:flex">
@@ -127,7 +142,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 top-20 z-40 bg-[#44433f] lg:hidden"
+            className="fixed inset-0 top-20 z-40 bg-[#f6f4ef] lg:hidden"
           >
             <div className="flex h-full flex-col justify-between px-6 py-12">
               <ul className="flex flex-col gap-6">
