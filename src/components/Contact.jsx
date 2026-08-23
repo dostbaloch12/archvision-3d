@@ -16,7 +16,7 @@ const PEOPLE = [
     name: 'Rasheed Ahmad',
     role: 'Design Director',
     copy: 'Concept design, architectural language and project quality control.',
-    email: 'rasheedahmad@gmail.com',
+    email: 'ar.rasheedahmad@gmail.com',
     image:
       'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
   },

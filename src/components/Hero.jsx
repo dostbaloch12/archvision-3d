@@ -38,8 +38,8 @@ export default function Hero() {
         className="group relative h-[430px] overflow-hidden md:h-[670px]"
       >
         <Image
-          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=90"
-          alt="Architecture"
+          src="/images/hero-main.png"
+          alt="Utopian Design Studio architecture project"
           fill
           priority
           sizes="(max-width: 768px) 100vw, 55vw"
