@@ -1,3 +1,5 @@
+import LogoMark from './LogoMark'
+
 export default function Navbar() {
   const links = [
     { href: '#studio', label: 'Studio' },
@@ -10,12 +12,8 @@ export default function Navbar() {
 
   return (
     <nav className="flex h-[92px] items-center justify-between border-b border-[#d7d3ca]">
-      <a
-        href="#"
-        className="font-sans text-sm font-bold uppercase tracking-[0.16em] text-[#171715]"
-        aria-label="Utopian Design Studio home"
-      >
-        Utopian Design Studio
+      <a href="#" aria-label="Utopian Design Studio home" className="relative block">
+        <LogoMark className="h-14 w-52" priority sizes="208px" />
       </a>
 
       <div className="hidden gap-[30px] text-xs text-[#53514b] md:flex">

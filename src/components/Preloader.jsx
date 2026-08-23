@@ -55,7 +55,7 @@ export default function Preloader() {
           key="preloader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.7, ease: EASE } }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#f6f4ef]"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#f4f2ed]"
           role="status"
           aria-live="polite"
           aria-label="Loading Utopian Design Studio"
@@ -66,26 +66,26 @@ export default function Preloader() {
             transition={{ duration: 0.8, ease: EASE }}
             className="flex flex-col items-center text-center"
           >
-            <LogoMark className="h-24 w-72 md:h-28 md:w-96" priority sizes="384px" />
+            <LogoMark className="h-28 w-80 md:h-32 md:w-[420px]" priority sizes="420px" />
 
-            <p className="mt-6 text-xs uppercase tracking-[0.24em] text-[#77736b]">
+            <p className="mt-6 text-xs uppercase tracking-[0.24em] text-[#77746c]">
               Architecture & Design — Lahore
             </p>
           </motion.div>
 
           <div className="mt-14 w-56 md:w-72">
-            <div className="h-px w-full bg-[#c8c4bc]">
+            <div className="h-px w-full bg-[#d7d3ca]">
               <div
-                className="h-px bg-gradient-to-r from-[#c8c4bc] via-[#44433f] to-[#77736b]"
+                className="h-px bg-[#171715]"
                 style={{ width: `${progress}%` }}
               />
             </div>
 
             <div className="mt-4 flex items-center justify-between">
-              <span className="text-[10px] uppercase tracking-[0.25em] text-[#77736b]">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-[#77746c]">
                 Loading
               </span>
-              <span className="font-serif text-lg font-light tabular-nums text-[#44433f]">
+              <span className="font-[var(--font-manrope)] text-lg font-medium tabular-nums text-[#171715]">
                 {String(progress).padStart(3, '0')}
               </span>
             </div>

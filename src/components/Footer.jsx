@@ -1,14 +1,14 @@
+import LogoMark from './LogoMark'
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
     <footer className="py-[65px] pb-7">
       <div className="flex flex-col justify-between gap-8 md:flex-row md:items-start">
-        <div className="font-[var(--font-manrope)] text-3xl font-semibold leading-tight tracking-[-0.04em]">
-          UTOPIAN
-          <br />
-          DESIGN STUDIO
-        </div>
+        <a href="#" aria-label="Utopian Design Studio home" className="block">
+          <LogoMark className="h-20 w-64" sizes="256px" />
+        </a>
 
         <div className="max-w-[300px] text-xs leading-[1.7] text-[#77746c]">
           We design buildings as living compositions — then place them in your hands as interactive
