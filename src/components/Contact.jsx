@@ -1,90 +1,51 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { submitContact } from '@/app/actions'
-import AnimatedSubmit from './ui/AnimatedSubmit'
-import AnimatedButton from './ui/AnimatedButton'
 
-const TEAM = [
+const PEOPLE = [
   {
     name: 'Zubair Ahmed',
     role: 'Chief Executive Officer',
-    label: 'CEO',
-    email: 'utopiandesignstuido7@gmail.com',
-    initials: 'ZA',
-    bio: 'Leads client strategy, studio direction and high-value residential commissions.',
+    copy: 'Leads client strategy, studio direction and high-value residential commissions.',
+    image:
+      'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80',
   },
   {
     name: 'Rasheed Ahmad',
     role: 'Design Director',
-    label: 'Director',
+    copy: 'Concept design, architectural language and project quality control.',
     email: 'rasheedahmad@gmail.com',
-    initials: 'RA',
-    bio: 'Leads concept design, architectural language and project quality control.',
+    image:
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
   },
   {
     name: 'Zeeshan Haider',
-    role: 'Senior 3D Visualizer',
-    label: '3D Team',
-    email: 'utopiandesignstuido7@gmail.com',
-    initials: 'ZH',
-    bio: 'Builds interactive models, daylight studies and cinematic presentation visuals.',
+    role: 'Senior 3D Visualizer · 3D Team',
+    copy: 'Builds interactive models, daylight studies and cinematic presentation visuals.',
+    image:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
   },
   {
     name: 'Ahmad Latif',
-    role: 'Project Architect',
-    label: 'Projects',
-    email: 'utopiandesignstuido7@gmail.com',
-    initials: 'AL',
-    bio: 'Coordinates technical drawings, consultant information and delivery documentation.',
+    role: 'Project Architect · Projects',
+    copy: 'Coordinates technical drawings, consultant information and delivery documentation.',
+    image:
+      'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
   },
 ]
-
-const PROJECT_TYPES = [
-  'Residential Architecture',
-  'Commercial & Civic',
-  'Hospitality',
-  'Interior Architecture',
-  'Planning',
-  'Renovation',
-  'Development',
-  'Turnkey Execution',
-  '3D Vision & Massing',
-]
-
-const BUDGETS = ['To be discussed', 'Under $500k', '$500k — $2M', '$2M — $10M', '$10M+']
-const TIMELINES = ['Exploring', 'Within 6 months', '6 — 12 months', 'Already on site']
 
 const INITIAL = {
   name: '',
   email: '',
   phone: '',
+  location: '',
   type: 'Residential Architecture',
   budget: 'To be discussed',
-  timeline: 'Within 6 months',
-  location: '',
+  timeline: 'Exploring',
   area: '',
   message: '',
-}
-
-const EASE = [0.22, 1, 0.36, 1]
-
-function MailIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect width="20" height="16" x="2" y="4" rx="2" />
-      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-    </svg>
-  )
-}
-
-function CheckIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  )
 }
 
 export default function Contact() {
@@ -101,262 +62,177 @@ export default function Contact() {
   const onSubmit = async (event) => {
     event.preventDefault()
     setStatus('submitting')
-    setError('')
 
     const fd = new FormData()
     Object.entries(form).forEach(([key, value]) => fd.append(key, value))
     fd.append('website', '')
 
-    try {
-      const result = await submitContact(fd)
+    const result = await submitContact(fd)
 
-      if (result && result.success) {
-        setStatus('success')
-        setForm(INITIAL)
-      } else {
-        setStatus('error')
-        setError((result && result.error) || 'Something went wrong. Please try again.')
-      }
-    } catch (err) {
+    if (result?.success) {
+      setStatus('success')
+      setForm(INITIAL)
+    } else {
       setStatus('error')
-      setError('Network error. Please try again.')
+      setError(result?.error || 'Could not send. Please try again.')
     }
   }
 
-  const inputClass =
-    'mt-3 h-12 w-full border border-[#44433f]/20 bg-white/70 px-4 text-[#44433f] transition-colors duration-500 ease-out placeholder:text-[#44433f]/40 focus:border-[#44433f] focus:bg-white focus:outline-none'
+  const field =
+    'border-0 border-b border-[#4a4a45] bg-transparent py-3 text-[13px] text-white outline-none placeholder:text-[#888]'
 
   return (
-    <section
-      id="contact"
-      className="scroll-mt-24 bg-gradient-to-b from-[#44433f] to-[#E8DDCC] py-24 md:py-32"
-    >
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">Contact the Studio</p>
-            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#44433f] md:text-5xl">
-              Speak directly with the people
-              <span className="text-[#44433f]"> shaping the work.</span>
-            </h2>
+    <section id="contact" className="bg-[#191917] py-[105px] text-white">
+      <div className="site-container grid gap-[10%] md:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#888]">
+            06 — Contact
           </div>
-
-          <p className="max-w-sm text-base text-[#44433f]/75 md:text-lg">
-            Choose the right contact or send a project brief. No account needed.
+          <h2 className="mt-4 font-[var(--font-manrope)] text-[clamp(45px,5vw,70px)] font-medium leading-[0.98] tracking-[-0.05em]">
+            Contact the Studio
+          </h2>
+          <p className="mt-[25px] max-w-[400px] text-sm leading-[1.7] text-[#aaa]">
+            Speak directly with the people shaping the work. Choose the right contact or send a
+            project brief. No account needed.
           </p>
-        </div>
 
-        <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {TEAM.map((member, index) => (
-            <motion.article
-              key={`${member.name}-${member.email}`}
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.55, delay: index * 0.06, ease: EASE }}
-              className="group overflow-hidden border border-[#44433f]/15 bg-white/35 transition-colors duration-500 ease-out hover:border-[#44433f]/50"
-            >
-              <div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-gradient-to-br from-[#44433f] via-[#44433f] to-[#E8DDCC]">
-                <div className="absolute left-5 top-5 border border-white/30 bg-white/15 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-white">
-                  {member.label}
-                </div>
-
-                <div className="flex h-28 w-28 items-center justify-center border border-white/30 bg-white/10 font-serif text-4xl font-light tracking-tight text-white">
-                  {member.initials}
-                </div>
-
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#44433f]/90 to-transparent p-5">
-                  <h3 className="font-serif text-2xl font-light tracking-tight text-white">
-                    {member.name}
-                  </h3>
-                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#44433f]">
-                    {member.role}
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-5">
-                <p className="text-sm leading-relaxed text-[#44433f]/75">{member.bio}</p>
-
-                <a
-                  href={`mailto:${member.email}`}
-                  className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[#c8c4bc] transition-colors duration-500 hover:text-[#44433f]"
-                >
-                  <MailIcon />
-                  Email
-                </a>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-
-        <div className="mt-20 grid gap-14 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">Project Brief</p>
-            <h3 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-[#44433f] md:text-5xl">
-              Send your site, ambition and timeline.
-            </h3>
-            <p className="mt-6 max-w-md text-base text-[#44433f]/75 md:text-lg">
-              The studio reviews every enquiry. If the project is a good fit, we reply within two
-              working days with next steps.
-            </p>
-
-            <div className="mt-10 space-y-5 border-t border-[#44433f]/20 pt-8">
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">Studio Email</p>
-                <a
-                  href="mailto:utopiandesignstuido7@gmail.com"
-                  className="mt-2 block text-[#44433f] transition-colors duration-500 hover:text-[#44433f]"
-                >
-                  utopiandesignstuido7@gmail.com
-                </a>
-              </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">Telephone</p>
-                <a
-                  href="tel:+923013918872"
-                  className="mt-2 block text-[#44433f] transition-colors duration-500 hover:text-[#44433f]"
-                >
-                  +92 301 3918872
-                </a>
-              </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">Studio</p>
-                <p className="mt-2 text-[#44433f]">7CC, DHA Phase 4 · Lahore</p>
-                <p className="text-sm text-[#44433f]/70">Visits by appointment only</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border border-[#44433f]/15 bg-white/40 p-6 md:col-span-7 md:p-10">
-            {status === 'success' ? (
-              <div className="flex min-h-[480px] flex-col justify-center">
-                <span className="inline-flex h-12 w-12 items-center justify-center border border-[#44433f] text-[#44433f]">
-                  <CheckIcon />
-                </span>
-                <p className="mt-8 text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">Received</p>
-                <h3 className="mt-4 font-serif text-3xl font-light tracking-tight text-[#44433f]">
-                  Your brief is with the studio.
-                </h3>
-                <p className="mt-4 max-w-md text-base text-[#44433f]/75 md:text-lg">
-                  Thank you. We will write back within two working days.
-                </p>
-                <div className="mt-10">
-                  <AnimatedButton variant="plum" showArrow={false} onClick={() => setStatus('idle')}>
-                    Send another brief
-                  </AnimatedButton>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={onSubmit} noValidate className="space-y-6">
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <label htmlFor="name" className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">
-                      Name
-                    </label>
-                    <input id="name" name="name" type="text" autoComplete="name" value={form.name} onChange={onChange} required className={inputClass} placeholder="Your name" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">
-                      Email
-                    </label>
-                    <input id="email" name="email" type="email" autoComplete="email" value={form.email} onChange={onChange} required className={inputClass} placeholder="you@company.com" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">
-                      Phone
-                    </label>
-                    <input id="phone" name="phone" type="tel" autoComplete="tel" value={form.phone} onChange={onChange} className={inputClass} placeholder="+92 300 0000000" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="location" className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">
-                      Site location
-                    </label>
-                    <input id="location" name="location" type="text" value={form.location} onChange={onChange} required className={inputClass} placeholder="City, area" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="type" className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">
-                      Project type
-                    </label>
-                    <select id="type" name="type" value={form.type} onChange={onChange} className={inputClass}>
-                      {PROJECT_TYPES.map((type) => (
-                        <option key={type} value={type}>
-                          {type}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="budget" className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">
-                      Budget
-                    </label>
-                    <select id="budget" name="budget" value={form.budget} onChange={onChange} className={inputClass}>
-                      {BUDGETS.map((budget) => (
-                        <option key={budget} value={budget}>
-                          {budget}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="timeline" className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">
-                      Timeline
-                    </label>
-                    <select id="timeline" name="timeline" value={form.timeline} onChange={onChange} className={inputClass}>
-                      {TIMELINES.map((timeline) => (
-                        <option key={timeline} value={timeline}>
-                          {timeline}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="area" className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">
-                      Approx. area
-                    </label>
-                    <input id="area" name="area" type="text" value={form.area} onChange={onChange} className={inputClass} placeholder="e.g. 10 marla / 1 kanal" />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="text-xs uppercase tracking-[0.2em] text-[#c8c4bc]">
-                    Brief
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    value={form.message}
-                    onChange={onChange}
-                    required
-                    className="mt-3 w-full border border-[#44433f]/20 bg-white/70 px-4 py-3 text-[#44433f] transition-colors duration-500 ease-out placeholder:text-[#44433f]/40 focus:border-[#44433f] focus:bg-white focus:outline-none"
-                    placeholder="Project type, site, scope, design goals and timeline."
+          <div className="mt-[55px]">
+            {PEOPLE.map((person) => (
+              <div
+                key={person.name}
+                className="grid grid-cols-[80px_1fr] gap-[18px] border-t border-[#3a3a36] py-5"
+              >
+                <div className="relative h-[72px] w-[72px] overflow-hidden">
+                  <Image
+                    src={person.image}
+                    alt={person.name}
+                    fill
+                    sizes="72px"
+                    className="object-cover grayscale"
                   />
                 </div>
-
-                <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-
-                {error ? (
-                  <p className="text-sm text-[#44433f]" role="alert" aria-live="polite">
-                    {error}
-                  </p>
-                ) : null}
-
-                <AnimatedSubmit loading={status === 'submitting'} loadingText="Sending brief" variant="plum">
-                  Send the brief
-                </AnimatedSubmit>
-              </form>
-            )}
+                <div>
+                  <h3 className="font-[var(--font-manrope)] text-xl font-medium">{person.name}</h3>
+                  <div className="mt-[6px] text-[10px] uppercase tracking-[0.12em] text-[#888]">
+                    {person.role}
+                  </div>
+                  <p className="mt-[7px] text-xs leading-[1.6] text-[#aaa]">{person.copy}</p>
+                  {person.email ? (
+                    <a href={`mailto:${person.email}`} className="mt-2 inline-block text-[11px] text-[#ddd]">
+                      {person.email} ↗
+                    </a>
+                  ) : null}
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
+
+        <div className="bg-[#242421] p-[38px]">
+          <h3 className="mb-2 font-[var(--font-manrope)] text-[28px] font-medium">Project Brief</h3>
+          <p className="mb-[30px] text-xs text-[#aaa]">Send your site, ambition and timeline.</p>
+
+          {status === 'success' ? (
+            <div className="py-16">
+              <h4 className="font-[var(--font-manrope)] text-3xl font-medium">Brief received.</h4>
+              <p className="mt-4 text-[#aaa]">Thank you. We will reply within two working days.</p>
+              <button
+                type="button"
+                onClick={() => setStatus('idle')}
+                className="mt-8 bg-white px-[22px] py-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#181816]"
+              >
+                Send another
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={onSubmit} className="grid gap-[18px] md:grid-cols-2">
+              <div className="flex flex-col gap-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Name</label>
+                <input name="name" value={form.name} onChange={onChange} required className={field} />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Email</label>
+                <input name="email" type="email" value={form.email} onChange={onChange} required className={field} />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Phone</label>
+                <input name="phone" value={form.phone} onChange={onChange} className={field} />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Site Location</label>
+                <input name="location" value={form.location} onChange={onChange} className={field} />
+              </div>
+
+              <div className="flex flex-col gap-2 md:col-span-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Project Type</label>
+                <select name="type" value={form.type} onChange={onChange} className={field}>
+                  <option>Residential Architecture</option>
+                  <option>Commercial & Civic</option>
+                  <option>Interior Architecture</option>
+                  <option>3D Vision & Massing</option>
+                  <option>Hospitality</option>
+                  <option>Institutional</option>
+                  <option>Mixed-Use</option>
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Budget</label>
+                <select name="budget" value={form.budget} onChange={onChange} className={field}>
+                  <option>To be discussed</option>
+                  <option>Under $500k</option>
+                  <option>$500k — $2M</option>
+                  <option>$2M — $10M</option>
+                  <option>$10M+</option>
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Timeline</label>
+                <select name="timeline" value={form.timeline} onChange={onChange} className={field}>
+                  <option>Exploring</option>
+                  <option>Within 6 months</option>
+                  <option>6 — 12 months</option>
+                  <option>Already on site</option>
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Approx. Area</label>
+                <input name="area" value={form.area} onChange={onChange} className={field} />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Brief</label>
+                <input name="message" value={form.message} onChange={onChange} required className={field} />
+              </div>
+
+              <div className="md:col-span-2">
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={onChange}
+                  placeholder="Tell us about the site, ambition, requirements and anything else we should know."
+                  className="h-[125px] w-full resize-y border border-[#4a4a45] bg-transparent p-4 text-[13px] text-white outline-none placeholder:text-[#888]"
+                />
+              </div>
+
+              <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+
+              {error ? <p className="text-sm text-[#ddd] md:col-span-2">{error}</p> : null}
+
+              <button
+                type="submit"
+                disabled={status === 'submitting'}
+                className="justify-self-start bg-white px-[22px] py-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#181816] disabled:opacity-70 md:col-span-2"
+              >
+                {status === 'submitting' ? 'Sending...' : 'Send the brief ↗'}
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </section>

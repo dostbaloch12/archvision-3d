@@ -1,17 +1,18 @@
-import { Cormorant_Garamond, Outfit } from 'next/font/google'
+import { DM_Sans, Manrope } from 'next/font/google'
 import { siteConfig } from '@/lib/siteconfig'
 import './globals.css'
 
-const outfit = Outfit({
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  variable: '--font-outfit',
+  weight: ['400', '500', '600'],
+  variable: '--font-dm-sans',
   display: 'swap',
 })
 
-const cormorant = Cormorant_Garamond({
+const manrope = Manrope({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-cormorant',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-manrope',
   display: 'swap',
 })
 
@@ -20,58 +21,40 @@ const SITE_URL = siteConfig.url
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Utopian Design Studio — Architecture & Interior Design Lahore',
+    default: 'Utopian Design Studio — Architecture & Design Lahore',
     template: '%s — Utopian Design Studio',
   },
   description:
-    'Utopian Design Studio is a Lahore-based architecture and interior design studio creating thoughtful residential, commercial, hospitality and turnkey projects.',
+    'Utopian Design Studio is a Lahore-based architecture and interior design studio creating residential, commercial, hospitality, institutional and mixed-use projects.',
   keywords: [
     'architecture studio Lahore',
     'interior design Lahore',
     'architect in Lahore',
-    'residential architect Pakistan',
-    'commercial architecture Pakistan',
-    'turnkey construction Lahore',
-    '3D architecture visualization Pakistan',
+    'residential architecture Pakistan',
+    'commercial architecture Lahore',
+    'turnkey execution Lahore',
     'Utopian Design Studio',
   ],
-  authors: [{ name: siteConfig.name }],
-  creator: siteConfig.name,
-  publisher: siteConfig.name,
   alternates: {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: 'Utopian Design Studio — Architecture & Interior Design Lahore',
+    title: 'Utopian Design Studio — Architecture & Design Lahore',
     description:
-      'Thoughtful architecture, interiors, planning, development and turnkey execution across residential, commercial and hospitality projects.',
+      'Architecture, interiors, planning, renovation, development and turnkey execution in Lahore, Pakistan.',
     url: SITE_URL,
-    siteName: siteConfig.name,
+    siteName: 'Utopian Design Studio',
     type: 'website',
     locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Utopian Design Studio — Architecture & Interior Design Lahore',
-    description:
-      'Architecture and interior design studio in Lahore creating functional, refined and timeless spaces.',
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-      'max-video-preview': -1,
-    },
   },
 }
 
 export const viewport = {
-  themeColor: '#44433f',
-  colorScheme: 'dark',
+  themeColor: '#f4f2ed',
   width: 'device-width',
   initialScale: 1,
 }
@@ -79,41 +62,31 @@ export const viewport = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ArchitecturalService',
-  name: siteConfig.name,
+  name: 'Utopian Design Studio',
   url: SITE_URL,
-  description: siteConfig.description,
+  description:
+    'Architecture and interior design studio in Lahore creating functional, refined and timeless spaces.',
   areaServed: ['Lahore', 'Pakistan'],
+  telephone: '+92 301 3918872',
+  email: 'utopiandesignstuido7@gmail.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '7CC, DHA Phase 4',
     addressLocality: 'Lahore',
     addressCountry: 'PK',
   },
-  telephone: siteConfig.contact.phone,
-  email: siteConfig.contact.email,
-  serviceType: [
-    'Architecture',
-    'Planning',
-    'Interior Design',
-    'Renovation',
-    'Development',
-    'Turnkey Execution',
-  ],
-  sameAs: [siteConfig.social.instagram, siteConfig.social.linkedin],
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${manrope.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#44433f] font-sans text-[#44433f] antialiased">
-        {children}
-      </body>
+      <body className="font-sans">{children}</body>
     </html>
   )
 }

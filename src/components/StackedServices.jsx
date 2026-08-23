@@ -1,113 +1,69 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import AnimatedButton from './ui/AnimatedButton'
-
 const SERVICES = [
   {
     number: '01',
     title: 'Architecture',
-    copy: 'Thoughtful architectural design for residential, commercial, hospitality, institutional and mixed-use projects.',
-    points: ['Concept Design', 'Spatial Planning', 'Design Development'],
+    copy: 'Buildings shaped around purpose, context, performance and enduring design quality.',
   },
   {
     number: '02',
     title: 'Planning',
-    copy: 'Clear planning strategies that respond to site, context, circulation, programme and project goals.',
-    points: ['Site & Context', 'Project Brief', 'Scope & Proposal'],
+    copy: 'Strategic spatial planning, feasibility, zoning and development thinking.',
   },
   {
     number: '03',
     title: 'Interior Design',
-    copy: 'Refined interiors shaped around function, atmosphere, material quality and daily use.',
-    points: ['Interior Concepts', 'Material Selection', 'Lighting Direction'],
+    copy: 'Refined interior environments with coordinated materials, lighting and detail.',
   },
   {
     number: '04',
     title: 'Renovation',
-    copy: 'Transforming existing spaces through careful redesign, improved functionality and modern detailing.',
-    points: ['Existing Assessment', 'Design Upgrade', 'Detail Refinement'],
+    copy: 'Careful transformation of existing buildings through considered interventions.',
   },
   {
     number: '05',
     title: 'Development',
-    copy: 'Design and development support for property owners, investors and real-estate projects.',
-    points: ['Feasibility', 'Development Vision', 'Presentation Support'],
+    copy: 'Design-led development solutions from early strategy through delivery.',
   },
   {
     number: '06',
     title: 'Turnkey Execution',
-    copy: 'End-to-end project delivery from design coordination to site execution and final handover.',
-    points: ['Site Coordination', 'Contractor Management', 'Quality Control'],
+    copy: 'Integrated coordination and execution from approved design to final handover.',
   },
 ]
 
-const EASE = [0.22, 1, 0.36, 1]
-
 export default function StackedServices() {
   return (
-    <section
-      id="services"
-      className="relative scroll-mt-24 bg-gradient-to-b from-[#141414] to-[#44433f] py-24 md:py-32"
-    >
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#E8DDCC]">Services</p>
-            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
+    <section id="services" className="bg-[#191917] text-white">
+      <div className="site-container py-[110px]">
+        <div className="mb-[52px] flex flex-col justify-between gap-8 md:flex-row md:items-end">
+          <div>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#888]">
+              02 — Services
+            </div>
+            <h2 className="mt-4 font-[var(--font-manrope)] text-[clamp(42px,5vw,66px)] font-medium tracking-[-0.05em]">
               From concept to completion.
             </h2>
           </div>
-
-          <p className="max-w-md text-base leading-relaxed text-white/70 md:text-lg">
-            We deliver integrated architectural, interior, planning, development, and turnkey
-            solutions across residential, commercial, hospitality, institutional, and mixed-use
-            projects.
+          <p className="max-w-[350px] text-[13px] leading-[1.6] text-[#aaa]">
+            Integrated architectural, interior, planning, development, and turnkey solutions across
+            multiple project types.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service, index) => (
-            <motion.article
+        <div className="mt-[55px]">
+          {SERVICES.map((service) => (
+            <div
               key={service.number}
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.18 }}
-              transition={{ duration: 0.55, delay: index * 0.04, ease: EASE }}
-              className="group border border-white/15 bg-white/5 p-7 transition-colors duration-500 ease-out hover:border-[#E8DDCC]"
+              className="grid items-center border-t border-[#3b3b37] py-7 md:grid-cols-[70px_1fr_1fr]"
             >
-              <div className="flex items-center justify-between gap-4">
-                <span className="text-xs uppercase tracking-[0.2em] text-[#E8DDCC]">
-                  {service.number}
-                </span>
-                <span className="h-px flex-1 bg-white/15" />
-              </div>
-
-              <h3 className="mt-8 font-serif text-3xl font-light tracking-tight text-white">
-                {service.title}
-              </h3>
-
-              <p className="mt-5 text-base leading-relaxed text-white/72">{service.copy}</p>
-
-              <ul className="mt-8 space-y-3">
-                {service.points.map((point) => (
-                  <li
-                    key={point}
-                    className="flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-white/55"
-                  >
-                    <span className="h-1 w-1 bg-[#E8DDCC]" aria-hidden="true" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </motion.article>
+              <span className="text-[11px] text-[#777]">{service.number}</span>
+              <h3 className="font-[var(--font-manrope)] text-[25px] font-medium">{service.title}</h3>
+              <p className="mt-3 max-w-[430px] text-[13px] leading-[1.6] text-[#aaa] md:mt-0">
+                {service.copy}
+              </p>
+            </div>
           ))}
-        </div>
-
-        <div className="mt-12">
-          <AnimatedButton href="#contact" variant="blush">
-            Start a Project
-          </AnimatedButton>
+          <div className="border-t border-[#3b3b37]" />
         </div>
       </div>
     </section>

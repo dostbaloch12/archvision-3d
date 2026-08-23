@@ -1,47 +1,37 @@
-import Preloader from '@/components/Preloader'
-import ScrollProgress from '@/components/ScrollProgress'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import UXAuditBadge from '@/components/UXAuditBadge'
-import MarqueeStrip from '@/components/MarqueeStrip'
-import About from '@/components/About'
-import StackedServices from '@/components/StackedServices'
-import Process from '@/components/Process'
+import StudioIntro from '@/components/StudioIntro'
+import Services from '@/components/StackedServices'
 import ProjectShowcase from '@/components/ProjectShowcase'
-import SEOServiceLinks from '@/components/SEOServiceLinks'
-import Testimonials from '@/components/Testimonials'
-import FAQ from '@/components/FAQ'
+import Process from '@/components/Process'
+import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
 export default function HomePage() {
   return (
     <>
-      <Preloader />
-      <ScrollProgress />
-      <Navbar />
+      <div className="site-container">
+        <Navbar />
+        <main id="main">
+          <Hero />
+          <StudioIntro />
+        </main>
+      </div>
 
-      <main id="main">
-        <Hero />
+      <Services />
+      <ProjectShowcase />
+      <Process />
 
-        <div
-          className="h-16 w-full bg-gradient-to-b from-[#44433f] to-[#44433f]"
-          aria-hidden="true"
-        />
-
-        <UXAuditBadge />
-        <MarqueeStrip />
+      <div className="site-container">
         <About />
-        <StackedServices />
-        <Process />
-        <ProjectShowcase />
-        <SEOServiceLinks />
-        <Testimonials />
-        <FAQ />
-        <Contact />
-      </main>
+      </div>
 
-      <Footer />
+      <Contact />
+
+      <div className="site-container">
+        <Footer />
+      </div>
     </>
   )
 }

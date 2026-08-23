@@ -1,18 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
-
-const EASE = [0.22, 1, 0.36, 1]
-
-const STUDIO_POINTS = [
-  'Architecture',
-  'Interior Design',
-  'Planning',
-  'Development',
-  'Renovation',
-  'Turnkey Solutions',
-]
-
 const LEADERS = [
   {
     name: 'Zubair Ahmed',
@@ -30,101 +15,36 @@ const LEADERS = [
 
 export default function About() {
   return (
-    <section
-      id="studio"
-      className="scroll-mt-24 bg-gradient-to-b from-[#44433f] to-[#141414] py-24 md:py-32"
-    >
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="grid gap-14 md:grid-cols-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.75, ease: EASE }}
-            className="md:col-span-5"
-          >
-            <p className="text-xs uppercase tracking-[0.2em] text-[#E8DDCC]">Studio</p>
-            <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
-              Designing spaces.
-              <span className="text-[#77736b]"> Defining experiences.</span>
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.75, delay: 0.1, ease: EASE }}
-            className="md:col-span-7"
-          >
-            <p className="text-base leading-relaxed text-white/78 md:text-lg">
-              Utopian Design Studio is a contemporary architectural firm and interior design studio
-              creating functional, refined, and timeless spaces. We combine creative vision,
-              thoughtful planning, and technical expertise to transform ideas into distinctive
-              environments.
-            </p>
-
-            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {STUDIO_POINTS.map((point) => (
-                <div
-                  key={point}
-                  className="border border-white/15 bg-white/5 px-4 py-3 text-xs uppercase tracking-[0.16em] text-white/75"
-                >
-                  {point}
-                </div>
-              ))}
-            </div>
-          </motion.div>
+    <section id="about" className="grid gap-[9%] py-[110px] md:grid-cols-[0.7fr_1.3fr]">
+      <div>
+        <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#77746c]">
+          05 — About
         </div>
+        <h2 className="mt-4 font-[var(--font-manrope)] text-5xl font-medium leading-[1.05] tracking-[-0.045em]">
+          The Studio
+        </h2>
+        <p className="mt-7 max-w-[620px] text-sm leading-[1.8] text-[#77746c]">
+          Utopian Design Studio is an architectural firm and design practice focused on creating
+          thoughtful, functional, and timeless spaces. Our work spans architecture, interiors,
+          planning, development, and turnkey solutions, with a commitment to design quality from
+          concept through completion.
+        </p>
+      </div>
 
-        <div id="about" className="mt-24 scroll-mt-28 border-t border-white/20 pt-16">
-          <div className="grid gap-12 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#E8DDCC]">About</p>
-              <h2 className="mt-4 font-serif text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
-                Thoughtful design.
-                <span className="text-[#77736b]"> Meaningful spaces. Lasting value.</span>
-              </h2>
-            </div>
-
-            <div className="space-y-6 md:col-span-8">
-              <p className="text-base leading-relaxed text-white/78 md:text-lg">
-                Utopian Design Studio is an architectural firm and design practice focused on
-                creating thoughtful, functional, and timeless spaces. Our work spans architecture,
-                interiors, planning, development, and turnkey solutions, with a commitment to design
-                quality from concept through completion.
-              </p>
-
-              <div className="grid gap-6 lg:grid-cols-2">
-                {LEADERS.map((leader, index) => (
-                  <motion.figure
-                    key={leader.name}
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.25 }}
-                    transition={{ duration: 0.6, delay: index * 0.08, ease: EASE }}
-                    className="border border-white/15 bg-white/5 p-6"
-                  >
-                    <p className="text-xs uppercase tracking-[0.2em] text-[#E8DDCC]">
-                      From Our Leadership
-                    </p>
-                    <blockquote className="mt-5 text-base leading-relaxed text-white/78">
-                      “{leader.quote}”
-                    </blockquote>
-                    <figcaption className="mt-6">
-                      <p className="font-serif text-2xl font-light tracking-tight text-white">
-                        {leader.name}
-                      </p>
-                      <p className="mt-1 text-xs uppercase tracking-[0.18em] text-white/55">
-                        {leader.role}
-                      </p>
-                    </figcaption>
-                  </motion.figure>
-                ))}
+      <div className="border-t border-[#d7d3ca]">
+        {LEADERS.map((leader) => (
+          <article key={leader.name} className="border-b border-[#d7d3ca] py-[25px]">
+            <div>
+              <h3 className="font-[var(--font-manrope)] text-2xl font-medium">{leader.name}</h3>
+              <div className="mt-[6px] text-[10px] uppercase tracking-[0.12em] text-[#77746c]">
+                {leader.role}
               </div>
             </div>
-          </div>
-        </div>
+            <p className="mt-5 max-w-[720px] font-[var(--font-manrope)] text-[15px] italic leading-[1.75] text-[#65625b]">
+              “{leader.quote}”
+            </p>
+          </article>
+        ))}
       </div>
     </section>
   )
