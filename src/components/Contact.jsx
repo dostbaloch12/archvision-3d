@@ -91,7 +91,7 @@ export default function Contact() {
           <h2 className="mt-4 font-[var(--font-manrope)] text-[clamp(45px,5vw,70px)] font-medium leading-[0.98] tracking-[-0.05em]">
             Contact the Studio
           </h2>
-          <p className="mt-[25px] max-w-[400px] text-sm leading-[1.7] text-[#aaa]">
+          <p className="mt-[25px] max-w-[440px] text-[15px] leading-[1.75] text-[#aaa]">
             Speak directly with the people shaping the work. Choose the right contact or send a
             project brief. No account needed.
           </p>

@@ -62,7 +62,7 @@ export default function Process() {
               <h3 className="my-[38px] mb-3 font-[var(--font-manrope)] text-[23px] font-medium">
                 {step.title}
               </h3>
-              <p className="min-h-[78px] text-xs leading-[1.65] text-[#77746c]">{step.copy}</p>
+              <p className="min-h-[88px] text-[14px] leading-[1.7] text-[#77746c]">{step.copy}</p>
 
               <ul className="mt-5 border-t border-[#d7d3ca] pt-[17px]">
                 {step.list.map((item) => (

@@ -58,7 +58,7 @@ export default function StackedServices() {
             >
               <span className="text-[11px] text-[#777]">{service.number}</span>
               <h3 className="font-[var(--font-manrope)] text-[25px] font-medium">{service.title}</h3>
-              <p className="mt-3 max-w-[430px] text-[13px] leading-[1.6] text-[#aaa] md:mt-0">
+              <p className="mt-3 max-w-[480px] text-[15px] leading-[1.7] text-[#aaa] md:mt-0">
                 {service.copy}
               </p>
             </div>

@@ -18,7 +18,7 @@ export default function Navbar() {
             <LogoMark className="h-14 w-52" priority sizes="208px" />
           </a>
 
-          <div className="hidden gap-[30px] text-xs font-medium text-[#53514b] md:flex">
+          <div className="hidden gap-[34px] text-[13px] font-medium text-[#53514b] md:flex">
             {links.map((link) => (
               <a
                 key={link.href}

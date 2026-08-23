@@ -15,7 +15,7 @@ export default function Hero() {
           Design you can walk through.
         </h1>
 
-        <p className="mt-[37px] max-w-[520px] text-[15px] leading-[1.7] text-[#6c6961]">
+        <p className="mt-[37px] max-w-[560px] text-[17px] leading-[1.75] text-[#6c6961]">
           <strong className="text-[#282722]">Utopian Design Studio</strong> creates thoughtful
           architecture across residential, commercial, and hospitality projects—rooted in context,
           purpose, and detail.
