@@ -21,18 +21,18 @@ const PEOPLE = [
       'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
   },
   {
-    name: 'Zeeshan Haider',
-    role: 'Senior 3D Visualizer · 3D Team',
-    copy: 'Builds interactive models, daylight studies and cinematic presentation visuals.',
-    image:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-  },
-  {
     name: 'Ahmad Latif',
     role: 'Project Architect · Projects',
     copy: 'Coordinates technical drawings, consultant information and delivery documentation.',
     image:
       'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    name: 'Zeeshan Haider',
+    role: 'Senior 3D Visualizer · 3D Team',
+    copy: 'Builds interactive models, daylight studies and cinematic presentation visuals.',
+    image:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
   },
 ]
 
