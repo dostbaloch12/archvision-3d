@@ -313,3 +313,26 @@ select {
     min-height: calc(100svh - 92px);
   }
 }
+
+/* Fix page-like anchor view for Services and Contact */
+#services,
+#contact {
+  scroll-margin-top: 92px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#services > .site-container,
+#contact > .site-container {
+  min-height: calc(100svh - 92px);
+  display: grid;
+  align-content: center;
+}
+
+@media (max-width: 768px) {
+  #services > .site-container,
+  #contact > .site-container {
+    min-height: auto;
+    display: block;
+  }
+}

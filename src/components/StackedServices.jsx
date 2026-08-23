@@ -33,36 +33,43 @@ const SERVICES = [
 
 export default function StackedServices() {
   return (
-    <section id="services" className="bg-[#191917] text-white">
-      <div className="site-container py-[110px]">
-        <div className="mb-[52px] flex flex-col justify-between gap-8 md:flex-row md:items-end">
+    <section id="services" className="scroll-mt-[92px] bg-[#191917] text-white">
+      <div className="site-container py-20 md:py-24">
+        <div className="mb-12 flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
             <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#888]">
               02 — Services
             </div>
-            <h2 className="mt-4 font-[var(--font-manrope)] text-[clamp(42px,5vw,66px)] font-medium tracking-[-0.05em]">
+
+            <h2 className="mt-4 max-w-[720px] font-[var(--font-manrope)] text-[clamp(46px,5.4vw,72px)] font-medium leading-[0.95] tracking-[-0.06em]">
               From concept to completion.
             </h2>
           </div>
-          <p className="max-w-[350px] text-[13px] leading-[1.6] text-[#aaa]">
+
+          <p className="max-w-[390px] text-[14px] leading-[1.75] text-[#aaa]">
             Integrated architectural, interior, planning, development, and turnkey solutions across
             multiple project types.
           </p>
         </div>
 
-        <div className="mt-[55px]">
+        <div>
           {SERVICES.map((service) => (
             <div
               key={service.number}
-              className="grid items-center border-t border-[#3b3b37] py-7 md:grid-cols-[70px_1fr_1fr]"
+              className="grid items-start border-t border-[#3b3b37] py-6 md:grid-cols-[70px_0.9fr_1.1fr] md:items-center"
             >
               <span className="text-[11px] text-[#777]">{service.number}</span>
-              <h3 className="font-[var(--font-manrope)] text-[25px] font-medium">{service.title}</h3>
-              <p className="mt-3 max-w-[480px] text-[15px] leading-[1.7] text-[#aaa] md:mt-0">
+
+              <h3 className="mt-2 font-[var(--font-manrope)] text-[26px] font-medium tracking-[-0.04em] md:mt-0">
+                {service.title}
+              </h3>
+
+              <p className="mt-3 max-w-[520px] text-[14px] leading-[1.7] text-[#aaa] md:mt-0">
                 {service.copy}
               </p>
             </div>
           ))}
+
           <div className="border-t border-[#3b3b37]" />
         </div>
       </div>

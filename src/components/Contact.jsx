@@ -62,6 +62,7 @@ export default function Contact() {
   const onSubmit = async (event) => {
     event.preventDefault()
     setStatus('submitting')
+    setError('')
 
     const fd = new FormData()
     Object.entries(form).forEach(([key, value]) => fd.append(key, value))
@@ -82,43 +83,54 @@ export default function Contact() {
     'border-0 border-b border-[#4a4a45] bg-transparent py-3 text-[13px] text-white outline-none placeholder:text-[#888]'
 
   return (
-    <section id="contact" className="bg-[#191917] py-[105px] text-white">
-      <div className="site-container grid gap-[10%] md:grid-cols-[0.9fr_1.1fr]">
+    <section id="contact" className="scroll-mt-[92px] bg-[#191917] text-white">
+      <div className="site-container grid gap-12 py-20 md:grid-cols-[0.9fr_1.1fr] md:items-center md:py-24">
         <div>
           <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#888]">
             06 — Contact
           </div>
-          <h2 className="mt-4 font-[var(--font-manrope)] text-[clamp(45px,5vw,70px)] font-medium leading-[0.98] tracking-[-0.05em]">
+
+          <h2 className="mt-4 max-w-[560px] font-[var(--font-manrope)] text-[clamp(48px,5.4vw,74px)] font-medium leading-[0.96] tracking-[-0.06em]">
             Contact the Studio
           </h2>
-          <p className="mt-[25px] max-w-[440px] text-[15px] leading-[1.75] text-[#aaa]">
+
+          <p className="mt-6 max-w-[440px] text-[15px] leading-[1.75] text-[#aaa]">
             Speak directly with the people shaping the work. Choose the right contact or send a
             project brief. No account needed.
           </p>
 
-          <div className="mt-[55px]">
+          <div className="mt-10">
             {PEOPLE.map((person) => (
               <div
                 key={person.name}
-                className="grid grid-cols-[80px_1fr] gap-[18px] border-t border-[#3a3a36] py-5"
+                className="grid grid-cols-[74px_1fr] gap-4 border-t border-[#3a3a36] py-4"
               >
-                <div className="relative h-[72px] w-[72px] overflow-hidden">
+                <div className="relative h-[64px] w-[64px] overflow-hidden">
                   <Image
                     src={person.image}
                     alt={person.name}
                     fill
-                    sizes="72px"
+                    sizes="64px"
                     className="object-cover grayscale"
                   />
                 </div>
+
                 <div>
-                  <h3 className="font-[var(--font-manrope)] text-xl font-medium">{person.name}</h3>
-                  <div className="mt-[6px] text-[10px] uppercase tracking-[0.12em] text-[#888]">
+                  <h3 className="font-[var(--font-manrope)] text-[19px] font-medium tracking-[-0.035em]">
+                    {person.name}
+                  </h3>
+
+                  <div className="mt-[5px] text-[10px] uppercase tracking-[0.12em] text-[#888]">
                     {person.role}
                   </div>
-                  <p className="mt-[7px] text-xs leading-[1.6] text-[#aaa]">{person.copy}</p>
+
+                  <p className="mt-[6px] text-[12px] leading-[1.55] text-[#aaa]">{person.copy}</p>
+
                   {person.email ? (
-                    <a href={`mailto:${person.email}`} className="mt-2 inline-block text-[11px] text-[#ddd]">
+                    <a
+                      href={`mailto:${person.email}`}
+                      className="mt-2 inline-block text-[11px] text-[#ddd] transition-colors duration-300 hover:text-white"
+                    >
                       {person.email} ↗
                     </a>
                   ) : null}
@@ -128,14 +140,21 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="bg-[#242421] p-[38px]">
-          <h3 className="mb-2 font-[var(--font-manrope)] text-[28px] font-medium">Project Brief</h3>
-          <p className="mb-[30px] text-xs text-[#aaa]">Send your site, ambition and timeline.</p>
+        <div className="bg-[#242421] p-7 md:p-[38px]">
+          <h3 className="mb-2 font-[var(--font-manrope)] text-[30px] font-medium tracking-[-0.04em]">
+            Project Brief
+          </h3>
+
+          <p className="mb-7 text-[13px] text-[#aaa]">Send your site, ambition and timeline.</p>
 
           {status === 'success' ? (
             <div className="py-16">
-              <h4 className="font-[var(--font-manrope)] text-3xl font-medium">Brief received.</h4>
+              <h4 className="font-[var(--font-manrope)] text-3xl font-medium tracking-[-0.04em]">
+                Brief received.
+              </h4>
+
               <p className="mt-4 text-[#aaa]">Thank you. We will reply within two working days.</p>
+
               <button
                 type="button"
                 onClick={() => setStatus('idle')}
@@ -148,12 +167,25 @@ export default function Contact() {
             <form onSubmit={onSubmit} className="grid gap-[18px] md:grid-cols-2">
               <div className="flex flex-col gap-2">
                 <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Name</label>
-                <input name="name" value={form.name} onChange={onChange} required className={field} />
+                <input
+                  name="name"
+                  value={form.name}
+                  onChange={onChange}
+                  required
+                  className={field}
+                />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Email</label>
-                <input name="email" type="email" value={form.email} onChange={onChange} required className={field} />
+                <input
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={onChange}
+                  required
+                  className={field}
+                />
               </div>
 
               <div className="flex flex-col gap-2">
@@ -162,12 +194,21 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Site Location</label>
-                <input name="location" value={form.location} onChange={onChange} className={field} />
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">
+                  Site Location
+                </label>
+                <input
+                  name="location"
+                  value={form.location}
+                  onChange={onChange}
+                  className={field}
+                />
               </div>
 
               <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Project Type</label>
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">
+                  Project Type
+                </label>
                 <select name="type" value={form.type} onChange={onChange} className={field}>
                   <option>Residential Architecture</option>
                   <option>Commercial & Civic</option>
@@ -191,8 +232,15 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Timeline</label>
-                <select name="timeline" value={form.timeline} onChange={onChange} className={field}>
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">
+                  Timeline
+                </label>
+                <select
+                  name="timeline"
+                  value={form.timeline}
+                  onChange={onChange}
+                  className={field}
+                >
                   <option>Exploring</option>
                   <option>Within 6 months</option>
                   <option>6 — 12 months</option>
@@ -200,23 +248,24 @@ export default function Contact() {
                 </select>
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Approx. Area</label>
+              <div className="flex flex-col gap-2 md:col-span-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">
+                  Approx. Area
+                </label>
                 <input name="area" value={form.area} onChange={onChange} className={field} />
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Brief</label>
-                <input name="message" value={form.message} onChange={onChange} required className={field} />
-              </div>
-
               <div className="md:col-span-2">
+                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">
+                  Project Brief
+                </label>
                 <textarea
                   name="message"
                   value={form.message}
                   onChange={onChange}
+                  required
                   placeholder="Tell us about the site, ambition, requirements and anything else we should know."
-                  className="h-[125px] w-full resize-y border border-[#4a4a45] bg-transparent p-4 text-[13px] text-white outline-none placeholder:text-[#888]"
+                  className="mt-2 h-[115px] w-full resize-y border border-[#4a4a45] bg-transparent p-4 text-[13px] text-white outline-none placeholder:text-[#888]"
                 />
               </div>
 
