@@ -14,7 +14,9 @@ export default function LogoMark({
         fill
         priority={priority}
         sizes={sizes}
-        className={`object-contain object-left ${dark ? 'brightness-0 invert' : ''}`}
+        className={`object-contain object-left ${
+          dark ? 'brightness-0 invert' : 'mix-blend-multiply contrast-125'
+        }`}
       />
     </div>
   )

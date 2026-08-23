@@ -1,6 +1,9 @@
 export default function StudioIntro() {
   return (
-    <section className="grid gap-[6%] border-y border-[#d7d3ca] py-[105px] md:grid-cols-[0.3fr_1fr]">
+    <section
+      id="studio"
+      className="grid scroll-mt-[110px] gap-[6%] border-y border-[#d7d3ca] py-[105px] md:grid-cols-[0.3fr_1fr]"
+    >
       <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#77746c]">
         01 — Studio
       </div>

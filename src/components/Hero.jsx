@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function Hero() {
   return (
     <section
-      id="studio"
+      id="top"
       className="grid min-h-[780px] grid-cols-1 items-center gap-12 py-[75px] md:grid-cols-[0.9fr_1.1fr] md:gap-[7%]"
     >
       <div>
