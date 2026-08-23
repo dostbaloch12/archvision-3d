@@ -11,27 +11,28 @@ import Footer from '@/components/Footer'
 export default function HomePage() {
   return (
     <>
-      <div className="site-container">
-        <Navbar />
-        <main id="main">
+      <Navbar />
+
+      <main id="main" className="pt-[92px]">
+        <div className="site-container">
           <Hero />
           <StudioIntro />
-        </main>
-      </div>
+        </div>
 
-      <Services />
-      <ProjectShowcase />
-      <Process />
+        <Services />
+        <ProjectShowcase />
+        <Process />
 
-      <div className="site-container">
-        <About />
-      </div>
+        <div className="site-container">
+          <About />
+        </div>
 
-      <Contact />
+        <Contact />
 
-      <div className="site-container">
-        <Footer />
-      </div>
+        <div className="site-container">
+          <Footer />
+        </div>
+      </main>
     </>
   )
 }

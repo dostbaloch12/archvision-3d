@@ -25,13 +25,18 @@ export default function Hero() {
           <a href="#projects" className="editorial-button">
             Explore Projects ↗
           </a>
+
           <a href="#contact" className="editorial-textlink">
             Start a Commission
           </a>
         </div>
       </div>
 
-      <div className="group relative h-[430px] overflow-hidden md:h-[670px]">
+      <a
+        href="#projects"
+        aria-label="View selected projects"
+        className="group relative h-[430px] overflow-hidden md:h-[670px]"
+      >
         <Image
           src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=90"
           alt="Architecture"
@@ -44,7 +49,7 @@ export default function Hero() {
         <span className="absolute bottom-5 left-[22px] z-[2] text-[10px] font-semibold uppercase tracking-[0.13em] text-white">
           Selected Work / 01
         </span>
-      </div>
+      </a>
     </section>
   )
 }
