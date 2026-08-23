@@ -4,6 +4,32 @@ import { useEffect } from 'react'
 
 const NAVBAR_HEIGHT = 92
 
+function scrollToHash(hash, behavior = 'smooth') {
+  if (!hash || hash === '#') {
+    window.scrollTo({ top: 0, behavior })
+    return
+  }
+
+  const target = document.querySelector(hash)
+
+  if (!target) {
+    return
+  }
+
+  if (hash === '#top') {
+    window.scrollTo({ top: 0, behavior })
+    return
+  }
+
+  const targetTop = target.getBoundingClientRect().top + window.scrollY
+  const finalTop = Math.max(targetTop - NAVBAR_HEIGHT, 0)
+
+  window.scrollTo({
+    top: finalTop,
+    behavior,
+  })
+}
+
 export default function AnchorScroll() {
   useEffect(() => {
     const onClick = (event) => {
@@ -11,34 +37,34 @@ export default function AnchorScroll() {
 
       if (!link) return
 
-      const href = link.getAttribute('href')
+      const rawHref = link.getAttribute('href')
 
-      if (!href) return
+      if (!rawHref) return
 
-      const isHash = href.startsWith('#')
-      const isHomeHash = href.startsWith('/#')
+      const isSamePageHash = rawHref.startsWith('#')
+      const isHomeHash = rawHref.startsWith('/#')
 
-      if (!isHash && !isHomeHash) return
+      if (!isSamePageHash && !isHomeHash) return
 
-      const hash = isHash ? href : href.replace('/', '')
-      const target = document.querySelector(hash)
+      const hash = isSamePageHash ? rawHref : rawHref.replace('/', '')
 
-      if (!target) return
+      if (!document.querySelector(hash) && hash !== '#top') return
 
       event.preventDefault()
 
-      const top =
-        target.getBoundingClientRect().top + window.scrollY - NAVBAR_HEIGHT
-
-      window.scrollTo({
-        top,
-        behavior: 'smooth',
-      })
+      scrollToHash(hash)
 
       window.history.pushState(null, '', hash)
     }
 
     document.addEventListener('click', onClick)
+
+    const initialHash = window.location.hash
+    if (initialHash) {
+      window.setTimeout(() => {
+        scrollToHash(initialHash, 'auto')
+      }, 120)
+    }
 
     return () => document.removeEventListener('click', onClick)
   }, [])

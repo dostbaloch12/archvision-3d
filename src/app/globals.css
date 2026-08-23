@@ -253,3 +253,63 @@ select {
     box-shadow: inset 0 0 0 1px rgba(68, 67, 63, 1);
   }
 }
+
+/* Page-like section alignment for fixed navbar */
+#top,
+#studio,
+#services,
+#projects,
+#process,
+#about,
+#contact {
+  scroll-margin-top: 92px;
+  min-height: calc(100svh - 92px);
+}
+
+/* Sections with inner containers should visually fill one viewport */
+#studio,
+#about {
+  display: grid;
+  align-content: center;
+}
+
+/* Full-width sections should feel like complete pages */
+#services,
+#projects,
+#process,
+#contact {
+  display: block;
+}
+
+/* Better section entry spacing */
+#services,
+#projects,
+#process,
+#contact {
+  padding-top: clamp(80px, 10vh, 120px);
+  padding-bottom: clamp(80px, 10vh, 120px);
+}
+
+/* Prevent anchor targets from feeling cramped */
+#studio,
+#about {
+  padding-top: clamp(80px, 10vh, 120px);
+  padding-bottom: clamp(80px, 10vh, 120px);
+}
+
+/* Mobile: content can naturally flow, no forced full-height except hero */
+@media (max-width: 768px) {
+  #studio,
+  #services,
+  #projects,
+  #process,
+  #about,
+  #contact {
+    min-height: auto;
+    scroll-margin-top: 92px;
+  }
+
+  #top {
+    min-height: calc(100svh - 92px);
+  }
+}
