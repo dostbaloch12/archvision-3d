@@ -7,15 +7,17 @@ export default function LogoMark({
   dark = false,
 }) {
   return (
-    <div className={`relative shrink-0 ${className}`}>
+    <div className={`relative shrink-0 overflow-hidden ${className}`}>
       <Image
-        src="/logo/utopian-logo.jpeg"
+        src="/logo/utopian-logo.png"
         alt="Utopian Design Studio logo"
         fill
         priority={priority}
         sizes={sizes}
         className={`object-contain object-left ${
-          dark ? 'brightness-0 invert' : 'mix-blend-multiply contrast-125'
+          dark
+            ? 'brightness-0 invert'
+            : 'mix-blend-multiply grayscale contrast-200 brightness-75'
         }`}
       />
     </div>
