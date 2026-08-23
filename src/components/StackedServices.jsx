@@ -34,8 +34,8 @@ const SERVICES = [
 export default function StackedServices() {
   return (
     <section id="services" className="scroll-mt-[92px] bg-[#191917] text-white">
-      <div className="site-container py-20 md:py-24">
-        <div className="mb-12 flex flex-col justify-between gap-8 md:flex-row md:items-end">
+      <div className="site-container py-14 md:py-16">
+        <div className="mb-9 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#888]">
               02 — Services
@@ -56,7 +56,7 @@ export default function StackedServices() {
           {SERVICES.map((service) => (
             <div
               key={service.number}
-              className="grid items-start border-t border-[#3b3b37] py-6 md:grid-cols-[70px_0.9fr_1.1fr] md:items-center"
+              className="grid items-start border-t border-[#3b3b37] py-4 md:grid-cols-[70px_0.9fr_1.1fr] md:items-center"
             >
               <span className="text-[11px] text-[#777]">{service.number}</span>
 

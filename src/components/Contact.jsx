@@ -84,7 +84,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="scroll-mt-[92px] bg-[#191917] text-white">
-      <div className="site-container grid gap-12 py-20 md:grid-cols-[0.9fr_1.1fr] md:items-center md:py-24">
+      <div className="site-container grid gap-10 py-14 md:grid-cols-[0.9fr_1.1fr] md:items-start md:py-16">
         <div>
           <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#888]">
             06 — Contact
@@ -103,9 +103,9 @@ export default function Contact() {
             {PEOPLE.map((person) => (
               <div
                 key={person.name}
-                className="grid grid-cols-[74px_1fr] gap-4 border-t border-[#3a3a36] py-4"
+                className="grid grid-cols-[66px_1fr] gap-4 border-t border-[#3a3a36] py-3"
               >
-                <div className="relative h-[64px] w-[64px] overflow-hidden">
+                <div className="relative h-[56px] w-[56px] overflow-hidden">
                   <Image
                     src={person.image}
                     alt={person.name}
@@ -140,7 +140,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="bg-[#242421] p-7 md:p-[38px]">
+        <div className="bg-[#242421] p-6 md:p-8">
           <h3 className="mb-2 font-[var(--font-manrope)] text-[30px] font-medium tracking-[-0.04em]">
             Project Brief
           </h3>
@@ -164,7 +164,7 @@ export default function Contact() {
               </button>
             </div>
           ) : (
-            <form onSubmit={onSubmit} className="grid gap-[18px] md:grid-cols-2">
+            <form onSubmit={onSubmit} className="grid gap-4 md:grid-cols-2">
               <div className="flex flex-col gap-2">
                 <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Name</label>
                 <input
@@ -265,7 +265,7 @@ export default function Contact() {
                   onChange={onChange}
                   required
                   placeholder="Tell us about the site, ambition, requirements and anything else we should know."
-                  className="mt-2 h-[115px] w-full resize-y border border-[#4a4a45] bg-transparent p-4 text-[13px] text-white outline-none placeholder:text-[#888]"
+                  className="mt-2 h-[95px] w-full resize-y border border-[#4a4a45] bg-transparent p-4 text-[13px] text-white outline-none placeholder:text-[#888]"
                 />
               </div>
 
