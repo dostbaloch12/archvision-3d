@@ -27,9 +27,9 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="py-[65px] pb-7 font-[var(--font-manrope)]">
-      <div className="flex flex-col justify-between gap-8 md:flex-row md:items-start">
-        <a href="/#top" aria-label="Utopian Design Studio home" className="block">
+    <footer className="min-h-[360px] w-full py-[65px] pb-7 font-[var(--font-manrope)]">
+      <div className="flex w-full flex-col justify-between gap-8 md:flex-row md:items-start">
+        <a href="/#top" aria-label="Utopian Design Studio home" className="mt-3 block md:mt-6">
           <LogoMark className="h-20 w-64" sizes="256px" />
         </a>
 
@@ -53,16 +53,6 @@ export default function Footer() {
           >
             utopiandesignstuido7@gmail.com
           </a>
-
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 border-b border-[#171715] pb-[6px] text-[10px] font-semibold uppercase tracking-[0.12em] text-[#171715] transition-colors duration-300 hover:text-[#77746c]"
-          >
-            <WhatsAppIcon />
-            WhatsApp
-          </a>
         </div>
 
         <div className="flex flex-col items-start gap-4">
@@ -82,7 +72,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-[60px] flex flex-col justify-between gap-4 border-t border-[#d7d3ca] pt-[18px] text-[9px] uppercase tracking-[0.1em] text-[#88847c] md:flex-row">
+      <div className="mt-[60px] flex w-full flex-col justify-between gap-4 border-t border-[#d7d3ca] pt-[18px] text-[9px] uppercase tracking-[0.1em] text-[#88847c] md:flex-row">
         <span>© {year} Utopian Design Studio</span>
         <span>Lahore · Pakistan</span>
       </div>
