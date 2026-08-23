@@ -18,12 +18,12 @@ export default function Navbar() {
             <LogoMark className="h-14 w-52" priority sizes="208px" />
           </a>
 
-          <div className="hidden gap-[30px] text-xs text-[#53514b] md:flex">
+          <div className="hidden gap-[30px] text-xs font-medium text-[#53514b] md:flex">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="transition-colors duration-300 hover:text-black"
+                className="font-[var(--font-manrope)] tracking-[0.04em] transition-colors duration-300 hover:text-black"
               >
                 {link.label}
               </a>
@@ -32,14 +32,14 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="hidden border-b border-[#171715] pb-[7px] text-[10px] font-semibold uppercase tracking-[0.13em] text-[#171715] transition-colors duration-300 hover:text-[#77746c] md:inline-flex"
+            className="hidden border-b border-[#171715] pb-[7px] font-[var(--font-manrope)] text-[10px] font-semibold uppercase tracking-[0.13em] text-[#171715] transition-colors duration-300 hover:text-[#77746c] md:inline-flex"
           >
             Start a Project ↗
           </a>
 
           <a
             href="#contact"
-            className="inline-flex border-b border-[#171715] pb-[7px] text-[10px] font-semibold uppercase tracking-[0.13em] text-[#171715] md:hidden"
+            className="inline-flex border-b border-[#171715] pb-[7px] font-[var(--font-manrope)] text-[10px] font-semibold uppercase tracking-[0.13em] text-[#171715] md:hidden"
           >
             Start ↗
           </a>
