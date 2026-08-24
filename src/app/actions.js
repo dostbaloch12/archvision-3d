@@ -14,6 +14,8 @@ function formatInquiryMessage(data) {
   return `
 New Utopian Design Studio inquiry
 
+Reply to client: ${data.email}
+
 Name: ${data.name}
 Email: ${data.email}
 Phone: ${data.phone || '—'}
