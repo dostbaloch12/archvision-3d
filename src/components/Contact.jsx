@@ -107,9 +107,10 @@ export default function Contact() {
       setStatus('error')
       setError(result?.error || 'Could not send. Please try again.')
     } catch (err) {
-      setStatus('error')
-      setError(err?.message || 'Network error. Please try again.')
-    }
+  console.error('Contact submit error:', err)
+  setStatus('error')
+  setError('Server error. Please check environment variables and try again.')
+}
   }
 
   const field =

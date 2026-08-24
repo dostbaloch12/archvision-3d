@@ -1,13 +1,73 @@
 'use server'
 
 import { headers } from 'next/headers'
+import { createClient } from '@supabase/supabase-js'
 import { contactSchema, journalSchema } from '@/lib/schema'
-import { supabase } from '@/lib/supabaseClient'
-import { checkRateLimit } from '@/lib/rateLimit'
+
+const REQUEST_LIMIT_WINDOW = 60_000
+const REQUEST_LIMIT_MAX = 3
+const rateStore = new Map()
+
+function checkRateLimit(identifier) {
+  const now = Date.now()
+  const record = rateStore.get(identifier)
+
+  if (!record || now - record.start > REQUEST_LIMIT_WINDOW) {
+    rateStore.set(identifier, { count: 1, start: now })
+    return { allowed: true }
+  }
+
+  if (record.count >= REQUEST_LIMIT_MAX) {
+    return { allowed: false }
+  }
+
+  record.count += 1
+  return { allowed: true }
+}
 
 function getIp() {
-  const headersList = headers()
-  return headersList.get('x-forwarded-for') || headersList.get('x-real-ip') || 'unknown'
+  try {
+    const headersList = headers()
+    return headersList.get('x-forwarded-for') || headersList.get('x-real-ip') || 'unknown'
+  } catch {
+    return 'unknown'
+  }
+}
+
+function getSupabaseClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (!url || !key) {
+    return {
+      client: null,
+      error: 'Supabase environment variables are missing.',
+    }
+  }
+
+  if (!url.startsWith('https://')) {
+    return {
+      client: null,
+      error: 'Supabase URL must start with https://',
+    }
+  }
+
+  try {
+    return {
+      client: createClient(url, key, {
+        auth: {
+          persistSession: false,
+          autoRefreshToken: false,
+        },
+      }),
+      error: '',
+    }
+  } catch (error) {
+    return {
+      client: null,
+      error: error.message || 'Could not create Supabase client.',
+    }
+  }
 }
 
 function formatInquiryMessage(data) {
@@ -89,44 +149,52 @@ async function sendWeb3FormsEmail(data) {
 }
 
 export async function submitContact(formData) {
-  const ip = getIp()
-  const { allowed } = checkRateLimit(`contact-${ip}`)
-
-  if (!allowed) {
-    return { success: false, error: 'Too many requests. Please try again in a minute.' }
-  }
-
-  const honeypot = formData.get('website')
-  if (honeypot) {
-    return { success: true }
-  }
-
-  const raw = {
-    name: formData.get('name') || '',
-    email: formData.get('email') || '',
-    phone: formData.get('phone') || '',
-    type: formData.get('type') || '',
-    budget: formData.get('budget') || '',
-    timeline: formData.get('timeline') || '',
-    location: formData.get('location') || '',
-    area: formData.get('area') || '',
-    message: formData.get('message') || '',
-  }
-
-  const parsed = contactSchema.safeParse(raw)
-
-  if (!parsed.success) {
-    return {
-      success: false,
-      error: parsed.error.errors[0]?.message || 'Invalid form data',
-    }
-  }
-
-  const data = parsed.data
-
   try {
+    const ip = getIp()
+    const { allowed } = checkRateLimit(`contact-${ip}`)
+
+    if (!allowed) {
+      return { success: false, error: 'Too many requests. Please try again in a minute.' }
+    }
+
+    const honeypot = formData.get('website')
+    if (honeypot) {
+      return { success: true }
+    }
+
+    const raw = {
+      name: formData.get('name') || '',
+      email: formData.get('email') || '',
+      phone: formData.get('phone') || '',
+      type: formData.get('type') || '',
+      budget: formData.get('budget') || '',
+      timeline: formData.get('timeline') || '',
+      location: formData.get('location') || '',
+      area: formData.get('area') || '',
+      message: formData.get('message') || '',
+    }
+
+    const parsed = contactSchema.safeParse(raw)
+
+    if (!parsed.success) {
+      return {
+        success: false,
+        error: parsed.error.errors[0]?.message || 'Invalid form data',
+      }
+    }
+
+    const data = parsed.data
+    const { client, error: clientError } = getSupabaseClient()
+
+    if (!client) {
+      return {
+        success: false,
+        error: clientError || 'Database connection failed.',
+      }
+    }
+
     const { error: dbError } = await withTimeout(
-      supabase.from('contact_messages').insert({
+      client.from('contact_messages').insert({
         name: data.name,
         email: data.email,
         phone: data.phone || null,
@@ -138,58 +206,68 @@ export async function submitContact(formData) {
         message: data.message,
       }),
       10000,
-      'Supabase insert'
+      'Database insert'
     )
 
     if (dbError) {
       console.error('Supabase contact error:', dbError)
       return {
         success: false,
-        error: `Supabase error: ${dbError.message}`,
+        error: `Database error: ${dbError.message}`,
       }
     }
+
+    const emailResult = await sendWeb3FormsEmail(data)
+
+    if (!emailResult.success) {
+      return {
+        success: true,
+        warning: 'Message saved, but email notification could not be sent.',
+      }
+    }
+
+    return { success: true }
   } catch (error) {
-    console.error('Supabase insert failed:', error)
+    console.error('submitContact fatal error:', error)
+
     return {
       success: false,
-      error: `Database error: ${error.message}`,
+      error: error.message || 'Server error. Please try again.',
     }
   }
-
-  const emailResult = await sendWeb3FormsEmail(data)
-
-  if (!emailResult.success) {
-    return {
-      success: true,
-      warning: 'Message saved, but email notification could not be sent.',
-    }
-  }
-
-  return { success: true }
 }
 
 export async function subscribeJournal(formData) {
-  const ip = getIp()
-  const { allowed } = checkRateLimit(`journal-${ip}`)
-
-  if (!allowed) {
-    return { success: false, error: 'Too many requests. Please wait a minute.' }
-  }
-
-  const parsed = journalSchema.safeParse({
-    email: formData.get('email') || '',
-  })
-
-  if (!parsed.success) {
-    return {
-      success: false,
-      error: parsed.error.errors[0]?.message || 'Invalid email',
-    }
-  }
-
   try {
+    const ip = getIp()
+    const { allowed } = checkRateLimit(`journal-${ip}`)
+
+    if (!allowed) {
+      return { success: false, error: 'Too many requests. Please wait a minute.' }
+    }
+
+    const parsed = journalSchema.safeParse({
+      email: formData.get('email') || '',
+    })
+
+    if (!parsed.success) {
+      return {
+        success: false,
+        error: parsed.error.errors[0]?.message || 'Invalid email',
+      }
+    }
+
+    const { client, error: clientError } = getSupabaseClient()
+
+    if (!client) {
+      return {
+        success: false,
+        error: clientError || 'Database connection failed.',
+      }
+    }
+
     const { error: dbError } = await withTimeout(
-      supabase.from('journal_subscribers').insert({ email: parsed.data.email }),
+      client.from('journal_subscribers').insert({ email: parsed.data.email }),
       10000,
       'Journal insert'
     )
@@ -200,15 +278,16 @@ export async function subscribeJournal(formData) {
       }
 
       console.error('Supabase journal error:', dbError)
-      return { success: false, error: `Supabase error: ${dbError.message}` }
+      return { success: false, error: `Database error: ${dbError.message}` }
     }
 
     return { success: true }
   } catch (error) {
-    console.error('Journal insert failed:', error)
+    console.error('subscribeJournal fatal error:', error)
+
     return {
       success: false,
-      error: `Database error: ${error.message}`,
+      error: error.message || 'Server error. Please try again.',
     }
   }
 }
