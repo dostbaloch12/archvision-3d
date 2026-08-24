@@ -36,6 +36,20 @@ const PEOPLE = [
   },
 ]
 
+const PROJECT_TYPES = [
+  'Residential Architecture',
+  'Commercial & Civic',
+  'Interior Architecture',
+  '3D Vision & Massing',
+  'Hospitality',
+  'Institutional',
+  'Mixed-Use',
+]
+
+const BUDGETS = ['To be discussed', 'Under $500k', '$500k — $2M', '$2M — $10M', '$10M+']
+
+const TIMELINES = ['Exploring', 'Within 6 months', '6 — 12 months', 'Already on site']
+
 const INITIAL = {
   name: '',
   email: '',
@@ -48,6 +62,15 @@ const INITIAL = {
   message: '',
 }
 
+function withTimeout(promise, ms = 15000) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      window.setTimeout(() => reject(new Error('Request timeout. Please try again.')), ms)
+    }),
+  ])
+}
+
 export default function Contact() {
   const [form, setForm] = useState(INITIAL)
   const [status, setStatus] = useState('idle')
@@ -57,6 +80,10 @@ export default function Contact() {
     const { name, value } = event.target
     setForm((prev) => ({ ...prev, [name]: value }))
     setError('')
+
+    if (status === 'error') {
+      setStatus('idle')
+    }
   }
 
   const onSubmit = async (event) => {
@@ -68,14 +95,20 @@ export default function Contact() {
     Object.entries(form).forEach(([key, value]) => fd.append(key, value))
     fd.append('website', '')
 
-    const result = await submitContact(fd)
+    try {
+      const result = await withTimeout(submitContact(fd), 15000)
 
-    if (result?.success) {
-      setStatus('success')
-      setForm(INITIAL)
-    } else {
+      if (result?.success) {
+        setStatus('success')
+        setForm(INITIAL)
+        return
+      }
+
       setStatus('error')
       setError(result?.error || 'Could not send. Please try again.')
+    } catch (err) {
+      setStatus('error')
+      setError(err?.message || 'Network error. Please try again.')
     }
   }
 
@@ -124,7 +157,9 @@ export default function Contact() {
                     {person.role}
                   </div>
 
-                  <p className="mt-[6px] text-[12px] leading-[1.55] text-[#aaa]">{person.copy}</p>
+                  <p className="mt-[6px] text-[12px] leading-[1.55] text-[#aaa]">
+                    {person.copy}
+                  </p>
 
                   {person.email ? (
                     <a
@@ -157,7 +192,10 @@ export default function Contact() {
 
               <button
                 type="button"
-                onClick={() => setStatus('idle')}
+                onClick={() => {
+                  setStatus('idle')
+                  setError('')
+                }}
                 className="mt-8 bg-white px-[22px] py-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#181816]"
               >
                 Send another
@@ -201,6 +239,7 @@ export default function Contact() {
                   name="location"
                   value={form.location}
                   onChange={onChange}
+                  required
                   className={field}
                 />
               </div>
@@ -210,24 +249,18 @@ export default function Contact() {
                   Project Type
                 </label>
                 <select name="type" value={form.type} onChange={onChange} className={field}>
-                  <option>Residential Architecture</option>
-                  <option>Commercial & Civic</option>
-                  <option>Interior Architecture</option>
-                  <option>3D Vision & Massing</option>
-                  <option>Hospitality</option>
-                  <option>Institutional</option>
-                  <option>Mixed-Use</option>
+                  {PROJECT_TYPES.map((type) => (
+                    <option key={type}>{type}</option>
+                  ))}
                 </select>
               </div>
 
               <div className="flex flex-col gap-2">
                 <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Budget</label>
                 <select name="budget" value={form.budget} onChange={onChange} className={field}>
-                  <option>To be discussed</option>
-                  <option>Under $500k</option>
-                  <option>$500k — $2M</option>
-                  <option>$2M — $10M</option>
-                  <option>$10M+</option>
+                  {BUDGETS.map((budget) => (
+                    <option key={budget}>{budget}</option>
+                  ))}
                 </select>
               </div>
 
@@ -241,10 +274,9 @@ export default function Contact() {
                   onChange={onChange}
                   className={field}
                 >
-                  <option>Exploring</option>
-                  <option>Within 6 months</option>
-                  <option>6 — 12 months</option>
-                  <option>Already on site</option>
+                  {TIMELINES.map((timeline) => (
+                    <option key={timeline}>{timeline}</option>
+                  ))}
                 </select>
               </div>
 
@@ -269,14 +301,24 @@ export default function Contact() {
                 />
               </div>
 
-              <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+              <input
+                type="text"
+                name="website"
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
 
-              {error ? <p className="text-sm text-[#ddd] md:col-span-2">{error}</p> : null}
+              {error ? (
+                <p className="text-sm text-[#ddd] md:col-span-2" role="alert" aria-live="polite">
+                  {error}
+                </p>
+              ) : null}
 
               <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="justify-self-start bg-white px-[22px] py-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#181816] disabled:opacity-70 md:col-span-2"
+                className="justify-self-start bg-white px-[22px] py-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#181816] disabled:cursor-wait disabled:opacity-70 md:col-span-2"
               >
                 {status === 'submitting' ? 'Sending...' : 'Send the brief ↗'}
               </button>
