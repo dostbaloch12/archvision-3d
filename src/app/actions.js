@@ -30,14 +30,27 @@ ${data.message}
 `
 }
 
+function withTimeout(promise, ms, label) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      setTimeout(() => reject(new Error(`${label} timeout`)), ms)
+    }),
+  ])
+}
+
 async function sendWeb3FormsEmail(data) {
   if (!process.env.WEB3FORMS_ACCESS_KEY) {
     return { success: true }
   }
 
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 8000)
+
   try {
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
+      signal: controller.signal,
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -58,6 +71,8 @@ async function sendWeb3FormsEmail(data) {
       }),
     })
 
+    clearTimeout(timeout)
+
     const result = await response.json()
 
     if (!response.ok || !result.success) {
@@ -67,6 +82,7 @@ async function sendWeb3FormsEmail(data) {
 
     return { success: true }
   } catch (error) {
+    clearTimeout(timeout)
     console.error('Web3Forms request failed:', error)
     return { success: false }
   }
@@ -108,21 +124,36 @@ export async function submitContact(formData) {
 
   const data = parsed.data
 
-  const { error: dbError } = await supabase.from('contact_messages').insert({
-    name: data.name,
-    email: data.email,
-    phone: data.phone || null,
-    project_type: data.type || null,
-    budget: data.budget || null,
-    timeline: data.timeline || null,
-    location: data.location || null,
-    area: data.area || null,
-    message: data.message,
-  })
+  try {
+    const { error: dbError } = await withTimeout(
+      supabase.from('contact_messages').insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || null,
+        project_type: data.type || null,
+        budget: data.budget || null,
+        timeline: data.timeline || null,
+        location: data.location || null,
+        area: data.area || null,
+        message: data.message,
+      }),
+      10000,
+      'Supabase insert'
+    )
 
-  if (dbError) {
-    console.error('Supabase contact error:', dbError.message)
-    return { success: false, error: 'Could not save your message. Please try again.' }
+    if (dbError) {
+      console.error('Supabase contact error:', dbError)
+      return {
+        success: false,
+        error: `Supabase error: ${dbError.message}`,
+      }
+    }
+  } catch (error) {
+    console.error('Supabase insert failed:', error)
+    return {
+      success: false,
+      error: `Database error: ${error.message}`,
+    }
   }
 
   const emailResult = await sendWeb3FormsEmail(data)
@@ -156,18 +187,28 @@ export async function subscribeJournal(formData) {
     }
   }
 
-  const { error: dbError } = await supabase
-    .from('journal_subscribers')
-    .insert({ email: parsed.data.email })
+  try {
+    const { error: dbError } = await withTimeout(
+      supabase.from('journal_subscribers').insert({ email: parsed.data.email }),
+      10000,
+      'Journal insert'
+    )
 
-  if (dbError) {
-    if (dbError.code === '23505') {
-      return { success: true }
+    if (dbError) {
+      if (dbError.code === '23505') {
+        return { success: true }
+      }
+
+      console.error('Supabase journal error:', dbError)
+      return { success: false, error: `Supabase error: ${dbError.message}` }
     }
 
-    console.error('Supabase journal error:', dbError.message)
-    return { success: false, error: 'Could not subscribe. Please try again.' }
+    return { success: true }
+  } catch (error) {
+    console.error('Journal insert failed:', error)
+    return {
+      success: false,
+      error: `Database error: ${error.message}`,
+    }
   }
-
-  return { success: true }
 }
