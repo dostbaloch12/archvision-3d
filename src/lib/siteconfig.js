@@ -1,3 +1,14 @@
+function normalizeUrl(value) {
+  const fallback = 'https://archvision-3d-ten.vercel.app'
+  const raw = value || fallback
+
+  if (raw.startsWith('http://') || raw.startsWith('https://')) {
+    return raw.replace(/\/$/, '')
+  }
+
+  return `https://${raw}`.replace(/\/$/, '')
+}
+
 export const siteConfig = {
   name: 'Utopian Design Studio',
   shortName: 'Utopian',
@@ -5,7 +16,7 @@ export const siteConfig = {
   location: 'Lahore, Pakistan',
   description:
     'Utopian Design Studio creates thoughtful architecture across residential, commercial, and hospitality projects—rooted in context, purpose, and detail.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://archvision-3d-ten.vercel.app',
+  url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL),
 
   contact: {
     email: 'utopiandesignstuido7@gmail.com',
