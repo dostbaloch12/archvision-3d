@@ -80,19 +80,6 @@ export default async function AdminPage({ searchParams }) {
             <div className="mx-auto max-w-7xl">
                 <header className="flex flex-col justify-between gap-5 border-b border-[#3a3a36] pb-6 md:flex-row md:items-end">
                     <div>
-                        <p className="mt-2 text-xs text-[#aaa]">
-                            Supabase URL: {process.env.NEXT_PUBLIC_SUPABASE_URL}
-                        </p>
-                        <p className="mt-2 text-xs text-[#aaa]">
-                            Admin key type:{' '}
-                            {process.env.SUPABASE_SERVICE_ROLE_KEY?.startsWith('sb_publishable_')
-                                ? 'WRONG: publishable key'
-                                : process.env.SUPABASE_SERVICE_ROLE_KEY?.startsWith('sb_secret_')
-                                    ? 'secret key'
-                                    : process.env.SUPABASE_SERVICE_ROLE_KEY?.startsWith('eyJ')
-                                        ? 'legacy service_role key'
-                                        : 'missing or unknown'}
-                        </p>
                         <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#aaa]">
                             Utopian Design Studio
                         </p>
