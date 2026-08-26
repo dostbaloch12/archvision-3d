@@ -1,9 +1,9 @@
-import AnchorScroll from '@/components/AnchorScroll'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import StudioIntro from '@/components/StudioIntro'
 import Services from '@/components/StackedServices'
 import ProjectShowcase from '@/components/ProjectShowcase'
+import SEOGrowthLinks from '@/components/SEOGrowthLinks'
 import Process from '@/components/Process'
 import About from '@/components/About'
 import Contact from '@/components/Contact'
@@ -12,7 +12,6 @@ import Footer from '@/components/Footer'
 export default function HomePage() {
   return (
     <>
-      <AnchorScroll />
       <Navbar />
 
       <main id="main" className="pt-[92px]">
@@ -23,6 +22,7 @@ export default function HomePage() {
 
         <Services />
         <ProjectShowcase />
+        <SEOGrowthLinks />
         <Process />
 
         <div className="site-container">

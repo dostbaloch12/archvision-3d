@@ -1,7 +1,8 @@
+import { localSeoPages } from '@/lib/localSeoData'
 import { seoProjects, seoServices } from '@/lib/seoData'
 
 export default function sitemap() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://archvision3d.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.utopiandesignstudio.com'
   const lastModified = new Date()
 
   const staticRoutes = [
@@ -39,5 +40,12 @@ export default function sitemap() {
     priority: 0.7,
   }))
 
-  return [...staticRoutes, ...serviceRoutes, ...projectRoutes]
+  const localRoutes = localSeoPages.map((page) => ({
+    url: `${baseUrl}/${page.slug}`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.85,
+  }))
+
+  return [...staticRoutes, ...localRoutes, ...serviceRoutes, ...projectRoutes]
 }
