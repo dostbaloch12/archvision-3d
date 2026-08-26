@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { submitContact } from '@/app/actions'
 
 const PEOPLE = [
@@ -9,30 +8,22 @@ const PEOPLE = [
     name: 'Zubair Ahmed',
     role: 'Chief Executive Officer',
     copy: 'Leads client strategy, studio direction and high-value residential commissions.',
-    image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80',
   },
   {
     name: 'Rasheed Ahmad',
     role: 'Design Director',
     copy: 'Concept design, architectural language and project quality control.',
     email: 'ar.rasheedahmad@gmail.com',
-    image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
   },
   {
     name: 'Ahmad Latif',
     role: 'Project Architect · Projects',
     copy: 'Coordinates technical drawings, consultant information and delivery documentation.',
-    image:
-      'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
   },
   {
     name: 'Zeeshan Haider',
     role: 'Senior 3D Visualizer · 3D Team',
     copy: 'Builds interactive models, daylight studies and cinematic presentation visuals.',
-    image:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
   },
 ]
 
@@ -60,6 +51,19 @@ const INITIAL = {
   timeline: 'Exploring',
   area: '',
   message: '',
+}
+
+function EmptyAvatar() {
+  return (
+    <div
+      className="relative flex h-[56px] w-[56px] shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#3a3a36]"
+      aria-hidden="true"
+    >
+      <div className="absolute top-[11px] h-[17px] w-[17px] rounded-full bg-[#5d5d57]" />
+      <div className="absolute bottom-[-8px] h-[34px] w-[38px] rounded-t-full bg-[#5d5d57]" />
+      <div className="absolute inset-0 rounded-full shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+    </div>
+  )
 }
 
 function withTimeout(promise, ms = 15000) {
@@ -107,10 +111,9 @@ export default function Contact() {
       setStatus('error')
       setError(result?.error || 'Could not send. Please try again.')
     } catch (err) {
-  console.error('Contact submit error:', err)
-  setStatus('error')
-  setError('Server error. Please check environment variables and try again.')
-}
+      setStatus('error')
+      setError(err?.message || 'Network error. Please try again.')
+    }
   }
 
   const field =
@@ -139,15 +142,7 @@ export default function Contact() {
                 key={person.name}
                 className="grid grid-cols-[66px_1fr] gap-4 border-t border-[#3a3a36] py-3"
               >
-                <div className="relative h-[56px] w-[56px] overflow-hidden">
-                  <Image
-                    src={person.image}
-                    alt={person.name}
-                    fill
-                    sizes="64px"
-                    className="object-cover grayscale"
-                  />
-                </div>
+                <EmptyAvatar />
 
                 <div>
                   <h3 className="font-[var(--font-manrope)] text-[19px] font-medium tracking-[-0.035em]">
@@ -165,7 +160,7 @@ export default function Contact() {
                   {person.email ? (
                     <a
                       href={`mailto:${person.email}`}
-                      className="mt-2 inline-block text-[11px] text-[#ddd] transition-colors duration-300 hover:text-white"
+                      className="mt-2 inline-block text-[12px] text-[#ddd] transition-colors duration-300 hover:text-white"
                     >
                       {person.email} ↗
                     </a>
