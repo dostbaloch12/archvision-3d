@@ -1,11 +1,11 @@
 export default function robots() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://archvision3d.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.utopiandesignstudio.com'
 
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/'],
+      disallow: ['/api/', '/admin/', '/admin/login/'],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   }
