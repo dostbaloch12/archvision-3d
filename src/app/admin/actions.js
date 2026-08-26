@@ -13,14 +13,23 @@ import { createSupabaseAdmin } from '@/lib/supabaseAdmin'
 export async function loginAdmin(formData) {
   const password = formData.get('password') || ''
 
-  try {
-    if (!verifyAdminPassword(password)) {
-      redirect('/admin/login?error=invalid')
-    }
+  let isValid = false
 
+  try {
+    isValid = verifyAdminPassword(password)
+  } catch (error) {
+    console.error('Admin password config error:', error)
+    redirect('/admin/login?error=config')
+  }
+
+  if (!isValid) {
+    redirect('/admin/login?error=invalid')
+  }
+
+  try {
     setAdminSession()
   } catch (error) {
-    console.error('Admin login error:', error)
+    console.error('Admin session config error:', error)
     redirect('/admin/login?error=config')
   }
 
