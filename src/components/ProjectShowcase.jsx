@@ -112,16 +112,7 @@ const SPANS = [
 
 function CloseIcon() {
   return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      aria-hidden="true"
-    >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
       <path d="M18 6 6 18" />
       <path d="m6 6 12 12" />
     </svg>
@@ -130,17 +121,7 @@ function CloseIcon() {
 
 function ArrowLeftIcon() {
   return (
-    <svg
-      width="17"
-      height="17"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="m12 19-7-7 7-7" />
       <path d="M19 12H5" />
     </svg>
@@ -149,17 +130,7 @@ function ArrowLeftIcon() {
 
 function ArrowRightIcon() {
   return (
-    <svg
-      width="17"
-      height="17"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M5 12h14" />
       <path d="m12 5 7 7-7 7" />
     </svg>
@@ -179,14 +150,14 @@ export default function ProjectShowcase() {
 
   const close = () => setActiveIndex(null)
 
-  const next = () => {
+  const goNext = () => {
     setActiveIndex((prev) => {
       if (prev === null) return null
       return (prev + 1) % visibleProjects.length
     })
   }
 
-  const prev = () => {
+  const goPrev = () => {
     setActiveIndex((prevIndex) => {
       if (prevIndex === null) return null
       return (prevIndex - 1 + visibleProjects.length) % visibleProjects.length
@@ -198,8 +169,8 @@ export default function ProjectShowcase() {
 
     const onKeyDown = (event) => {
       if (event.key === 'Escape') close()
-      if (event.key === 'ArrowRight') next()
-      if (event.key === 'ArrowLeft') prev()
+      if (event.key === 'ArrowRight') goNext()
+      if (event.key === 'ArrowLeft') goPrev()
     }
 
     document.documentElement.classList.add('overflow-hidden')
@@ -221,30 +192,26 @@ export default function ProjectShowcase() {
       <div className="site-container">
         <div className="mb-[52px] flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
-            <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#77746c]">
-              03 — Selected Work
-            </div>
-            <h2 className="mt-4 font-[var(--font-manrope)] text-[clamp(42px,5vw,66px)] font-medium tracking-[-0.05em]">
-              All Projects
-            </h2>
+            <div className="type-label text-[#77746c]">03 — Selected Work</div>
+            <h2 className="type-h2 mt-4">All Projects</h2>
           </div>
-          <p className="max-w-[350px] text-[13px] leading-[1.6] text-[#77746c]">
+          <p className="max-w-[350px] text-[15px] leading-[1.7] text-[#77746c]">
             A growing body of architectural work across residential, commercial, hospitality,
             institutional and mixed-use environments.
           </p>
         </div>
 
-        <div className="mb-[35px] flex gap-[25px] overflow-auto whitespace-nowrap text-[10px] uppercase tracking-[0.1em] text-[#77746c]">
+        <div className="mb-[35px] flex flex-wrap gap-2">
           {FILTERS.map((filter) => (
             <button
               key={filter}
               type="button"
               onClick={() => onFilter(filter)}
               aria-pressed={activeFilter === filter}
-              className={`pb-[6px] transition-colors duration-300 ${
+              className={`border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 ${
                 activeFilter === filter
-                  ? 'border-b border-[#171715] text-[#171715]'
-                  : 'hover:text-[#171715]'
+                  ? 'border-[#171715] bg-[#171715] text-white'
+                  : 'border-[#d7d3ca] text-[#77746c] hover:border-[#171715] hover:text-[#171715]'
               }`}
             >
               {filter}
@@ -273,7 +240,7 @@ export default function ProjectShowcase() {
                 <h3 className="font-[var(--font-manrope)] text-[25px] font-medium">
                   {project.title}
                 </h3>
-                <p className="mt-[7px] text-[9px] uppercase tracking-[0.15em]">
+                <p className="mt-[7px] text-[12px] font-medium tracking-[0.08em]">
                   {project.category} · {project.location}
                 </p>
               </div>
@@ -283,15 +250,10 @@ export default function ProjectShowcase() {
       </div>
 
       {activeProject ? (
-        <div
-          className="fixed inset-0 z-[90] bg-[#191917]"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${activeProject.title} project details`}
-        >
+        <div className="fixed inset-0 z-[90] bg-[#191917]" role="dialog" aria-modal="true">
           <div className="flex h-full flex-col">
             <div className="site-container flex h-[86px] items-center justify-between border-b border-[#3b3b37] text-white">
-              <p className="text-[10px] uppercase tracking-[0.18em] text-[#aaa]">
+              <p className="type-meta text-[#aaa]">
                 {String(activeIndex + 1).padStart(2, '0')} /{' '}
                 {String(visibleProjects.length).padStart(2, '0')}
               </p>
@@ -320,7 +282,7 @@ export default function ProjectShowcase() {
 
               <aside className="flex flex-col justify-between bg-[#242421] p-8 text-white">
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-[#aaa]">
+                  <p className="type-meta text-[#aaa]">
                     {activeProject.category} · {activeProject.year}
                   </p>
                   <h3 className="mt-4 font-[var(--font-manrope)] text-[38px] font-medium leading-none tracking-[-0.04em]">
@@ -336,7 +298,7 @@ export default function ProjectShowcase() {
                   <div className="mb-6 flex gap-3">
                     <button
                       type="button"
-                      onClick={prev}
+                      onClick={goPrev}
                       aria-label="Previous project"
                       className="inline-flex h-11 w-11 items-center justify-center border border-[#44433f] transition-colors duration-300 hover:border-white"
                     >
@@ -344,7 +306,7 @@ export default function ProjectShowcase() {
                     </button>
                     <button
                       type="button"
-                      onClick={next}
+                      onClick={goNext}
                       aria-label="Next project"
                       className="inline-flex h-11 w-11 items-center justify-center border border-[#44433f] transition-colors duration-300 hover:border-white"
                     >
@@ -353,7 +315,7 @@ export default function ProjectShowcase() {
                   </div>
 
                   <a href="#contact" onClick={close} className="editorial-button bg-white !text-[#181816]">
-                    Start Similar Project ↗
+                    Start similar project ↗
                   </a>
                 </div>
               </aside>

@@ -7,6 +7,7 @@
   --paper: #eeece6;
   --ink: #171715;
   --muted: #77746c;
+  --soft: #aaa69e;
   --line: #d7d3ca;
   --dark: #191917;
   --white: #ffffff;
@@ -17,13 +18,7 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   scroll-padding-top: 96px;
-  font-size: 17px;
-}
-
-@media (max-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+  font-size: 16px;
 }
 
 body {
@@ -127,14 +122,58 @@ select {
 
 @layer components {
   .site-container {
-    width: min(1440px, calc(100% - 72px));
+    width: min(1380px, calc(100% - 80px));
     margin-inline: auto;
   }
 
   @media (max-width: 950px) {
     .site-container {
-      width: calc(100% - 34px);
+      width: calc(100% - 40px);
     }
+  }
+
+  .type-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em];
+  }
+
+  .type-meta {
+    @apply text-[12px] font-medium tracking-[0.08em];
+  }
+
+  .type-small {
+    @apply text-[13px] leading-[1.65];
+  }
+
+  .type-body {
+    @apply text-[15px] leading-[1.75];
+  }
+
+  .type-body-lg {
+    @apply text-[17px] leading-[1.75];
+  }
+
+  .type-h2 {
+    @apply font-[var(--font-manrope)] text-[clamp(42px,5vw,66px)] font-medium leading-[1.02] tracking-[-0.05em];
+  }
+
+  .type-h3 {
+    @apply font-[var(--font-manrope)] text-[24px] font-medium leading-[1.08] tracking-[-0.04em];
+  }
+
+  .text-ui-main {
+    color: #171715;
+  }
+
+  .text-ui-muted {
+    color: #77746c;
+  }
+
+  .text-ui-soft {
+    color: #aaa69e;
+  }
+
+  .text-ui-invert {
+    color: #ffffff;
   }
 
   .editorial-button {
@@ -144,7 +183,7 @@ select {
     gap: 14px;
     background: #171715;
     color: #ffffff;
-    padding: 18px 24px;
+    padding: 17px 22px;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.13em;
@@ -160,11 +199,31 @@ select {
     transform: translateY(1px);
   }
 
+  .editorial-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #aaa69e;
+    padding: 13px 18px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #171715;
+    transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+  }
+
+  .editorial-ghost:hover {
+    border-color: #171715;
+    background: #171715;
+    color: white;
+  }
+
   .editorial-textlink {
     display: inline-flex;
     align-items: center;
     border-bottom: 1px solid #171715;
-    padding-bottom: 8px;
+    padding-bottom: 7px;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -177,162 +236,17 @@ select {
     color: #77746c;
     border-color: #77746c;
   }
-
-  .btn-glow {
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1em 1.9em;
-    min-width: 160px;
-    min-height: 50px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 0;
-    background-size: 280% auto;
-    background-position: left top;
-    transition:
-      background-position 0.8s ease,
-      box-shadow 0.5s ease,
-      transform 0.4s ease,
-      filter 0.4s ease;
-  }
-
-  .btn-glow:hover {
-    background-position: right top;
-    filter: saturate(1.02);
-  }
-
-  .btn-glow:active {
-    transform: translateY(1px) scale(0.99);
-  }
-
-  .btn-glow:disabled {
-    cursor: wait;
-    opacity: 0.7;
-  }
-
-  .btn-olive,
-  .btn-blush {
-    color: #f6f4ef;
-    background-image: linear-gradient(325deg, #44433f 0%, #77736b 55%, #44433f 90%);
-    box-shadow:
-      0 5px 12px -6px rgba(68, 67, 63, 0.4),
-      inset 3px 3px 8px rgba(246, 244, 239, 0.12),
-      inset -3px -3px 8px rgba(68, 67, 63, 0.35);
-  }
-
-  .btn-forest,
-  .btn-plum {
-    color: #44433f;
-    background-image: linear-gradient(325deg, #c7c3bb 0%, #f6f4ef 55%, #c8c4bc 90%);
-    box-shadow:
-      0 5px 12px -6px rgba(68, 67, 63, 0.25),
-      inset 3px 3px 8px rgba(255, 255, 255, 0.55),
-      inset -3px -3px 8px rgba(200, 196, 188, 0.45);
-  }
-
-  .btn-ghost {
-    color: #44433f;
-    background-image: linear-gradient(
-      325deg,
-      transparent 0%,
-      rgba(200, 196, 188, 0.28) 55%,
-      transparent 90%
-    );
-    box-shadow: inset 0 0 0 1px rgba(68, 67, 63, 0.45);
-  }
-
-  .btn-ghost:hover {
-    color: #f6f4ef;
-    background-image: linear-gradient(325deg, #44433f 0%, #77736b 55%, #44433f 90%);
-    box-shadow: inset 0 0 0 1px rgba(68, 67, 63, 1);
-  }
 }
 
-/* Page-like section alignment for fixed navbar */
-#top,
-#studio,
-#services,
-#projects,
-#process,
-#about,
-#contact {
-  scroll-margin-top: 92px;
-  min-height: calc(100svh - 92px);
-}
-
-/* Sections with inner containers should visually fill one viewport */
-#studio,
-#about {
-  display: grid;
-  align-content: center;
-}
-
-/* Full-width sections should feel like complete pages */
-#services,
-#projects,
-#process,
-#contact {
-  display: block;
-}
-
-/* Better section entry spacing */
-#services,
-#projects,
-#process,
-#contact {
-  padding-top: clamp(80px, 10vh, 120px);
-  padding-bottom: clamp(80px, 10vh, 120px);
-}
-
-/* Prevent anchor targets from feeling cramped */
-#studio,
-#about {
-  padding-top: clamp(80px, 10vh, 120px);
-  padding-bottom: clamp(80px, 10vh, 120px);
-}
-
-/* Mobile: content can naturally flow, no forced full-height except hero */
-@media (max-width: 768px) {
-  #studio,
-  #services,
-  #projects,
-  #process,
-  #about,
-  #contact {
-    min-height: auto;
-    scroll-margin-top: 92px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  #top {
-    min-height: calc(100svh - 92px);
-  }
-}
-
-/* Fix page-like anchor view for Services and Contact */
-#services,
-#contact {
-  scroll-margin-top: 92px;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-#services > .site-container,
-#contact > .site-container {
-  min-height: calc(100svh - 92px);
-  display: grid;
-  align-content: center;
-}
-
-@media (max-width: 768px) {
-  #services > .site-container,
-  #contact > .site-container {
-    min-height: auto;
-    display: block;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

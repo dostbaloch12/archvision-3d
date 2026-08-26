@@ -18,7 +18,7 @@ export default function Navbar() {
             <LogoMark className="h-14 w-52" priority sizes="208px" />
           </a>
 
-          <div className="hidden gap-[34px] text-[13px] font-medium text-[#53514b] md:flex">
+          <div className="hidden gap-[30px] text-[13px] font-medium text-[#53514b] md:flex">
             {links.map((link) => (
               <a
                 key={link.href}
@@ -30,16 +30,13 @@ export default function Navbar() {
             ))}
           </div>
 
-          <a
-            href="#contact"
-            className="hidden border-b border-[#171715] pb-[7px] font-[var(--font-manrope)] text-[10px] font-semibold uppercase tracking-[0.13em] text-[#171715] transition-colors duration-300 hover:text-[#77746c] md:inline-flex"
-          >
-            Start a Project ↗
+          <a href="#contact" className="editorial-button hidden md:inline-flex">
+            Start a project ↗
           </a>
 
           <a
             href="#contact"
-            className="inline-flex border-b border-[#171715] pb-[7px] font-[var(--font-manrope)] text-[10px] font-semibold uppercase tracking-[0.13em] text-[#171715] md:hidden"
+            className="inline-flex border-b border-[#171715] pb-[7px] text-[11px] font-semibold tracking-[0.08em] text-[#171715] md:hidden"
           >
             Start ↗
           </a>

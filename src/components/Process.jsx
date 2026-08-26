@@ -37,36 +37,32 @@ export default function Process() {
       <div className="site-container py-[110px]">
         <div className="mb-[52px] flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
-            <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#77746c]">
-              04 — Process
-            </div>
-            <h2 className="mt-4 font-[var(--font-manrope)] text-[clamp(42px,5vw,66px)] font-medium tracking-[-0.05em]">
-              How a project takes shape.
-            </h2>
+            <div className="type-label text-[#77746c]">04 — Process</div>
+            <h2 className="type-h2 mt-4">How a project takes shape.</h2>
           </div>
-          <p className="max-w-[350px] text-[13px] leading-[1.6] text-[#77746c]">
+          <p className="max-w-[420px] text-[15px] leading-[1.7] text-[#77746c]">
             A clear, considered process—from the first conversation to final handover. We bring
             together design, technical expertise, and execution.
           </p>
         </div>
 
-        <div className="grid border-t border-[#d7d3ca] md:grid-cols-5">
+        <div className="grid gap-0 border-t border-[#d7d3ca] md:grid-cols-2 lg:grid-cols-3">
           {STEPS.map((step) => (
             <article
               key={step.number}
-              className="border-b border-[#d7d3ca] py-[30px] pr-[22px] md:mr-[22px] md:border-b-0 md:border-r"
+              className="border-b border-[#d7d3ca] py-[30px] pr-[22px] md:border-r md:pr-8"
             >
-              <span className="text-[10px] uppercase tracking-[0.12em] text-[#77746c]">
-                {step.number}
-              </span>
-              <h3 className="my-[38px] mb-3 font-[var(--font-manrope)] text-[23px] font-medium">
+              <span className="type-meta text-[#77746c]">{step.number}</span>
+              <h3 className="my-[32px] mb-3 font-[var(--font-manrope)] text-[24px] font-medium">
                 {step.title}
               </h3>
-              <p className="min-h-[88px] text-[14px] leading-[1.7] text-[#77746c]">{step.copy}</p>
+              <p className="min-h-[88px] text-[14px] leading-[1.7] text-[#77746c]">
+                {step.copy}
+              </p>
 
               <ul className="mt-5 border-t border-[#d7d3ca] pt-[17px]">
                 {step.list.map((item) => (
-                  <li key={item} className="my-2 text-[11px] text-[#55524b]">
+                  <li key={item} className="my-2 text-[13px] leading-[1.55] text-[#55524b]">
                     — {item}
                   </li>
                 ))}

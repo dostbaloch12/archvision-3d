@@ -7,7 +7,7 @@ export default function Hero() {
       className="grid min-h-[780px] grid-cols-1 items-center gap-12 py-[75px] md:grid-cols-[0.9fr_1.1fr] md:gap-[7%]"
     >
       <div>
-        <div className="mb-[30px] text-[10px] font-semibold uppercase tracking-[0.19em] text-[#77746d]">
+        <div className="mb-[30px] text-[11px] font-semibold uppercase tracking-[0.16em] text-[#77746d]">
           Architecture & Design — Lahore, Pakistan
         </div>
 
@@ -21,13 +21,13 @@ export default function Hero() {
           purpose, and detail.
         </p>
 
-        <div className="mt-[39px] flex flex-wrap items-center gap-[27px]">
+        <div className="mt-[39px] flex flex-wrap items-center gap-[18px]">
           <a href="#projects" className="editorial-button">
-            Explore Projects ↗
+            Explore projects ↗
           </a>
 
-          <a href="#contact" className="editorial-textlink">
-            Start a Commission
+          <a href="#contact" className="editorial-ghost">
+            Start a commission
           </a>
         </div>
       </div>
@@ -46,8 +46,8 @@ export default function Hero() {
           className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.035]"
         />
         <div className="absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-t from-black/45 to-transparent" />
-        <span className="absolute bottom-5 left-[22px] z-[2] text-[10px] font-semibold uppercase tracking-[0.13em] text-white">
-          Selected Work / 01
+        <span className="absolute bottom-5 left-[22px] z-[2] text-[12px] font-medium tracking-[0.06em] text-white">
+          Selected work / 01
         </span>
       </a>
     </section>

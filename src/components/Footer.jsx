@@ -27,8 +27,8 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="min-h-[360px] w-full py-[65px] pb-7 font-[var(--font-manrope)]">
-      <div className="flex w-full flex-col justify-between gap-8 md:flex-row md:items-start">
+    <footer className="py-[65px] pb-7 font-[var(--font-manrope)]">
+      <div className="flex flex-col justify-between gap-8 md:flex-row md:items-start">
         <a href="/#top" aria-label="Utopian Design Studio home" className="mt-3 block md:mt-6">
           <LogoMark className="h-20 w-64" sizes="256px" />
         </a>
@@ -40,10 +40,7 @@ export default function Footer() {
           <br />
           7CC, DHA PHASE 4 · LAHORE
           <br />
-          <a
-            href="tel:+923013918872"
-            className="transition-colors duration-300 hover:text-[#171715]"
-          >
+          <a href="tel:+923013918872" className="transition-colors duration-300 hover:text-[#171715]">
             +92 301 3918872
           </a>
           <br />
@@ -57,14 +54,14 @@ export default function Footer() {
 
         <div className="flex flex-col items-start gap-4">
           <a href="#contact" className="editorial-button">
-            Start a Project ↗
+            Start a project ↗
           </a>
 
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border-b border-[#171715] pb-[7px] text-[10px] font-semibold uppercase tracking-[0.13em] text-[#171715] transition-colors duration-300 hover:text-[#77746c]"
+            className="inline-flex items-center gap-2 border-b border-[#171715] pb-[7px] text-[11px] font-semibold tracking-[0.08em] text-[#171715] transition-colors duration-300 hover:text-[#77746c]"
           >
             <WhatsAppIcon />
             Chat on WhatsApp
@@ -72,7 +69,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-[60px] flex w-full flex-col justify-between gap-4 border-t border-[#d7d3ca] pt-[18px] text-[9px] uppercase tracking-[0.1em] text-[#88847c] md:flex-row">
+      <div className="mt-[60px] flex flex-col justify-between gap-4 border-t border-[#d7d3ca] pt-[18px] text-[12px] font-medium tracking-[0.06em] text-[#88847c] md:flex-row">
         <span>© {year} Utopian Design Studio</span>
         <span>Lahore · Pakistan</span>
       </div>

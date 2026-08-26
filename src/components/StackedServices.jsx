@@ -37,9 +37,7 @@ export default function StackedServices() {
       <div className="site-container py-14 md:py-16">
         <div className="mb-9 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#888]">
-              02 — Services
-            </div>
+            <div className="type-label text-[#888]">02 — Services</div>
 
             <h2 className="mt-4 max-w-[720px] font-[var(--font-manrope)] text-[clamp(46px,5.4vw,72px)] font-medium leading-[0.95] tracking-[-0.06em]">
               From concept to completion.
@@ -56,15 +54,15 @@ export default function StackedServices() {
           {SERVICES.map((service) => (
             <div
               key={service.number}
-              className="grid items-start border-t border-[#3b3b37] py-4 md:grid-cols-[70px_0.9fr_1.1fr] md:items-center"
+              className="grid items-start gap-4 border-t border-[#3b3b37] py-4 md:grid-cols-[56px_280px_minmax(0,1fr)] md:items-center"
             >
-              <span className="text-[11px] text-[#777]">{service.number}</span>
+              <span className="text-[12px] text-[#777]">{service.number}</span>
 
               <h3 className="mt-2 font-[var(--font-manrope)] text-[26px] font-medium tracking-[-0.04em] md:mt-0">
                 {service.title}
               </h3>
 
-              <p className="mt-3 max-w-[520px] text-[14px] leading-[1.7] text-[#aaa] md:mt-0">
+              <p className="mt-3 max-w-[520px] text-[15px] leading-[1.7] text-[#aaa] md:mt-0">
                 {service.copy}
               </p>
             </div>
