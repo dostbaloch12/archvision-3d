@@ -4,6 +4,7 @@ import StudioIntro from '@/components/StudioIntro'
 import Services from '@/components/StackedServices'
 import ProjectShowcase from '@/components/ProjectShowcase'
 import SEOGrowthLinks from '@/components/SEOGrowthLinks'
+import BlogPreview from '@/components/BlogPreview'
 import Process from '@/components/Process'
 import About from '@/components/About'
 import Contact from '@/components/Contact'
@@ -23,6 +24,7 @@ export default function HomePage() {
         <Services />
         <ProjectShowcase />
         <SEOGrowthLinks />
+        <BlogPreview />
         <Process />
 
         <div className="site-container">

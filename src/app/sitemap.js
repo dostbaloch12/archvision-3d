@@ -1,3 +1,4 @@
+import { blogPosts } from '@/lib/blogData'
 import { localSeoPages } from '@/lib/localSeoData'
 import { seoProjects, seoServices } from '@/lib/seoData'
 
@@ -13,6 +14,12 @@ export default function sitemap() {
       priority: 1,
     },
     {
+      url: `${baseUrl}/blog`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.75,
+    },
+    {
       url: `${baseUrl}/privacy`,
       lastModified,
       changeFrequency: 'yearly',
@@ -25,6 +32,13 @@ export default function sitemap() {
       priority: 0.3,
     },
   ]
+
+  const localRoutes = localSeoPages.map((page) => ({
+    url: `${baseUrl}/${page.slug}`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.85,
+  }))
 
   const serviceRoutes = seoServices.map((service) => ({
     url: `${baseUrl}/services/${service.slug}`,
@@ -40,12 +54,12 @@ export default function sitemap() {
     priority: 0.7,
   }))
 
-  const localRoutes = localSeoPages.map((page) => ({
-    url: `${baseUrl}/${page.slug}`,
+  const blogRoutes = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
     lastModified,
     changeFrequency: 'monthly',
-    priority: 0.85,
+    priority: 0.65,
   }))
 
-  return [...staticRoutes, ...localRoutes, ...serviceRoutes, ...projectRoutes]
+  return [...staticRoutes, ...localRoutes, ...serviceRoutes, ...projectRoutes, ...blogRoutes]
 }
