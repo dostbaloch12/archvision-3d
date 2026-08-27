@@ -121,7 +121,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="scroll-mt-[92px] bg-[#191917] text-white">
-      <div className="site-container grid gap-10 py-14 md:grid-cols-[0.9fr_1.1fr] md:items-start md:py-16">
+      <div className="site-container grid gap-10 pb-10 pt-4 md:grid-cols-[0.9fr_1.1fr] md:items-start md:pb-12 md:pt-5">
         <div>
           <div className="text-[10px] font-semibold uppercase tracking-[0.17em] !text-[#888]">
             06 — Contact
@@ -131,12 +131,12 @@ export default function Contact() {
             Contact the Studio
           </h2>
 
-          <p className="mt-6 max-w-[440px] text-[15px] leading-[1.75] !text-[#aaa]">
+          <p className="mt-6 max-w-[520px] text-[15px] leading-[1.75] !text-[#aaa]">
             Speak directly with the people shaping the work. Choose the right contact or send a
             project brief. No account needed.
           </p>
 
-          <div className="mt-10">
+          <div className="mt-8">
             {PEOPLE.map((person) => (
               <div
                 key={person.name}

@@ -309,3 +309,14 @@ select {
     height: auto;
   }
 }
+
+#contact {
+  scroll-margin-top: 92px;
+  min-height: auto !important;
+}
+
+#contact > .site-container {
+  min-height: auto !important;
+  height: auto !important;
+  align-content: start !important;
+}
