@@ -1,70 +1,96 @@
 const STEPS = [
   {
-    number: '01 — Brief',
+    number: '01',
+    label: 'Brief',
     title: 'Understanding',
     copy: 'Understanding the site, requirements, vision, and project goals.',
-    list: ['Site & Context', 'Project Brief', 'Scope & Proposal'],
+    items: ['Site & Context', 'Project Brief', 'Scope & Proposal'],
   },
   {
-    number: '02 — Concept',
+    number: '02',
+    label: 'Concept',
     title: 'Shaping',
     copy: 'Shaping the idea through planning, form, space, and material.',
-    list: ['Concept Design', 'Spatial Planning', 'Design Direction'],
+    items: ['Concept Design', 'Spatial Planning', 'Design Direction'],
   },
   {
-    number: '03 — Development',
+    number: '03',
+    label: 'Development',
     title: 'Refining',
     copy: 'Refining every element into a coordinated and buildable design.',
-    list: ['Detailed Design', 'Material Selection', 'Working Drawings'],
+    items: ['Detailed Design', 'Material Selection', 'Working Drawings'],
   },
   {
-    number: '04 — Execution',
+    number: '04',
+    label: 'Execution',
     title: 'Building',
     copy: 'Bringing the design to life with careful coordination and quality control.',
-    list: ['Site Coordination', 'Contractor Management', 'Quality Control'],
+    items: ['Site Coordination', 'Contractor Management', 'Quality Control'],
   },
   {
-    number: '05 — Handover',
+    number: '05',
+    label: 'Handover',
     title: 'Completing',
     copy: 'Completing the project with attention to detail, ready for use and enjoyment.',
-    list: ['Final Inspection', 'Finishing & Snagging', 'Project Handover'],
+    items: ['Final Inspection', 'Finishing & Snagging', 'Project Handover'],
   },
 ]
 
 export default function Process() {
   return (
-    <section id="process" className="bg-[#eeece6]">
-      <div className="site-container py-[110px]">
-        <div className="mb-[52px] flex flex-col justify-between gap-8 md:flex-row md:items-end">
+    <section
+      id="process"
+      className="relative scroll-mt-[92px] overflow-hidden bg-[#171815] text-white"
+      aria-labelledby="process-heading"
+    >
+      <div className="site-container flex h-[calc(100svh-92px)] flex-col justify-start pb-4 pt-3 md:pb-5 md:pt-4">
+        <div className="grid shrink-0 gap-8 md:grid-cols-[1fr_430px] md:items-start">
           <div>
-            <div className="type-label text-[#77746c]">04 — Process</div>
-            <h2 className="type-h2 mt-4">How a project takes shape.</h2>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] !text-[#77746c]">
+              04 — Process
+            </p>
+
+            <h2
+              id="process-heading"
+              className="mt-3 max-w-none whitespace-nowrap font-[var(--font-manrope)] text-[clamp(44px,5.1vw,78px)] font-medium leading-[0.94] tracking-[-0.072em] !text-white"
+            >
+              How a project takes shape.
+            </h2>
           </div>
-          <p className="max-w-[420px] text-[15px] leading-[1.7] text-[#77746c]">
-            A clear, considered process—from the first conversation to final handover. We bring
-            together design, technical expertise, and execution.
+
+          <p className="pt-[42px] text-[14px] leading-[1.45] tracking-[-0.02em] !text-[#77746c] md:pt-[46px]">
+            A clear, considered process — from first conversation
+            <br />
+            to final handover with clarity and purpose.
           </p>
         </div>
 
-        <div className="grid gap-0 border-t border-[#d7d3ca] md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-7 min-h-0 flex-1 border-t border-[#30302c]">
           {STEPS.map((step) => (
             <article
               key={step.number}
-              className="border-b border-[#d7d3ca] py-[30px] pr-[22px] md:border-r md:pr-8"
+              className="grid gap-3 border-b border-[#30302c] py-[13px] transition-colors duration-300 hover:bg-white/[0.025] md:grid-cols-[60px_0.34fr_0.56fr_0.62fr] md:items-start"
             >
-              <span className="type-meta text-[#77746c]">{step.number}</span>
-              <h3 className="my-[32px] mb-3 font-[var(--font-manrope)] text-[24px] font-medium">
-                {step.title}
-              </h3>
-              <p className="min-h-[88px] text-[14px] leading-[1.7] text-[#77746c]">
+              <span className="text-[11px] font-medium tracking-[0.08em] !text-[#77746c]">
+                {step.number}
+              </span>
+
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] !text-[#77746c]">
+                  {step.label}
+                </p>
+                <h3 className="mt-1 font-[var(--font-manrope)] text-[23px] font-medium leading-[1.05] tracking-[-0.055em] !text-white md:text-[25px]">
+                  {step.title}
+                </h3>
+              </div>
+
+              <p className="max-w-[430px] text-[13px] leading-[1.5] tracking-[-0.02em] !text-[#aaa]">
                 {step.copy}
               </p>
 
-              <ul className="mt-5 border-t border-[#d7d3ca] pt-[17px]">
-                {step.list.map((item) => (
-                  <li key={item} className="my-2 text-[13px] leading-[1.55] text-[#55524b]">
-                    — {item}
-                  </li>
+              <ul className="space-y-0.5 text-[12px] leading-[1.45] !text-[#77746c]">
+                {step.items.map((item) => (
+                  <li key={item}>— {item}</li>
                 ))}
               </ul>
             </article>

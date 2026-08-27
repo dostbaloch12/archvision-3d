@@ -291,3 +291,21 @@ select {
     overflow: visible;
   }
 }
+
+#process {
+  scroll-margin-top: 92px;
+}
+
+#process > .site-container {
+  height: calc(100svh - 92px);
+}
+
+@media (max-width: 768px) {
+  #process {
+    overflow: visible;
+  }
+
+  #process > .site-container {
+    height: auto;
+  }
+}
