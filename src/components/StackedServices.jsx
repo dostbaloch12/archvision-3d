@@ -38,7 +38,7 @@ export default function StackedServices() {
       className="relative scroll-mt-[92px] overflow-hidden bg-[#171815] text-white"
       aria-labelledby="services-heading"
     >
-      <div className="site-container flex min-h-[calc(100svh-92px)] flex-col justify-start pt-3 pb-5 md:pt-4 md:pb-6">
+      <div className="site-container flex min-h-[calc(100svh-92px)] flex-col justify-start pb-5 pt-3 md:pb-6 md:pt-4">
         <div className="grid gap-8 md:grid-cols-[1.45fr_0.55fr] md:items-start">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] !text-[#77746c]">
@@ -53,7 +53,7 @@ export default function StackedServices() {
             </h2>
           </div>
 
-          <p className="max-w-[470px] pt-[56px] text-[15px] leading-[1.55] tracking-[-0.02em] !text-[#77746c]">
+          <p className="max-w-[660px] pt-[46px] text-[17px] leading-[1.45] tracking-[-0.03em] !text-[#77746c] md:pt-[58px]">
             Integrated architectural, interior, planning, development, and turnkey solutions across
             multiple project types.
           </p>
