@@ -53,9 +53,10 @@ export default function StackedServices() {
             </h2>
           </div>
 
-          <p className="max-w-[660px] pt-[46px] text-[17px] leading-[1.45] tracking-[-0.03em] !text-[#77746c] md:pt-[58px]">
-            Integrated architectural, interior, planning, development, and turnkey solutions across
-            multiple project types.
+          <p className="max-w-[760px] pt-[24px] text-[17px] leading-[1.45] tracking-[-0.03em] !text-[#77746c] md:pt-[34px]">
+            Integrated architectural, interior, planning, development,
+            <br />
+            and turnkey solutions across multiple project types.
           </p>
         </div>
 
