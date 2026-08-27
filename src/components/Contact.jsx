@@ -59,9 +59,9 @@ function EmptyAvatar() {
       className="relative flex h-[56px] w-[56px] shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#3a3a36]"
       aria-hidden="true"
     >
-      <div className="absolute top-[11px] h-[17px] w-[17px] rounded-full bg-[#5d5d57]" />
-      <div className="absolute bottom-[-8px] h-[34px] w-[38px] rounded-t-full bg-[#5d5d57]" />
-      <div className="absolute inset-0 rounded-full shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+      <div className="absolute top-[11px] h-[17px] w-[17px] rounded-full bg-[#73736c]" />
+      <div className="absolute bottom-[-8px] h-[34px] w-[38px] rounded-t-full bg-[#73736c]" />
+      <div className="absolute inset-0 rounded-full shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]" />
     </div>
   )
 }
@@ -123,15 +123,15 @@ export default function Contact() {
     <section id="contact" className="scroll-mt-[92px] bg-[#191917] text-white">
       <div className="site-container grid gap-10 py-14 md:grid-cols-[0.9fr_1.1fr] md:items-start md:py-16">
         <div>
-          <div className="text-[10px] font-semibold uppercase tracking-[0.17em] text-[#888]">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.17em] !text-[#888]">
             06 — Contact
           </div>
 
-          <h2 className="mt-4 max-w-[560px] font-[var(--font-manrope)] text-[clamp(48px,5.4vw,74px)] font-medium leading-[0.96] tracking-[-0.06em]">
+          <h2 className="mt-4 max-w-[560px] font-[var(--font-manrope)] text-[clamp(48px,5.4vw,74px)] font-medium leading-[0.96] tracking-[-0.06em] !text-white">
             Contact the Studio
           </h2>
 
-          <p className="mt-6 max-w-[440px] text-[15px] leading-[1.75] text-[#aaa]">
+          <p className="mt-6 max-w-[440px] text-[15px] leading-[1.75] !text-[#aaa]">
             Speak directly with the people shaping the work. Choose the right contact or send a
             project brief. No account needed.
           </p>
@@ -145,22 +145,22 @@ export default function Contact() {
                 <EmptyAvatar />
 
                 <div>
-                  <h3 className="font-[var(--font-manrope)] text-[19px] font-medium tracking-[-0.035em]">
+                  <h3 className="font-[var(--font-manrope)] text-[19px] font-medium tracking-[-0.035em] !text-white">
                     {person.name}
                   </h3>
 
-                  <div className="mt-[5px] text-[10px] uppercase tracking-[0.12em] text-[#888]">
+                  <div className="mt-[5px] text-[10px] uppercase tracking-[0.12em] !text-[#888]">
                     {person.role}
                   </div>
 
-                  <p className="mt-[6px] text-[12px] leading-[1.55] text-[#aaa]">
+                  <p className="mt-[6px] text-[12px] leading-[1.55] !text-[#aaa]">
                     {person.copy}
                   </p>
 
                   {person.email ? (
                     <a
                       href={`mailto:${person.email}`}
-                      className="mt-2 inline-block text-[12px] text-[#ddd] transition-colors duration-300 hover:text-white"
+                      className="mt-2 inline-block text-[12px] !text-[#ddd] transition-colors duration-300 hover:!text-white"
                     >
                       {person.email} ↗
                     </a>
@@ -172,19 +172,19 @@ export default function Contact() {
         </div>
 
         <div className="bg-[#242421] p-6 md:p-8">
-          <h3 className="mb-2 font-[var(--font-manrope)] text-[30px] font-medium tracking-[-0.04em]">
+          <h3 className="mb-2 font-[var(--font-manrope)] text-[30px] font-medium tracking-[-0.04em] !text-white">
             Project Brief
           </h3>
 
-          <p className="mb-7 text-[13px] text-[#aaa]">Send your site, ambition and timeline.</p>
+          <p className="mb-7 text-[13px] !text-[#aaa]">Send your site, ambition and timeline.</p>
 
           {status === 'success' ? (
             <div className="py-16">
-              <h4 className="font-[var(--font-manrope)] text-3xl font-medium tracking-[-0.04em]">
+              <h4 className="font-[var(--font-manrope)] text-3xl font-medium tracking-[-0.04em] !text-white">
                 Brief received.
               </h4>
 
-              <p className="mt-4 text-[#aaa]">Thank you. We will reply within two working days.</p>
+              <p className="mt-4 !text-[#aaa]">Thank you. We will reply within two working days.</p>
 
               <button
                 type="button"
@@ -192,7 +192,7 @@ export default function Contact() {
                   setStatus('idle')
                   setError('')
                 }}
-                className="mt-8 bg-white px-[22px] py-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#181816]"
+                className="mt-8 bg-white px-[22px] py-4 text-[10px] font-semibold uppercase tracking-[0.12em] !text-[#181816]"
               >
                 Send another
               </button>
@@ -200,7 +200,7 @@ export default function Contact() {
           ) : (
             <form onSubmit={onSubmit} className="grid gap-4 md:grid-cols-2">
               <div className="flex flex-col gap-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Name</label>
+                <label className="text-[9px] uppercase tracking-[0.12em] !text-[#888]">Name</label>
                 <input
                   name="name"
                   value={form.name}
@@ -211,7 +211,7 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Email</label>
+                <label className="text-[9px] uppercase tracking-[0.12em] !text-[#888]">Email</label>
                 <input
                   name="email"
                   type="email"
@@ -223,12 +223,12 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Phone</label>
+                <label className="text-[9px] uppercase tracking-[0.12em] !text-[#888]">Phone</label>
                 <input name="phone" value={form.phone} onChange={onChange} className={field} />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">
+                <label className="text-[9px] uppercase tracking-[0.12em] !text-[#888]">
                   Site Location
                 </label>
                 <input
@@ -241,7 +241,7 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">
+                <label className="text-[9px] uppercase tracking-[0.12em] !text-[#888]">
                   Project Type
                 </label>
                 <select name="type" value={form.type} onChange={onChange} className={field}>
@@ -252,7 +252,7 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">Budget</label>
+                <label className="text-[9px] uppercase tracking-[0.12em] !text-[#888]">Budget</label>
                 <select name="budget" value={form.budget} onChange={onChange} className={field}>
                   {BUDGETS.map((budget) => (
                     <option key={budget}>{budget}</option>
@@ -261,7 +261,7 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">
+                <label className="text-[9px] uppercase tracking-[0.12em] !text-[#888]">
                   Timeline
                 </label>
                 <select
@@ -277,14 +277,14 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">
+                <label className="text-[9px] uppercase tracking-[0.12em] !text-[#888]">
                   Approx. Area
                 </label>
                 <input name="area" value={form.area} onChange={onChange} className={field} />
               </div>
 
               <div className="md:col-span-2">
-                <label className="text-[9px] uppercase tracking-[0.12em] text-[#888]">
+                <label className="text-[9px] uppercase tracking-[0.12em] !text-[#888]">
                   Project Brief
                 </label>
                 <textarea
@@ -306,7 +306,7 @@ export default function Contact() {
               />
 
               {error ? (
-                <p className="text-sm text-[#ddd] md:col-span-2" role="alert" aria-live="polite">
+                <p className="text-sm !text-[#ddd] md:col-span-2" role="alert" aria-live="polite">
                   {error}
                 </p>
               ) : null}
@@ -314,7 +314,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="justify-self-start bg-white px-[22px] py-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#181816] disabled:cursor-wait disabled:opacity-70 md:col-span-2"
+                className="justify-self-start bg-white px-[22px] py-4 text-[10px] font-semibold uppercase tracking-[0.12em] !text-[#181816] disabled:cursor-wait disabled:opacity-70 md:col-span-2"
               >
                 {status === 'submitting' ? 'Sending...' : 'Send the brief ↗'}
               </button>
