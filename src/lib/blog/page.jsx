@@ -1,11 +1,45 @@
 import Link from 'next/link'
-import { blogPosts } from '@/lib/blogData'
 
 export const metadata = {
   title: 'Architecture & Interior Design Journal',
   description:
     'Guides and insights from Utopian Design Studio on architecture, interiors, house design, turnkey execution and 3D visualization.',
 }
+
+const BLOG_LINKS = [
+  {
+    slug: 'how-to-choose-an-architect-in-lahore',
+    title: 'How to Choose an Architect in Lahore',
+    description:
+      'A practical guide for homeowners and businesses choosing an architect in Lahore for residential, commercial and interior design projects.',
+    category: 'Architecture Guide',
+    readTime: '5 min read',
+  },
+  {
+    slug: 'modern-house-design-process-in-pakistan',
+    title: 'Modern House Design Process in Pakistan',
+    description:
+      'Understand the modern house design process in Pakistan from brief and concept to drawings, interiors and execution.',
+    category: 'Residential Design',
+    readTime: '6 min read',
+  },
+  {
+    slug: 'turnkey-construction-vs-design-only-service',
+    title: 'Turnkey Construction vs Design-Only Service',
+    description:
+      'Learn the difference between turnkey construction and design-only architecture services before starting your project.',
+    category: 'Turnkey Execution',
+    readTime: '5 min read',
+  },
+  {
+    slug: 'how-3d-visualization-helps-before-construction',
+    title: 'How 3D Visualization Helps Before Construction',
+    description:
+      '3D architectural visualization helps homeowners and developers understand design, space, light and materials before construction begins.',
+    category: '3D Visualization',
+    readTime: '4 min read',
+  },
+]
 
 export default function BlogPage() {
   return (
@@ -31,7 +65,7 @@ export default function BlogPage() {
 
       <section className="site-container py-20">
         <div className="grid gap-5 md:grid-cols-2">
-          {blogPosts.map((post) => (
+          {BLOG_LINKS.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
