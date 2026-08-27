@@ -1,3 +1,4 @@
+import AnchorScroll from '@/components/AnchorScroll'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import StudioIntro from '@/components/StudioIntro'
@@ -13,6 +14,7 @@ import Footer from '@/components/Footer'
 export default function HomePage() {
   return (
     <>
+      <AnchorScroll />
       <Navbar />
 
       <main id="main" className="pt-[92px]">

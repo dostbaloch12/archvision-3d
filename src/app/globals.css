@@ -271,3 +271,23 @@ select {
     transition-duration: 0.01ms !important;
   }
 }
+
+#services {
+  scroll-margin-top: 92px;
+  min-height: calc(100svh - 92px);
+}
+
+#services .site-container {
+  min-height: calc(100svh - 92px);
+}
+
+@media (max-width: 768px) {
+  #services,
+  #services .site-container {
+    min-height: auto;
+  }
+
+  #services {
+    overflow: visible;
+  }
+}

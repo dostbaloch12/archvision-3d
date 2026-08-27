@@ -37,32 +37,29 @@ export default function AnchorScroll() {
 
       if (!link) return
 
-      const rawHref = link.getAttribute('href')
+      const href = link.getAttribute('href')
 
-      if (!rawHref) return
+      if (!href) return
 
-      const isSamePageHash = rawHref.startsWith('#')
-      const isHomeHash = rawHref.startsWith('/#')
+      const isHash = href.startsWith('#')
+      const isHomeHash = href.startsWith('/#')
 
-      if (!isSamePageHash && !isHomeHash) return
+      if (!isHash && !isHomeHash) return
 
-      const hash = isSamePageHash ? rawHref : rawHref.replace('/', '')
+      const hash = isHash ? href : href.replace('/', '')
 
       if (!document.querySelector(hash) && hash !== '#top') return
 
       event.preventDefault()
-
       scrollToHash(hash)
-
       window.history.pushState(null, '', hash)
     }
 
     document.addEventListener('click', onClick)
 
-    const initialHash = window.location.hash
-    if (initialHash) {
+    if (window.location.hash) {
       window.setTimeout(() => {
-        scrollToHash(initialHash, 'auto')
+        scrollToHash(window.location.hash, 'auto')
       }, 120)
     }
 

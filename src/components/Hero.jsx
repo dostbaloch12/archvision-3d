@@ -11,7 +11,7 @@ export default function Hero() {
           Architecture & Design — Lahore, Pakistan
         </div>
 
-        <h1 className="max-w-[680px] font-[var(--font-manrope)] text-[clamp(56px,6.9vw,104px)] font-medium leading-[0.9] tracking-[-0.067em] text-[#111111]">
+        <h1 className="max-w-[680px] font-[var(--font-manrope)] text-[clamp(54px,6.4vw,96px)] font-medium leading-[0.9] tracking-[-0.067em] text-[#111111]">
           Design you can walk through.
         </h1>
 
