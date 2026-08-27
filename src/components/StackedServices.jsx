@@ -33,42 +33,53 @@ const SERVICES = [
 
 export default function StackedServices() {
   return (
-    <section id="services" className="scroll-mt-[92px] bg-[#191917] text-white">
-      <div className="site-container py-14 md:py-16">
-        <div className="mb-9 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+    <section
+      id="services"
+      className="scroll-mt-[92px] bg-[#191917] text-white"
+      aria-labelledby="services-heading"
+    >
+      <div className="site-container flex min-h-[calc(100svh-92px)] flex-col justify-center py-12 md:py-14">
+        <div className="grid gap-8 md:grid-cols-[1.45fr_0.55fr] md:items-start">
           <div>
-            <div className="type-label text-[#888]">02 — Services</div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#77746c]">
+              02 — Services
+            </p>
 
-            <h2 className="mt-4 max-w-[720px] font-[var(--font-manrope)] text-[clamp(46px,5.4vw,72px)] font-medium leading-[0.95] tracking-[-0.06em]">
+            <h2
+              id="services-heading"
+              className="mt-5 max-w-[980px] font-[var(--font-manrope)] text-[clamp(56px,6.4vw,96px)] font-medium leading-[0.95] tracking-[-0.067em] !text-white"
+            >
               From concept to completion.
             </h2>
           </div>
 
-          <p className="max-w-[390px] text-[14px] leading-[1.75] text-[#aaa]">
+          <p className="max-w-[430px] pt-2 text-[15px] leading-[1.7] tracking-[-0.015em] text-[#77746c] md:pt-16">
             Integrated architectural, interior, planning, development, and turnkey solutions across
             multiple project types.
           </p>
         </div>
 
-        <div>
+        <div className="mt-16 border-t border-[#33332f] md:mt-20">
           {SERVICES.map((service) => (
-            <div
+            <a
               key={service.number}
-              className="grid items-start gap-4 border-t border-[#3b3b37] py-4 md:grid-cols-[56px_280px_minmax(0,1fr)] md:items-center"
+              href="#contact"
+              className="group grid gap-4 border-b border-[#33332f] py-6 transition-colors duration-300 hover:bg-white/[0.025] md:grid-cols-[70px_0.9fr_1.15fr] md:items-center md:py-7"
+              aria-label={`Discuss ${service.title}`}
             >
-              <span className="text-[12px] text-[#777]">{service.number}</span>
+              <span className="text-[12px] font-medium tracking-[0.08em] text-[#77746c]">
+                {service.number}
+              </span>
 
-              <h3 className="mt-2 font-[var(--font-manrope)] text-[26px] font-medium tracking-[-0.04em] md:mt-0">
+              <h3 className="font-[var(--font-manrope)] text-[28px] font-medium leading-[1.05] tracking-[-0.055em] !text-white md:text-[31px]">
                 {service.title}
               </h3>
 
-              <p className="mt-3 max-w-[520px] text-[15px] leading-[1.7] text-[#aaa] md:mt-0">
+              <p className="max-w-[560px] text-[15px] leading-[1.65] tracking-[-0.02em] text-[#aaa]">
                 {service.copy}
               </p>
-            </div>
+            </a>
           ))}
-
-          <div className="border-t border-[#3b3b37]" />
         </div>
       </div>
     </section>
