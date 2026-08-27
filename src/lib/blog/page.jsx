@@ -45,7 +45,9 @@ export default function BlogPage() {
                 {post.title}
               </h2>
 
-              <p className="mt-5 text-[15px] leading-[1.75] text-[#77746c]">{post.description}</p>
+              <p className="mt-5 text-[15px] leading-[1.75] text-[#77746c]">
+                {post.description}
+              </p>
 
               <span className="mt-6 inline-block text-[14px] transition-transform duration-300 group-hover:translate-x-1">
                 Read article ↗
