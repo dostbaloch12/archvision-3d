@@ -40,11 +40,11 @@ export default function Process() {
   return (
     <section
       id="process"
-      className="relative scroll-mt-[92px] overflow-hidden bg-[#171815] text-white"
+      className="scroll-mt-[92px] bg-[#eeece6] text-[#171715]"
       aria-labelledby="process-heading"
     >
-      <div className="site-container flex min-h-auto flex-col justify-start py-14 md:h-[calc(100svh-92px)] md:pb-5 md:pt-4">
-        <div className="grid shrink-0 gap-7 md:grid-cols-[1fr_430px] md:items-start">
+      <div className="site-container flex min-h-[calc(100svh-92px)] flex-col justify-center py-16 md:py-20">
+        <div className="grid gap-10 md:grid-cols-[1fr_390px] md:items-start">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] !text-[#77746c]">
               04 — Process
@@ -52,46 +52,46 @@ export default function Process() {
 
             <h2
               id="process-heading"
-              className="mt-4 max-w-[920px] font-[var(--font-manrope)] text-[clamp(40px,11vw,62px)] font-medium leading-[0.98] tracking-[-0.065em] !text-white md:max-w-none md:whitespace-nowrap md:text-[clamp(44px,5.1vw,78px)] md:leading-[0.94] md:tracking-[-0.072em]"
+              className="mt-5 max-w-[980px] font-[var(--font-manrope)] text-[clamp(48px,5.5vw,86px)] font-medium leading-[0.98] tracking-[-0.072em] !text-[#171715]"
             >
               How a project takes shape.
             </h2>
           </div>
 
-          <p className="max-w-[430px] text-[14px] leading-[1.55] tracking-[-0.02em] !text-[#77746c] md:pt-[46px]">
-            A clear, considered process — from first conversation
-            <br className="hidden md:block" />
-            <span className="md:hidden"> </span>
-            to final handover with clarity and purpose.
+          <p className="pt-2 text-[15px] leading-[1.6] tracking-[-0.02em] !text-[#77746c] md:pt-[54px]">
+            A clear, considered process—from the first conversation to final handover. We bring
+            together design, technical expertise, and execution.
           </p>
         </div>
 
-        <div className="mt-10 min-h-0 flex-1 border-t border-[#30302c] md:mt-7">
-          {STEPS.map((step) => (
+        <div className="mt-16 grid border-t border-[#d7d3ca] md:grid-cols-5">
+          {STEPS.map((step, index) => (
             <article
               key={step.number}
-              className="grid gap-3 border-b border-[#30302c] py-5 transition-colors duration-300 hover:bg-white/[0.025] md:grid-cols-[60px_0.34fr_0.56fr_0.62fr] md:items-start md:py-[13px]"
+              className={`min-h-[370px] border-b border-[#d7d3ca] py-8 md:border-b-0 md:px-6 md:py-9 ${
+                index === 0 ? 'md:pl-0' : ''
+              } ${index !== STEPS.length - 1 ? 'md:border-r' : ''}`}
             >
-              <span className="text-[12px] font-medium tracking-[0.08em] !text-[#77746c] md:text-[11px]">
-                {step.number}
-              </span>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] !text-[#77746c]">
+                {step.number} — {step.label}
+              </p>
 
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] !text-[#77746c]">
-                  {step.label}
-                </p>
-                <h3 className="mt-1 font-[var(--font-manrope)] text-[27px] font-medium leading-[1.05] tracking-[-0.055em] !text-white md:text-[25px]">
-                  {step.title}
-                </h3>
-              </div>
+              <h3 className="mt-14 font-[var(--font-manrope)] text-[28px] font-medium leading-[1.05] tracking-[-0.055em] !text-[#171715]">
+                {step.title}
+              </h3>
 
-              <p className="max-w-[430px] text-[14px] leading-[1.55] tracking-[-0.02em] !text-[#aaa] md:text-[13px] md:leading-[1.5]">
+              <p className="mt-5 min-h-[74px] text-[13px] leading-[1.75] tracking-[-0.02em] !text-[#77746c]">
                 {step.copy}
               </p>
 
-              <ul className="space-y-1 text-[13px] leading-[1.55] !text-[#77746c] md:space-y-0.5 md:text-[12px] md:leading-[1.45]">
+              <ul className="mt-12 border-t border-[#d7d3ca] pt-7">
                 {step.items.map((item) => (
-                  <li key={item}>— {item}</li>
+                  <li
+                    key={item}
+                    className="my-2 text-[12px] leading-[1.6] tracking-[-0.01em] !text-[#55524b]"
+                  >
+                    — {item}
+                  </li>
                 ))}
               </ul>
             </article>
