@@ -38,8 +38,8 @@ export default function StackedServices() {
       className="relative scroll-mt-[92px] overflow-hidden bg-[#171815] text-white"
       aria-labelledby="services-heading"
     >
-      <div className="site-container flex min-h-[calc(100svh-92px)] flex-col justify-start pb-5 pt-3 md:pb-6 md:pt-4">
-        <div className="grid gap-8 md:grid-cols-[1fr_370px] md:items-start">
+      <div className="site-container flex min-h-auto flex-col justify-start py-14 md:min-h-[calc(100svh-92px)] md:pb-6 md:pt-4">
+        <div className="grid gap-7 md:grid-cols-[1fr_370px] md:items-start">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] !text-[#77746c]">
               02 — Services
@@ -47,15 +47,16 @@ export default function StackedServices() {
 
             <h2
               id="services-heading"
-              className="mt-4 max-w-none whitespace-nowrap font-[var(--font-manrope)] text-[clamp(48px,5.65vw,88px)] font-medium leading-[0.94] tracking-[-0.072em] !text-white"
+              className="mt-4 max-w-[900px] font-[var(--font-manrope)] text-[clamp(42px,12vw,64px)] font-medium leading-[0.96] tracking-[-0.065em] !text-white md:max-w-none md:whitespace-nowrap md:text-[clamp(48px,5.65vw,88px)] md:leading-[0.94] md:tracking-[-0.072em]"
             >
               From concept to completion.
             </h2>
           </div>
 
-          <p className="pt-[54px] text-[14px] leading-[1.45] tracking-[-0.02em] !text-[#77746c] md:pt-[58px]">
+          <p className="max-w-[370px] text-[14px] leading-[1.55] tracking-[-0.02em] !text-[#77746c] md:pt-[58px]">
             Integrated architectural, interior, planning, development,
-            <br />
+            <br className="hidden md:block" />
+            <span className="md:hidden"> </span>
             and turnkey solutions across multiple project types.
           </p>
         </div>
@@ -65,7 +66,7 @@ export default function StackedServices() {
             <a
               key={service.number}
               href="#contact"
-              className="group grid gap-3 border-b border-[#30302c] py-[18px] transition-colors duration-300 hover:bg-white/[0.025] md:grid-cols-[70px_0.46fr_0.9fr] md:items-center"
+              className="group grid gap-3 border-b border-[#30302c] py-5 transition-colors duration-300 hover:bg-white/[0.025] md:grid-cols-[70px_0.46fr_0.9fr] md:items-center md:py-[18px]"
               aria-label={`Discuss ${service.title}`}
             >
               <span className="text-[12px] font-medium tracking-[0.08em] !text-[#77746c]">
@@ -76,7 +77,7 @@ export default function StackedServices() {
                 {service.title}
               </h3>
 
-              <p className="max-w-[610px] text-[15px] leading-[1.55] tracking-[-0.02em] !text-[#aaa]">
+              <p className="max-w-[610px] text-[15px] leading-[1.6] tracking-[-0.02em] !text-[#aaa]">
                 {service.copy}
               </p>
             </a>

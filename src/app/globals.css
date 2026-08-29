@@ -320,3 +320,36 @@ select {
   height: auto !important;
   align-content: start !important;
 }
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main,
+section {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@media (max-width: 768px) {
+  .site-container {
+    width: calc(100% - 32px) !important;
+    max-width: 100% !important;
+  }
+
+  #services,
+  #process,
+  #contact {
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  #services > .site-container,
+  #process > .site-container,
+  #contact > .site-container {
+    min-height: auto !important;
+    height: auto !important;
+  }
+}
