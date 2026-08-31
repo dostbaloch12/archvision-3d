@@ -7,15 +7,15 @@ export default function Hero() {
       className="grid min-h-[calc(100svh-92px)] grid-cols-1 items-center gap-10 py-10 md:grid-cols-[0.95fr_1.05fr] md:gap-12 md:py-12"
     >
       <div className="flex flex-col justify-center">
-        <div className="mb-6 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#77746d]">
+        <div className="mb-6 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#77746d] md:text-[11px]">
           Architecture & Design — Lahore, Pakistan
         </div>
 
-        <h1 className="max-w-[680px] font-[var(--font-manrope)] text-[clamp(54px,6.4vw,96px)] font-medium leading-[0.9] tracking-[-0.067em] text-[#111111]">
+        <h1 className="max-w-[680px] font-[var(--font-manrope)] text-[clamp(52px,16vw,70px)] font-medium leading-[0.9] tracking-[-0.067em] text-[#111111] md:text-[clamp(56px,6.9vw,104px)]">
           Design you can walk through.
         </h1>
 
-        <p className="mt-8 max-w-[560px] text-[22px] leading-[1.55] tracking-[-0.035em] text-[#6c6961]">
+        <p className="mt-8 max-w-[560px] text-[16px] leading-[1.65] tracking-[-0.025em] text-[#6c6961] md:text-[22px] md:leading-[1.55] md:tracking-[-0.035em]">
           <strong className="font-semibold text-[#111111]">Utopian Design Studio</strong> creates
           thoughtful architecture across residential, commercial, and hospitality projects—rooted in
           context, purpose, and detail.

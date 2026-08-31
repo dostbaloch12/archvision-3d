@@ -43,8 +43,8 @@ export default function Process() {
       className="scroll-mt-[92px] bg-[#eeece6] text-[#171715]"
       aria-labelledby="process-heading"
     >
-      <div className="site-container flex min-h-[calc(100svh-92px)] flex-col justify-center py-16 md:py-20">
-        <div className="grid gap-10 md:grid-cols-[1fr_390px] md:items-start">
+      <div className="site-container flex flex-col justify-center py-16 md:min-h-[calc(100svh-92px)] md:py-20">
+        <div className="grid gap-8 md:grid-cols-[1fr_390px] md:items-start">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] !text-[#77746c]">
               04 — Process
@@ -52,23 +52,23 @@ export default function Process() {
 
             <h2
               id="process-heading"
-              className="mt-5 max-w-[980px] font-[var(--font-manrope)] text-[clamp(48px,5.5vw,86px)] font-medium leading-[0.98] tracking-[-0.072em] !text-[#171715]"
+              className="mt-5 max-w-[980px] font-[var(--font-manrope)] text-[clamp(40px,11vw,58px)] font-medium leading-[1] tracking-[-0.065em] !text-[#171715] md:text-[clamp(48px,5.5vw,86px)] md:leading-[0.98] md:tracking-[-0.072em]"
             >
               How a project takes shape.
             </h2>
           </div>
 
-          <p className="pt-2 text-[15px] leading-[1.6] tracking-[-0.02em] !text-[#77746c] md:pt-[54px]">
+          <p className="text-[14px] leading-[1.6] tracking-[-0.02em] !text-[#77746c] md:pt-[54px] md:text-[15px]">
             A clear, considered process—from the first conversation to final handover. We bring
             together design, technical expertise, and execution.
           </p>
         </div>
 
-        <div className="mt-16 grid border-t border-[#d7d3ca] md:grid-cols-5">
+        <div className="mt-12 grid border-t border-[#d7d3ca] md:mt-16 md:grid-cols-5">
           {STEPS.map((step, index) => (
             <article
               key={step.number}
-              className={`min-h-[370px] border-b border-[#d7d3ca] py-8 md:border-b-0 md:px-6 md:py-9 ${
+              className={`border-b border-[#d7d3ca] py-8 md:min-h-[370px] md:border-b-0 md:px-6 md:py-9 ${
                 index === 0 ? 'md:pl-0' : ''
               } ${index !== STEPS.length - 1 ? 'md:border-r' : ''}`}
             >
@@ -76,15 +76,15 @@ export default function Process() {
                 {step.number} — {step.label}
               </p>
 
-              <h3 className="mt-14 font-[var(--font-manrope)] text-[28px] font-medium leading-[1.05] tracking-[-0.055em] !text-[#171715]">
+              <h3 className="mt-10 font-[var(--font-manrope)] text-[27px] font-medium leading-[1.05] tracking-[-0.055em] !text-[#171715] md:mt-14 md:text-[28px]">
                 {step.title}
               </h3>
 
-              <p className="mt-5 min-h-[74px] text-[13px] leading-[1.75] tracking-[-0.02em] !text-[#77746c]">
+              <p className="mt-5 text-[13px] leading-[1.75] tracking-[-0.02em] !text-[#77746c] md:min-h-[74px]">
                 {step.copy}
               </p>
 
-              <ul className="mt-12 border-t border-[#d7d3ca] pt-7">
+              <ul className="mt-8 border-t border-[#d7d3ca] pt-6 md:mt-12 md:pt-7">
                 {step.items.map((item) => (
                   <li
                     key={item}
