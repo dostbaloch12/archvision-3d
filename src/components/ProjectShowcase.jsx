@@ -2,90 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
-
-const PROJECTS = [
-  {
-    title: 'Private Residence',
-    category: 'Residential',
-    location: 'Lahore',
-    year: '2024',
-    image: '/images/projects/private-residence.jpg',
-    description:
-      'A refined residential project shaped around privacy, natural light and daily family life.',
-  },
-  {
-    title: 'Contemporary House',
-    category: 'Residential',
-    location: 'Pakistan',
-    year: '2024',
-    image: '/images/projects/contemporary-house.jpg',
-    description:
-      'A contemporary home concept balancing clean geometry, material restraint and functional planning.',
-  },
-  {
-    title: 'Urban Residence',
-    category: 'Residential',
-    location: 'Lahore',
-    year: '2023',
-    image: '/images/projects/urban-residence.jpg',
-    description:
-      'A compact urban residence focused on efficient space planning and a calm architectural expression.',
-  },
-  {
-    title: 'Hospitality Concept',
-    category: 'Hospitality',
-    location: 'Pakistan',
-    year: '2023',
-    image: '/images/projects/hospitality-concept.jpg',
-    description:
-      'A hospitality concept designed around arrival sequence, atmosphere and memorable guest experience.',
-  },
-  {
-    title: 'Commercial Workplace',
-    category: 'Commercial',
-    location: 'Lahore',
-    year: '2024',
-    image: '/images/projects/commercial-workplace.jpg',
-    description:
-      'A workplace design proposal focused on collaboration, workflow and a polished commercial identity.',
-  },
-  {
-    title: 'Office Environment',
-    category: 'Commercial',
-    location: 'Pakistan',
-    year: '2022',
-    image: '/images/projects/office-environment.jpg',
-    description:
-      'An office interior environment with coordinated lighting, material direction and efficient planning.',
-  },
-  {
-    title: 'Institutional Building',
-    category: 'Institutional',
-    location: 'Pakistan',
-    year: '2022',
-    image: '/images/projects/institutional-building.jpg',
-    description:
-      'An institutional architecture study shaped around clarity, circulation and long-term usability.',
-  },
-  {
-    title: 'Mixed-Use Development',
-    category: 'Mixed-Use',
-    location: 'Pakistan',
-    year: '2024',
-    image: '/images/projects/mixed-use-development.jpg',
-    description:
-      'A mixed-use development vision combining commercial activity, public frontage and urban presence.',
-  },
-  {
-    title: 'Interior Architecture',
-    category: 'Commercial',
-    location: 'Pakistan',
-    year: '2023',
-    image: '/images/projects/interior-architecture.jpg',
-    description:
-      'Interior architecture work focused on proportion, material consistency and functional experience.',
-  },
-]
+import { generatedProjectImages } from '@/generated/projectImages'
 
 const FILTERS = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Mixed-Use']
 
@@ -162,8 +79,11 @@ export default function ProjectShowcase() {
   const [activeIndex, setActiveIndex] = useState(null)
 
   const visibleProjects = useMemo(() => {
-    if (activeFilter === 'All') return PROJECTS
-    return PROJECTS.filter((project) => project.category === activeFilter)
+    if (activeFilter === 'All') {
+      return generatedProjectImages
+    }
+
+    return generatedProjectImages.filter((project) => project.category === activeFilter)
   }, [activeFilter])
 
   const activeProject = activeIndex === null ? null : visibleProjects[activeIndex]
@@ -215,6 +135,7 @@ export default function ProjectShowcase() {
             <div className="type-label text-[#77746c]">03 — Selected Work</div>
             <h2 className="type-h2 mt-4">All Projects</h2>
           </div>
+
           <p className="max-w-[350px] text-[15px] leading-[1.7] text-[#77746c]">
             A growing body of architectural work across residential, commercial, hospitality,
             institutional and mixed-use environments.
@@ -242,11 +163,11 @@ export default function ProjectShowcase() {
         <div className="grid grid-cols-1 gap-[18px] md:grid-cols-12">
           {visibleProjects.map((project, index) => (
             <button
-              key={`${project.title}-${index}`}
+              key={`${project.image}-${index}`}
               type="button"
               onClick={() => setActiveIndex(index)}
               aria-label={`Open ${project.title} project details`}
-              className={`${SPANS[index % SPANS.length]} group relative h-[430px] overflow-hidden text-left md:h-[500px]`}
+              className={`${SPANS[index % SPANS.length]} group relative h-[430px] overflow-hidden bg-[#d7d3ca] text-left md:h-[500px]`}
             >
               <Image
                 src={project.image}
@@ -255,8 +176,10 @@ export default function ProjectShowcase() {
                 sizes="(max-width: 768px) 100vw, 60vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-[22px] left-[23px] z-[3] text-white">
+
+              <div className="absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-t from-black/65 to-transparent" />
+
+              <div className="absolute bottom-[22px] left-[23px] z-[3] pr-5 text-white">
                 <h3 className="font-[var(--font-manrope)] text-[25px] font-medium">
                   {project.title}
                 </h3>
@@ -289,7 +212,7 @@ export default function ProjectShowcase() {
             </div>
 
             <div className="site-container grid flex-1 gap-8 overflow-y-auto py-8 lg:grid-cols-[1.3fr_0.7fr]">
-              <div className="relative min-h-[55vh] overflow-hidden">
+              <div className="relative min-h-[55vh] overflow-hidden bg-[#d7d3ca]">
                 <Image
                   src={activeProject.image}
                   alt={`${activeProject.title} large preview`}
@@ -305,10 +228,13 @@ export default function ProjectShowcase() {
                   <p className="type-meta text-[#aaa]">
                     {activeProject.category} · {activeProject.year}
                   </p>
+
                   <h3 className="mt-4 font-[var(--font-manrope)] text-[38px] font-medium leading-none tracking-[-0.04em]">
                     {activeProject.title}
                   </h3>
+
                   <p className="mt-2 text-sm text-[#aaa]">{activeProject.location}</p>
+
                   <p className="mt-8 text-sm leading-[1.8] text-[#ddd]">
                     {activeProject.description}
                   </p>
@@ -324,6 +250,7 @@ export default function ProjectShowcase() {
                     >
                       <ArrowLeftIcon />
                     </button>
+
                     <button
                       type="button"
                       onClick={goNext}
