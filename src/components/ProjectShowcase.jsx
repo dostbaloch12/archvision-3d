@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { generatedProjectImages } from '@/generated/projectImages'
 
 const FILTERS = ['All', 'Residential', 'Commercial', 'Hospitality', 'Institutional', 'Mixed-Use']
+const INITIAL_LIMIT = 12
+const LOAD_STEP = 12
 
 const SPANS = [
   'md:col-span-7',
@@ -16,6 +18,9 @@ const SPANS = [
   'md:col-span-4',
   'md:col-span-7',
   'md:col-span-5',
+  'md:col-span-6',
+  'md:col-span-6',
+  'md:col-span-4',
 ]
 
 function CloseIcon() {
@@ -76,9 +81,10 @@ function ArrowRightIcon() {
 
 export default function ProjectShowcase() {
   const [activeFilter, setActiveFilter] = useState('All')
+  const [visibleLimit, setVisibleLimit] = useState(INITIAL_LIMIT)
   const [activeIndex, setActiveIndex] = useState(null)
 
-  const visibleProjects = useMemo(() => {
+  const filteredProjects = useMemo(() => {
     if (activeFilter === 'All') {
       return generatedProjectImages
     }
@@ -86,7 +92,13 @@ export default function ProjectShowcase() {
     return generatedProjectImages.filter((project) => project.category === activeFilter)
   }, [activeFilter])
 
+  const visibleProjects = useMemo(
+    () => filteredProjects.slice(0, visibleLimit),
+    [filteredProjects, visibleLimit]
+  )
+
   const activeProject = activeIndex === null ? null : visibleProjects[activeIndex]
+  const hasMore = visibleLimit < filteredProjects.length
 
   const close = () => setActiveIndex(null)
 
@@ -124,7 +136,12 @@ export default function ProjectShowcase() {
 
   const onFilter = (filter) => {
     setActiveFilter(filter)
+    setVisibleLimit(INITIAL_LIMIT)
     setActiveIndex(null)
+  }
+
+  const onLoadMore = () => {
+    setVisibleLimit((prev) => prev + LOAD_STEP)
   }
 
   return (
@@ -160,6 +177,10 @@ export default function ProjectShowcase() {
           ))}
         </div>
 
+        <div className="mb-6 text-[12px] text-[#77746c]">
+          Showing {visibleProjects.length} of {filteredProjects.length} projects
+        </div>
+
         <div className="grid grid-cols-1 gap-[18px] md:grid-cols-12">
           {visibleProjects.map((project, index) => (
             <button
@@ -167,14 +188,16 @@ export default function ProjectShowcase() {
               type="button"
               onClick={() => setActiveIndex(index)}
               aria-label={`Open ${project.title} project details`}
-              className={`${SPANS[index % SPANS.length]} group relative h-[430px] overflow-hidden bg-[#d7d3ca] text-left md:h-[500px]`}
+              className={`${SPANS[index % SPANS.length]} group relative h-[360px] overflow-hidden bg-[#d7d3ca] text-left md:h-[460px]`}
             >
               <Image
                 src={project.image}
                 alt={`${project.title} — ${project.category} project by Utopian Design Studio`}
                 fill
                 sizes="(max-width: 768px) 100vw, 60vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                loading={index < 3 ? 'eager' : 'lazy'}
+                priority={index < 2}
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.025]"
               />
 
               <div className="absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-t from-black/65 to-transparent" />
@@ -190,6 +213,14 @@ export default function ProjectShowcase() {
             </button>
           ))}
         </div>
+
+        {hasMore ? (
+          <div className="mt-10 flex justify-center">
+            <button type="button" onClick={onLoadMore} className="editorial-button">
+              Load more projects ↗
+            </button>
+          </div>
+        ) : null}
       </div>
 
       {activeProject ? (
