@@ -9,8 +9,7 @@ const PROJECTS = [
     category: 'Residential',
     location: 'Lahore',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1500&q=90',
+    image: '/images/projects/private-residence.jpg',
     description:
       'A refined residential project shaped around privacy, natural light and daily family life.',
   },
@@ -19,8 +18,7 @@ const PROJECTS = [
     category: 'Residential',
     location: 'Pakistan',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=90',
+    image: '/images/projects/contemporary-house.jpg',
     description:
       'A contemporary home concept balancing clean geometry, material restraint and functional planning.',
   },
@@ -29,8 +27,7 @@ const PROJECTS = [
     category: 'Residential',
     location: 'Lahore',
     year: '2023',
-    image:
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=90',
+    image: '/images/projects/urban-residence.jpg',
     description:
       'A compact urban residence focused on efficient space planning and a calm architectural expression.',
   },
@@ -39,8 +36,7 @@ const PROJECTS = [
     category: 'Hospitality',
     location: 'Pakistan',
     year: '2023',
-    image:
-      'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1500&q=90',
+    image: '/images/projects/hospitality-concept.jpg',
     description:
       'A hospitality concept designed around arrival sequence, atmosphere and memorable guest experience.',
   },
@@ -49,8 +45,7 @@ const PROJECTS = [
     category: 'Commercial',
     location: 'Lahore',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=90',
+    image: '/images/projects/commercial-workplace.jpg',
     description:
       'A workplace design proposal focused on collaboration, workflow and a polished commercial identity.',
   },
@@ -59,8 +54,7 @@ const PROJECTS = [
     category: 'Commercial',
     location: 'Pakistan',
     year: '2022',
-    image:
-      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=90',
+    image: '/images/projects/office-environment.jpg',
     description:
       'An office interior environment with coordinated lighting, material direction and efficient planning.',
   },
@@ -69,8 +63,7 @@ const PROJECTS = [
     category: 'Institutional',
     location: 'Pakistan',
     year: '2022',
-    image:
-      'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=90',
+    image: '/images/projects/institutional-building.jpg',
     description:
       'An institutional architecture study shaped around clarity, circulation and long-term usability.',
   },
@@ -79,8 +72,7 @@ const PROJECTS = [
     category: 'Mixed-Use',
     location: 'Pakistan',
     year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1500&q=90',
+    image: '/images/projects/mixed-use-development.jpg',
     description:
       'A mixed-use development vision combining commercial activity, public frontage and urban presence.',
   },
@@ -89,8 +81,7 @@ const PROJECTS = [
     category: 'Commercial',
     location: 'Pakistan',
     year: '2023',
-    image:
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=90',
+    image: '/images/projects/interior-architecture.jpg',
     description:
       'Interior architecture work focused on proportion, material consistency and functional experience.',
   },
@@ -112,7 +103,16 @@ const SPANS = [
 
 function CloseIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
       <path d="M18 6 6 18" />
       <path d="m6 6 12 12" />
     </svg>
@@ -121,7 +121,17 @@ function CloseIcon() {
 
 function ArrowLeftIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="17"
+      height="17"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="m12 19-7-7 7-7" />
       <path d="M19 12H5" />
     </svg>
@@ -130,7 +140,17 @@ function ArrowLeftIcon() {
 
 function ArrowRightIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="17"
+      height="17"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M5 12h14" />
       <path d="m12 5 7 7-7 7" />
     </svg>
@@ -230,7 +250,7 @@ export default function ProjectShowcase() {
             >
               <Image
                 src={project.image}
-                alt={project.title}
+                alt={`${project.title} — ${project.category} project by Utopian Design Studio`}
                 fill
                 sizes="(max-width: 768px) 100vw, 60vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
@@ -272,7 +292,7 @@ export default function ProjectShowcase() {
               <div className="relative min-h-[55vh] overflow-hidden">
                 <Image
                   src={activeProject.image}
-                  alt={activeProject.title}
+                  alt={`${activeProject.title} large preview`}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 65vw"
