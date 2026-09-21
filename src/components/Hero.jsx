@@ -35,7 +35,7 @@ export default function Hero() {
       <a
         href="#projects"
         aria-label="View selected projects"
-        className="group relative h-[360px] overflow-hidden md:h-[calc(100svh-210px)] md:max-h-[620px] md:min-h-[460px]"
+        className="group relative h-[360px] overflow-hidden bg-[#d7d3ca] md:h-[calc(100svh-220px)] md:max-h-[600px] md:min-h-[440px]"
       >
         <Image
           src="/images/hero-main.png"
@@ -43,7 +43,7 @@ export default function Hero() {
           fill
           priority
           sizes="(max-width: 768px) 100vw, 52vw"
-          className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.035]"
+          className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.035]"
         />
         <div className="absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-t from-black/40 to-transparent" />
         <span className="absolute bottom-5 left-[22px] z-[2] text-[12px] font-medium tracking-[0.06em] text-white">
