@@ -79,6 +79,10 @@ function ArrowRightIcon() {
   )
 }
 
+function getProjectMeta(project) {
+  return project.category || 'Project'
+}
+
 export default function ProjectShowcase() {
   const [activeFilter, setActiveFilter] = useState('All')
   const [visibleLimit, setVisibleLimit] = useState(INITIAL_LIMIT)
@@ -200,14 +204,15 @@ export default function ProjectShowcase() {
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.025]"
               />
 
-              <div className="absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-t from-black/65 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
 
-              <div className="absolute bottom-[22px] left-[23px] z-[3] pr-5 text-white">
-                <h3 className="font-[var(--font-manrope)] text-[25px] font-medium">
+              <div className="absolute bottom-[22px] left-[23px] z-[3] pr-5">
+                <h3 className="font-[var(--font-manrope)] text-[25px] font-medium !text-white">
                   {project.title}
                 </h3>
-                <p className="mt-[7px] text-[12px] font-medium tracking-[0.08em]">
-                  {project.category} · {project.location}
+
+                <p className="mt-[7px] text-[12px] font-medium tracking-[0.08em] !text-white/85">
+                  {getProjectMeta(project)}
                 </p>
               </div>
             </button>
@@ -227,7 +232,7 @@ export default function ProjectShowcase() {
         <div className="fixed inset-0 z-[90] bg-[#191917]" role="dialog" aria-modal="true">
           <div className="flex h-full flex-col">
             <div className="site-container flex h-[86px] items-center justify-between border-b border-[#3b3b37] text-white">
-              <p className="type-meta text-[#aaa]">
+              <p className="type-meta !text-white/70">
                 {String(activeIndex + 1).padStart(2, '0')} /{' '}
                 {String(visibleProjects.length).padStart(2, '0')}
               </p>
@@ -256,17 +261,17 @@ export default function ProjectShowcase() {
 
               <aside className="flex flex-col justify-between bg-[#242421] p-8 text-white">
                 <div>
-                  <p className="type-meta text-[#aaa]">
+                  <p className="type-meta !text-white/70">
                     {activeProject.category} · {activeProject.year}
                   </p>
 
-                  <h3 className="mt-4 font-[var(--font-manrope)] text-[38px] font-medium leading-none tracking-[-0.04em]">
+                  <h3 className="mt-4 font-[var(--font-manrope)] text-[38px] font-medium leading-none tracking-[-0.04em] !text-white">
                     {activeProject.title}
                   </h3>
 
-                  <p className="mt-2 text-sm text-[#aaa]">{activeProject.location}</p>
+                  <p className="mt-2 text-sm !text-white/65">{activeProject.location}</p>
 
-                  <p className="mt-8 text-sm leading-[1.8] text-[#ddd]">
+                  <p className="mt-8 text-sm leading-[1.8] !text-white/80">
                     {activeProject.description}
                   </p>
                 </div>
