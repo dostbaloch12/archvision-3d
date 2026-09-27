@@ -8,7 +8,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: '2.1 3 Photo',
+    title: '2 1 3 Photo',
     category: 'Residential',
     location: '',
     year: '2024',
@@ -16,7 +16,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: '2.1 4 Photo',
+    title: '2 1 4 Photo',
     category: 'Residential',
     location: '',
     year: '2024',
@@ -37,14 +37,6 @@ export const generatedProjectImages = [
     location: '',
     year: '2024',
     image: '/images/gallery/005-residential-3.jpg',
-    description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
-  },
-  {
-    title: '3D View 1',
-    category: 'Residential',
-    location: '',
-    year: '2024',
-    image: '/images/gallery/006-residential-3d-view-1.jpg',
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
@@ -112,7 +104,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'Bedroom View 1 02 (1)',
+    title: 'Bedroom View 1 02 1',
     category: 'Residential',
     location: '',
     year: '2024',
@@ -152,7 +144,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'Lounge View 1 Option 2 04 (2)',
+    title: 'Lounge View 1 Option 2 04 2',
     category: 'Residential',
     location: '',
     year: '2024',
@@ -160,7 +152,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'Lounge View 1 Option 2 05 (1)',
+    title: 'Lounge View 1 Option 2 05 1',
     category: 'Residential',
     location: '',
     year: '2024',
@@ -176,7 +168,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'View 1 Option 2 (1)',
+    title: 'View 1 Option 2 1',
     category: 'Residential',
     location: '',
     year: '2024',
@@ -192,7 +184,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'View 2 Option 2 (2)',
+    title: 'View 2 Option 2 2',
     category: 'Residential',
     location: '',
     year: '2024',
@@ -200,7 +192,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'View 2 01 (4)',
+    title: 'View 2 01 4',
     category: 'Residential',
     location: '',
     year: '2024',
@@ -208,7 +200,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'View 3 01 (2)',
+    title: 'View 3 01 2',
     category: 'Residential',
     location: '',
     year: '2024',
@@ -232,7 +224,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'Image No.1',
+    title: 'Image No 1',
     category: 'Commercial',
     location: '',
     year: '2024',
@@ -240,7 +232,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'Image No.3',
+    title: 'Image No 3',
     category: 'Commercial',
     location: '',
     year: '2024',
@@ -344,19 +336,11 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: '2.1 3 Photo',
+    title: '2 1 3 Photo',
     category: 'Mixed-Use',
     location: '',
     year: '2024',
     image: '/images/gallery/044-mixed-use-2-1-3-photo.jpg',
-    description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
-  },
-  {
-    title: '3D View 1',
-    category: 'Mixed-Use',
-    location: '',
-    year: '2024',
-    image: '/images/gallery/045-mixed-use-3d-view-1.jpg',
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
@@ -392,7 +376,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'Image No.3',
+    title: 'Image No 3',
     category: 'Mixed-Use',
     location: '',
     year: '2024',
@@ -408,7 +392,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'View 1 Option 2 (1)',
+    title: 'View 1 Option 2 1',
     category: 'Mixed-Use',
     location: '',
     year: '2024',
@@ -416,7 +400,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'View 2 Option 2 (2)',
+    title: 'View 2 Option 2 2',
     category: 'Mixed-Use',
     location: '',
     year: '2024',
@@ -424,7 +408,7 @@ export const generatedProjectImages = [
     description: 'Selected Utopian Design Studio portfolio image showing architecture, interior detail, material direction and spatial composition.',
   },
   {
-    title: 'View 2 01 (4)',
+    title: 'View 2 01 4',
     category: 'Mixed-Use',
     location: '',
     year: '2024',
