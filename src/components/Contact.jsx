@@ -21,10 +21,10 @@ const PEOPLE = [
     copy: 'Coordinates technical drawings, consultant information and delivery documentation.',
   },
   {
-    name: 'Zeeshan Haider',
-    role: 'Senior 3D Visualizer · 3D Team',
-    copy: 'Builds interactive models, daylight studies and cinematic presentation visuals.',
-  },
+  name: 'Muhammad Akbar Butt',
+  role: 'Project Manager',
+  copy: 'Manages project coordination, site progress, team communication and delivery timelines.',
+},
 ]
 
 const PROJECT_TYPES = [
