@@ -23,6 +23,35 @@ const SPANS = [
   'md:col-span-4',
 ]
 
+function getCleanProjectTitle(project) {
+  const title = String(project?.title || '').trim()
+  const category = project?.category || 'Selected'
+
+  if (!title) {
+    return `${category} Project`
+  }
+
+  const lower = title.toLowerCase()
+
+  if (lower.includes('whatsapp image')) {
+    return `${category} Project`
+  }
+
+  if (lower.match(/^\d{1,3}$/)) {
+    return `${category} Project`
+  }
+
+  if (lower.includes('photo') && lower.length < 18) {
+    return `${category} Project`
+  }
+
+  return title
+}
+
+function getProjectMeta(project) {
+  return project?.category || 'Project'
+}
+
 function CloseIcon() {
   return (
     <svg
@@ -77,10 +106,6 @@ function ArrowRightIcon() {
       <path d="m12 5 7 7-7 7" />
     </svg>
   )
-}
-
-function getProjectMeta(project) {
-  return project.category || 'Project'
 }
 
 export default function ProjectShowcase() {
@@ -191,12 +216,12 @@ export default function ProjectShowcase() {
               key={`${project.image}-${index}`}
               type="button"
               onClick={() => setActiveIndex(index)}
-              aria-label={`Open ${project.title} project details`}
+              aria-label={`Open ${getCleanProjectTitle(project)} project details`}
               className={`${SPANS[index % SPANS.length]} group relative h-[360px] overflow-hidden bg-[#d7d3ca] text-left md:h-[460px]`}
             >
               <Image
                 src={project.image}
-                alt={`${project.title} — ${project.category} project by Utopian Design Studio`}
+                alt={`${getCleanProjectTitle(project)} — ${project.category} project by Utopian Design Studio`}
                 fill
                 sizes="(max-width: 768px) 100vw, 60vw"
                 loading={index < 3 ? 'eager' : 'lazy'}
@@ -208,7 +233,7 @@ export default function ProjectShowcase() {
 
               <div className="absolute bottom-[22px] left-[23px] z-[3] pr-5">
                 <h3 className="font-[var(--font-manrope)] text-[25px] font-medium !text-white">
-                  {project.title}
+                  {getCleanProjectTitle(project)}
                 </h3>
 
                 <p className="mt-[7px] text-[12px] font-medium tracking-[0.08em] !text-white/85">
@@ -251,7 +276,7 @@ export default function ProjectShowcase() {
               <div className="relative min-h-[55vh] overflow-hidden bg-[#d7d3ca]">
                 <Image
                   src={activeProject.image}
-                  alt={`${activeProject.title} large preview`}
+                  alt={`${getCleanProjectTitle(activeProject)} large preview`}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 65vw"
@@ -266,10 +291,12 @@ export default function ProjectShowcase() {
                   </p>
 
                   <h3 className="mt-4 font-[var(--font-manrope)] text-[38px] font-medium leading-none tracking-[-0.04em] !text-white">
-                    {activeProject.title}
+                    {getCleanProjectTitle(activeProject)}
                   </h3>
 
-                  <p className="mt-2 text-sm !text-white/65">{activeProject.location}</p>
+                  {activeProject.location ? (
+                    <p className="mt-2 text-sm !text-white/65">{activeProject.location}</p>
+                  ) : null}
 
                   <p className="mt-8 text-sm leading-[1.8] !text-white/80">
                     {activeProject.description}
